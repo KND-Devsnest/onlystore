@@ -1,7 +1,12 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
 import "./assets/App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import OrdersPage from "./pages/OrdersPage";
@@ -15,7 +20,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/orders" component={OrdersPage} />
-          <Route exact path="/:id" component={ProductDetails} />
+          <Route exact path="/product/:id" component={ProductDetails} />
+          <Redirect to="/" />
         </Switch>
       </Router>
     </div>
