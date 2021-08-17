@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchProducts = createAsyncThunk("fetch/products", async () => {
-  const res = await fakeFetch("/products", "GET");
+  const res = await window.fakeFetch("/products", "GET");
   return res;
 });
 export const fetchProduct = createAsyncThunk(
   "fetch/product",
   async (idtoFind) => {
-    const res = await fakeFetch("/products", "GET");
+    const res = await window.fakeFetch("/products", "GET");
     return { res, idtoFind };
   }
 );
