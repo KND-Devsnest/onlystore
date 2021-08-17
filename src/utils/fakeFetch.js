@@ -1,5 +1,5 @@
 let currentUsers = JSON.parse(localStorage.getItem("users")) || [];
-export function startBackend() {
+export default function startFakeBackend() {
   window.fakeFetch = function (url, method = "GET", headers) {
     return new Promise((resolve, reject) => {
       setTimeout(handleRoute, 500);
@@ -11,7 +11,7 @@ export function startBackend() {
         } else if (url === "/login" && method === "POST") {
           return loginUser();
         } else {
-          reject("Unkown Route");
+          reject("Unknown Route");
         }
       }
       function giveBackProducts() {

@@ -4,7 +4,8 @@ import "./assets/index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store/store";
-
+import startFakeBackend from "./utils/fakeFetch";
+startFakeBackend();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
