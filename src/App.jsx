@@ -9,8 +9,11 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import OrdersPage from "./pages/OrdersPage";
+import Orders from "./pages/Orders";
 import ProductDetails from "./pages/ProductDetails";
+import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import FullCart from "./pages/FullCart";
 
 function App() {
   return (
@@ -19,8 +22,16 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/orders" component={OrdersPage} />
-          <Route exact path="/product/:id" component={ProductDetails} />
+          <Route exact path="/login" component={Login} />
+          <ProtectedRoute exact path="/orders">
+            <Orders />
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/product/:id">
+            <ProductDetails />
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/cart">
+            <FullCart />
+          </ProtectedRoute>
           <Redirect to="/" />
         </Switch>
       </Router>
