@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const OrderSlice = createSlice({
   name: "order",
   initialState: {
-    orderItems: localStorage.getitem("orderItems") | [],
+    orderItems: localStorage.getItem("orderItems") | [],
   },
   reducers: {
     addOrderItem: (state, action) => {
