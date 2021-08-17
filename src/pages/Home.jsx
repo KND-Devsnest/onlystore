@@ -4,7 +4,6 @@ import BasicCard from "../components/BasicCard";
 const Home = () => {
   return (
     <div>
-      Home
       <BasicCard />
     </div>
   );
