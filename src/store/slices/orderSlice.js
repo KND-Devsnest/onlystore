@@ -6,7 +6,7 @@ const OrderSlice = createSlice({
     },
     reducers : {
         addOrderItem: (state, action) => {
-            state.orderItems = [...order.orderItems, action.payload];
+            state.orderItems = [...state.orderItems, action.payload];
             localStorage.setItem("orderItems", JSON.stringify(state.orderItems));
         },
     },
