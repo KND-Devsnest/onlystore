@@ -21,7 +21,11 @@ const Cart = () => {
       {cartItems
         ? Object.keys(cartItems).map((el, index) => (
             <Card key={index}>
-              <img src={cartItems[el].imageUrl} alt={cartItems[el].title} />
+              <img
+                style={{ width: "100px", height: "100px" }}
+                src={cartItems[el].imageUrl}
+                alt={cartItems[el].title}
+              />
               <button
                 onClick={() => {
                   dispatch(removeCartItem(cartItems[el]));
@@ -44,10 +48,12 @@ const Cart = () => {
               <RemoveIcon
                 onClick={() => {
                   let temp = cartItems[el].quantity;
-                  temp -= 1;
-                  dispatch(
-                    changeQuantity({ id: cartItems[el].id, quantity: temp })
-                  );
+                  if (temp > 1) {
+                    temp -= 1;
+                    dispatch(
+                      changeQuantity({ id: cartItems[el].id, quantity: temp })
+                    );
+                  }
                 }}
               ></RemoveIcon>
             </Card>
