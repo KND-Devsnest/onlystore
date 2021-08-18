@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
+  badge: {
+    fontSize: "1.2rem",
+  },
+
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -132,20 +136,13 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
+        <Link to="/cart">Cart</Link>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
+        <Link to="/orders">Orders</Link>
+      </MenuItem>
+      <MenuItem>
+        <Link to="/wishlist">Wishlist</Link>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -183,14 +180,31 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
+            <IconButton color="inherit">
+              <Badge
+                badgeContent={4}
+                color="secondary"
+                className={classes.badge}
+              >
+                <Link to="/cart">Cart</Link>
               </Badge>
             </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+            <IconButton color="inherit">
+              <Badge
+                badgeContent={17}
+                color="secondary"
+                className={classes.badge}
+              >
+                <Link to="/orders">Orders</Link>
+              </Badge>
+            </IconButton>
+            <IconButton color="inherit">
+              <Badge
+                badgeContent={4}
+                color="secondary"
+                className={classes.badge}
+              >
+                <Link to="/wishlist">Wishlist</Link>
               </Badge>
             </IconButton>
             <IconButton
