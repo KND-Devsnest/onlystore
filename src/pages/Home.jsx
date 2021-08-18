@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  const data = [1, 2, 3, 4];
+  let data =  products.slice().sort(() => Math.random() - 0.5);
   return (
     <div className={classes.root}>
       <Grid
@@ -29,13 +29,14 @@ const Home = () => {
         justifyContent="flex-start"
         alignItems="flex-start"
       >
-        {products.map((elem) => (
-          <Grid item xs={12} sm={6} md={4} key={products.indexOf(elem)}>
+        {data.map((elem) => (
+          <Grid item xs={12} sm={6} md={4} key={data.indexOf(elem)}>
             <BasicCard
               id={elem.id}
               title={elem.title}
               price={elem.price}
               imageUrl={elem.imgs[0]}
+              category = {elem.category}
             />
           </Grid>
         ))}
