@@ -12,43 +12,44 @@ const logoutSave = (state, currentUser) => {
     })
   );
 };
-const CartSlice = createSlice({
+const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    cartItems: [],
+    cartItems: {},
+    currentUser: localStorage.getItem("currentUser"),
     totalPrice: 0,
   },
   reducers: {
-    //adds item to the cart
-    loadCartItem: (state, action) => {
+    loadCartItem: (state) => {
       const temp = JSON.parse(localStorage.getItem("cart"));
-      if (!temp || !temp[action.payload]) state.cartItems = [];
-      else state.cartItems = temp[action.payload].items;
+      if (!temp) return;
+      state.cartItems = temp[state.currentUser]["items"];
+      state.totalPrice = temp[state.currentUser]["totalPrice"];
     },
     addCartItem: (state, action) => {
-      state.cartItems[action.payload.data.id] = action.payload.data;
-
-      logoutSave(state, action.payload.currentUser);
+      state.cartItems[action.payload.id] = action.payload;
+      logoutSave(state, state.currentUser);
     },
-    //removes item from the cart
     removeCartItem: (state, action) => {
-      let newItems = state.cartItems.filter(
-        (item) => item.id !== action.payload.data.id
-      );
-      state.cartItems = [...newItems];
-      state.totalPrice += 0; //change after data source decided
-      logoutSave(state, action.payload.currentUser);
+      delete state.cartItems[action.payload.id];
+      logoutSave(state, state.currentUser);
     },
-    //changes quantity of an item in cart
     changeQuantity: (state, action) => {
-      state.cartItems[action.payload.data.id].quantity =
-        action.payload.data.quantity;
-      state.totalPrice += 0; //change after data source decided
-      logoutSave(state, action.payload.currentUser);
+      console.log(action);
+      state.cartItems[action.payload.id].quantity = action.payload.quantity;
+      logoutSave(state, state.currentUser);
+    },
+    toggleVisible: (state) => {
+      state.isVisible = !state.isVisible;
     },
   },
 });
 
-export const { addCartItem, removeCartItem, changeQuantity, loadCartItem } =
-  CartSlice.actions;
-export default CartSlice.reducer;
+export const {
+  addCartItem,
+  removeCartItem,
+  toggleVisible,
+  changeQuantity,
+  loadCartItem,
+} = cartSlice.actions;
+export default cartSlice.reducer;
