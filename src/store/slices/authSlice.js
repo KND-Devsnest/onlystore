@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   loadUser,
   loginUserAPI,
+  logoutUserAPI,
   registerNewUser,
   updateUserDetailsAPI,
 } from "../../utils/fakeUsers";
@@ -55,6 +56,11 @@ const AuthSlice = createSlice({
         state.addr = addr;
       }
     },
+    logOutUser: (state, action) => {
+      const { status, statusMSG } = logoutUserAPI();
+      console.log(statusMSG);
+      alert(statusMSG);
+    },
     // setAuthName: (state, action) => {
     //   state.name = action.payload;
     //   localStorage.setItem("auth_name", state.name);
@@ -70,6 +76,11 @@ const AuthSlice = createSlice({
   },
 });
 
-export const { toggleAuth, registerUser, loginUser, updateUserDetails } =
-  AuthSlice.actions;
+export const {
+  toggleAuth,
+  registerUser,
+  loginUser,
+  logOutUser,
+  updateUserDetails,
+} = AuthSlice.actions;
 export default AuthSlice.reducer;
