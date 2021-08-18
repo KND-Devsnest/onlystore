@@ -18,6 +18,7 @@ const cartSlice = createSlice({
     cartItems: {},
     currentUser: localStorage.getItem("currentUser"),
     totalPrice: 0,
+    isVisible: false,
   },
   reducers: {
     loadCartItem: (state) => {
