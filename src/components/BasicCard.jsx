@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BasicCard = () => {
+const BasicCard = ({ id, title, price, imageUrl }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -85,21 +85,14 @@ const BasicCard = () => {
   const date = updated.getDate();
   return (
     <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image="https://m.media-amazon.com/images/I/61iP0Q6NLHL._AC_UY218_.jpg"
-        title="CPU"
-      />
-      <CardHeader
-        title="Electrobot Gaming Tower PC"
-        subheader="Intel Core I9 10th Gen RTX 3070 TI 8GB, 32GB RAM, 1TB HDD, 500GB NVME with 6 RGB Cooling Fans (Core I9 10900K)"
-      />
+      <CardMedia className={classes.media} image={imageUrl} />
+      <CardHeader title={title} />
       <CardContent>
         Get it by {day}, {month} {date} after {m} minutes
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">🛒</IconButton>
-        <CardContent>Price Rs. 2,00,000</CardContent>
+        <CardContent>Price Rs. {price}</CardContent>
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -118,11 +111,7 @@ const BasicCard = () => {
             System: -Intel Core I9 10th Gen Core 3.70GHz (5.30 GHz Max Turbo) |
             (2X16GB) 32GB DDR4-3200 RAM | 1TB HDD | 512GB NVME | Windows 10 Pro
             64-bit Trial Graphics: NVIDIA GeForce RTX 3070 TI 8GB Dedicated
-            Gaming Video Card | VR Ready | 1x HDMI | 3x Display Port Special
-            Add-Ons: Tempered Glass RGB Gaming Case | 802. 11AC Wi-Fi Included |
-            16 Color RGB Lighting Case | No Bloatware Support Helpline Number -
-            01140582625 | 2 Years Warranty support from Electrobot | Lifetime
-            Tech support
+            Gaming Video Card
           </Typography>
         </CardContent>
       </Collapse>

@@ -8,6 +8,7 @@ import {
   CardHeader,
 } from "@material-ui/core/";
 import BasicCard from "../components/BasicCard";
+import { products } from "../assets/data/data";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,25 +21,25 @@ const Home = () => {
   const classes = useStyles();
   const data = [1, 2, 3, 4];
   return (
-<<<<<<< HEAD
     <div className={classes.root}>
       <Grid
         container
         spacing={2}
         direction="row"
-        justify="flex-start"
+        justifyContent="flex-start"
         alignItems="flex-start"
       >
-        {data.map((elem) => (
-          <Grid item xs={12} sm={6} md={3} key={data.indexOf(elem)}>
-            <BasicCard />
+        {products.map((elem) => (
+          <Grid item xs={12} sm={6} md={4} key={products.indexOf(elem)}>
+            <BasicCard
+              id={elem.id}
+              title={elem.title}
+              price={elem.price}
+              imageUrl={elem.imgs[0]}
+            />
           </Grid>
         ))}
       </Grid>
-=======
-    <div>
-      <BasicCard />
->>>>>>> origin/dev
     </div>
   );
 };
