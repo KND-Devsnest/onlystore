@@ -6,7 +6,7 @@ import {
   toggleVisible,
 } from "../store/slices/cartSlice";
 import AddIcon from "@material-ui/icons/Add";
-import { Drawer } from "@material-ui/core";
+import { Drawer, Paper, Card } from "@material-ui/core";
 import RemoveIcon from "@material-ui/icons/Remove";
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -16,13 +16,12 @@ const Cart = () => {
     <Drawer
       anchor="right"
       open={isVisible}
-      onClick={() => dispatch(toggleVisible())}
       onClose={() => dispatch(toggleVisible())}
     >
       {cartItems
         ? Object.keys(cartItems).map((el, index) => (
-            <div className="cart-card" key={index}>
-              {el.product}
+            <Card key={index}>
+              <img src={cartItems[el].imageUrl} alt={cartItems[el].title} />
               <button
                 onClick={() => {
                   dispatch(removeCartItem(cartItems[el]));
@@ -34,7 +33,10 @@ const Cart = () => {
                 onClick={() => {
                   let temp = cartItems[el].quantity;
                   dispatch(
-                    changeQuantity({ id: cartItems[el].id, quantity: temp + 1 })
+                    changeQuantity({
+                      id: cartItems[el].id,
+                      quantity: temp + 1,
+                    })
                   );
                 }}
               ></AddIcon>
@@ -48,7 +50,7 @@ const Cart = () => {
                   );
                 }}
               ></RemoveIcon>
-            </div>
+            </Card>
           ))
         : ""}
     </Drawer>

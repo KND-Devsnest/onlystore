@@ -22,7 +22,7 @@ function App() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.email);
   useEffect(() => {
-    dispatch(loadCartItem(currentUser));
+    if (currentUser) dispatch(loadCartItem(currentUser));
   }, []);
 
   return (

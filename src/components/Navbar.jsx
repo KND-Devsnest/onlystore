@@ -187,9 +187,7 @@ export default function PrimarySearchAppBar() {
                 color="secondary"
                 className={classes.badge}
               >
-                <Link to="/cart" onClick={() => dispatch(toggleVisible())}>
-                  Cart
-                </Link>
+                <div onClick={() => dispatch(toggleVisible())}>Cart</div>
               </Badge>
             </IconButton>
             <IconButton color="inherit">
