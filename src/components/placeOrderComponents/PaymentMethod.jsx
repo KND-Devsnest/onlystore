@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   paymentMethod: {
-    width: "90%",
+    width: "50%",
     height: theme.spacing(6),
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
