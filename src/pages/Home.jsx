@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core/";
 import BasicCard from "../components/BasicCard";
-import { products } from "../assets/data/data";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  let data =  products.slice().sort(() => Math.random() - 0.5);
+  const {productItems} = useSelector(state => state.products);
+  let data =  productItems.slice().sort(() => Math.random() - 0.5);
   return (
     <div className={classes.root}>
       <Grid
