@@ -10,7 +10,8 @@ import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
+import { addCartItem } from "../store/slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "25rem",
@@ -42,6 +43,8 @@ const BasicCard = () => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const currentUser = useSelector((state) => state.auth.email);
+  const dispatch = useDispatch();
   let m = 50;
   const d = new Date();
   const updated = new Date(
@@ -98,13 +101,27 @@ const BasicCard = () => {
         Get it by {day}, {month} {date} after {m} minutes
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">🛒</IconButton>
+        <IconButton
+          aria-label="add to favorites"
+          onClick={() => {
+            dispatch(
+              addCartItem({
+                currentUser: currentUser,
+                data: { quantity: 12, id: 0, product: "HI" },
+              })
+            );
+          }}
+        >
+          🛒
+        </IconButton>
         <CardContent>Price Rs. 2,00,000</CardContent>
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
           })}
-          onClick={handleExpandClick}
+          onClick={() => {
+            handleExpandClick();
+          }}
           aria-expanded={expanded}
           aria-label="show more"
         >
