@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import FullCart from "./pages/FullCart";
 import Register from "./pages/Register";
+import PlaceOrder from "./pages/PlaceOrder";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <ProtectedRoute exact path="/cart">
             <FullCart />
           </ProtectedRoute>
+          <Route exact path="/placeorder" component={PlaceOrder} />
           <Redirect to="/" />
         </Switch>
       </Router>
