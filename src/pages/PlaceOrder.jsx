@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Login from "./Login";
 import { Container, Grid, TextField, Paper } from "@material-ui/core";
+import PaymentMethod from "../components/placeOrderComponents/PaymentMethod";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -156,14 +157,14 @@ function getSteps() {
   return ["Login", "Shipping Address", "Payment Method", "Review and Place"];
 }
 
-function getStepContent(stepIndex) {
+function getStepContent(stepIndex, loginCallback) {
   switch (stepIndex) {
     case 0:
-      return <Login />;
+      return <Login redirect={false} callback={loginCallback} />;
     case 1:
       return <ShippingAddress name="John Doe" />;
     case 2:
-      return "Payment Method";
+      return <PaymentMethod />;
     default:
       return "Review and Place";
   }
@@ -172,8 +173,8 @@ function getStepContent(stepIndex) {
 const PlaceOrder = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
-  const [activeStep, setActiveStep] = React.useState(0);
+  const { isAuth } = useSelector((state) => state.auth);
+  const [activeStep, setActiveStep] = React.useState(isAuth ? 1 : 0);
   const steps = getSteps();
 
   const handleNext = () => {
@@ -184,8 +185,8 @@ const PlaceOrder = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
+  const loginCallback = () => {
+    setActiveStep(1);
   };
 
   return (
@@ -203,21 +204,26 @@ const PlaceOrder = () => {
             <Typography className={classes.instructions}>
               All steps completed
             </Typography>
-            <Button onClick={handleReset}>Reset</Button>
+            {/* <Button onClick={handleReset}>Reset</Button> */}
           </div>
         ) : (
           <div>
             {/* <Typography className={classes.instructions}></Typography> */}
-            {getStepContent(activeStep)}
+            {getStepContent(activeStep, loginCallback)}
             <div>
               <Button
-                disabled={activeStep === 0}
+                disabled={activeStep === 0 || (activeStep === 1 && isAuth)}
                 onClick={handleBack}
                 className={classes.backButton}
               >
                 Back
               </Button>
-              <Button variant="contained" color="primary" onClick={handleNext}>
+              <Button
+                disabled={activeStep === 0 && !isAuth}
+                variant="contained"
+                color="primary"
+                onClick={handleNext}
+              >
                 {activeStep === steps.length - 1 ? "Finish" : "Next"}
               </Button>
             </div>
