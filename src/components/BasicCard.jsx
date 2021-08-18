@@ -6,7 +6,11 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
-
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { addCartItem } from "../store/slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "25rem",
@@ -23,6 +27,13 @@ const useStyles = makeStyles((theme) => ({
 
 const BasicCard = ({ id, title, price, imageUrl, category }) => {
   const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
+  console.log(id, title, price, imageUrl);
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+  const currentUser = useSelector((state) => state.auth.email);
+  const dispatch = useDispatch();
   let m = 50;
   const d = new Date();
   const updated = new Date(
@@ -67,13 +78,34 @@ const BasicCard = ({ id, title, price, imageUrl, category }) => {
   return (
     <Card className={classes.root}>
       <CardMedia className={classes.media} image={imageUrl} />
-      <CardHeader title={title} subheader={category}/>
+      <CardHeader title={title} subheader={category} />
       <CardContent>
         Get it by {day}, {month} {date} after {m} minutes
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">🛒</IconButton>
+        <IconButton
+          aria-label="add to favorites"
+          onClick={() => {
+            dispatch(
+              addCartItem({ id, title, price, imageUrl, category, quantity: 1 })
+            );
+          }}
+        >
+          🛒
+        </IconButton>
         <CardContent>Price Rs. {price}</CardContent>
+        <IconButton
+          className={clsx(classes.expand, {
+            [classes.expandOpen]: expanded,
+          })}
+          onClick={() => {
+            handleExpandClick();
+          }}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </IconButton>
       </CardActions>
     </Card>
   );

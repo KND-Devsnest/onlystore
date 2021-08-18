@@ -12,7 +12,8 @@ import Menu from "@material-ui/core/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
-
+import { useDispatch } from "react-redux";
+import { toggleVisible } from "../store/slices/cartSlice";
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -88,6 +89,8 @@ export default function PrimarySearchAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const dispatch = useDispatch();
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -184,7 +187,7 @@ export default function PrimarySearchAppBar() {
                 color="secondary"
                 className={classes.badge}
               >
-                <Link to="/cart">Cart</Link>
+                <div onClick={() => dispatch(toggleVisible())}>Cart</div>
               </Badge>
             </IconButton>
             <IconButton color="inherit">

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { loginUser } from "../store/slices/authSlice";
-
+import { loadCartItem } from "../store/slices/cartSlice";
 const Login = () => {
   const { isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(userDetails));
+    dispatch(loadCartItem(userDetails.email));
   };
   if (isAuth) return <Redirect to="/" />;
   return (

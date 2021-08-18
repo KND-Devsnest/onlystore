@@ -1,39 +1,56 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const CartSlice = createSlice({
+const logoutSave = (state, currentUser) => {
+  const temp = JSON.parse(localStorage.getItem("cart"));
+  localStorage.setItem(
+    "cart",
+    JSON.stringify({
+      ...temp,
+      [currentUser]: {
+        items: state.cartItems,
+        totalPrice: state.totalPrice,
+      },
+    })
+  );
+};
+const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    cartItems: localStorage.getItem("cart") | [],
-    totalPrice: localStorage.getItem("cart_totalPrice") | 0,
+    cartItems: {},
+    currentUser: localStorage.getItem("currentUser"),
+    totalPrice: 0,
+    isVisible: false,
   },
   reducers: {
-    //adds item to the cart
+    loadCartItem: (state) => {
+      const temp = JSON.parse(localStorage.getItem("cart"));
+      if (!temp) return;
+      state.cartItems = temp[state.currentUser]["items"];
+      state.totalPrice = temp[state.currentUser]["totalPrice"];
+    },
     addCartItem: (state, action) => {
-      state.cartItems = [...state.cartItems, action.payload];
-      state.totalPrice += 0; //change after data source decided
-      localStorage.setItem("cart", JSON.stringify(state.cartItems));
-      localStorage.setItem("cart_totalPrice", state.totalPrice);
+      state.cartItems[action.payload.id] = action.payload;
+      logoutSave(state, state.currentUser);
     },
-    //removes item from the cart
     removeCartItem: (state, action) => {
-      let newItems = state.cartItems.filter(
-        (item) => item.id !== action.payload.id
-      );
-      state.cartItems = [...newItems];
-      state.totalPrice += 0; //change after data source decided
-      localStorage.setItem("cart", JSON.stringify(state.cartItems));
-      localStorage.setItem("cart_totalPrice", state.totalPrice);
+      delete state.cartItems[action.payload.id];
+      logoutSave(state, state.currentUser);
     },
-    //changes quantity of an item in cart
     changeQuantity: (state, action) => {
-      state.cartItems[action.payload.inx].quantity += action.payload.quantity;
-      state.totalPrice += 0; //change after data source decided
-      localStorage.setItem("cart", JSON.stringify(state.cartItems));
-      localStorage.setItem("cart_totalPrice", state.totalPrice);
+      console.log(action);
+      state.cartItems[action.payload.id].quantity = action.payload.quantity;
+      logoutSave(state, state.currentUser);
+    },
+    toggleVisible: (state) => {
+      state.isVisible = !state.isVisible;
     },
   },
 });
 
-export const { addCartItem, removeCartItem, changeQuantity } =
-  CartSlice.actions;
-export default CartSlice.reducer;
+export const {
+  addCartItem,
+  removeCartItem,
+  toggleVisible,
+  changeQuantity,
+  loadCartItem,
+} = cartSlice.actions;
+export default cartSlice.reducer;
