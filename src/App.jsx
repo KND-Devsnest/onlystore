@@ -18,6 +18,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadCartItem } from "./store/slices/cartSlice";
 import { useEffect } from "react";
 import Cart from "./components/Cart";
+import PlaceOrder from "./pages/PlaceOrder";
+
 function App() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.email);
@@ -43,6 +45,7 @@ function App() {
           <ProtectedRoute exact path="/cart">
             <FullCart />
           </ProtectedRoute>
+          <Route exact path="/placeorder" component={PlaceOrder} />
           <Redirect to="/" />
         </Switch>
       </Router>
