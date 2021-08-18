@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid } from "@material-ui/core/";
 import BasicCard from "../components/BasicCard";
-import { products } from "../assets/data/data";
 import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
