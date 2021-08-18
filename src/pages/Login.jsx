@@ -43,7 +43,7 @@ const Login = ({ redirect, callback }) => {
       alert("Please fill Proper Credentials!");
       return;
     }
-    if (callback) callback();
+    callback();
     dispatch(loginUser(userDetails));
   };
   if (redirect && isAuth) return <Redirect to="/" />;
@@ -81,6 +81,13 @@ const Login = ({ redirect, callback }) => {
       </form>
     </div>
   );
+};
+
+Login.defaultProps = {
+  callback: () => {
+    console.log("default");
+  },
+  redirect: true,
 };
 
 export default Login;
