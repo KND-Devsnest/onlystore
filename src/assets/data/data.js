@@ -18,7 +18,7 @@ const structureOfCategoryData = [
 ];
 
 // Structure of filter array
-const filters = [
+const filtersStructure = [
   // Filter 1
   {
     filterName: "", // title of filter
@@ -28,7 +28,7 @@ const filters = [
 ];
 
 // Structure of product array
-const products = [
+const productsStructure = [
   // Product 1
   {
     filter1: "", // filter1 value
@@ -46,7 +46,7 @@ const products = [
 ];
 
 // Actual Data
-const categories = [
+export const categories = [
   {
     title: "Mobiles",
     keywords: [],
@@ -108,7 +108,7 @@ const categories = [
 ];
 
 // Products
-const products = [
+export const products = [
   {
     Brand: "Redmi",
     RAM: "2 GB", // filters
