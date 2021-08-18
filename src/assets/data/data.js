@@ -46,7 +46,7 @@ const productsStructure = [
 ];
 
 // Actual Data
-const categories = [
+export const categories = [
   {
     title: "Mobiles",
     keywords: [],

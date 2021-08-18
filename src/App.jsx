@@ -1,4 +1,3 @@
-import { Typography } from "@material-ui/core";
 import React from "react";
 import "./assets/App.css";
 import {
@@ -14,6 +13,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import FullCart from "./pages/FullCart";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
           <ProtectedRoute exact path="/orders">
             <Orders />
           </ProtectedRoute>
