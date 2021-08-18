@@ -20,6 +20,7 @@ const Home = () => {
   const classes = useStyles();
   const data = [1, 2, 3, 4];
   return (
+<<<<<<< HEAD
     <div className={classes.root}>
       <Grid
         container
@@ -34,6 +35,10 @@ const Home = () => {
           </Grid>
         ))}
       </Grid>
+=======
+    <div>
+      <BasicCard />
+>>>>>>> origin/dev
     </div>
   );
 };
