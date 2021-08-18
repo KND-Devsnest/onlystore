@@ -1,12 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  CardHeader,
-} from "@material-ui/core/";
+import { Grid } from "@material-ui/core/";
 import BasicCard from "../components/BasicCard";
 import { products } from "../assets/data/data";
 
