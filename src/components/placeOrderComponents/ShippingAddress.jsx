@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React from "react";
 
 const useStyles = makeStyles((theme) => ({
   ShipContainer: {},
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   shippingRight: {
     minHeight: "100%",
-    width: "100vmin",
+    width: "100%",
     margin: theme.spacing(4, 2, 4, 2),
     display: "grid",
     placeItems: "center",
@@ -27,15 +27,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ShippingAddress = ({ name }) => {
+const ShippingAddress = ({ data, handleChange }) => {
   const classes = useStyles();
-  const [formData, setFormData] = useState({
-    name: name,
-    street: "",
-    city: "",
-    state: "",
-    pin: "",
-  });
   return (
     <Container>
       <Typography variant="h4" component="h1" gutterBottom>
@@ -52,65 +45,62 @@ const ShippingAddress = ({ name }) => {
             type="text"
             name="name"
             label="Name"
+            id="name"
             helperText="Enter your Name"
             margin="dense"
             multiline
-            value={formData.name}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, name: e.target.value }))
-            }
+            value={data.name}
+            onChange={handleChange}
           />
           <TextField
             required
             variant="filled"
             type="text"
             name="street"
+            id="street"
             label="Line 1"
             helperText="Enter your Street Address"
             margin="dense"
             multiline
             rows={2}
-            value={formData.street}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, street: e.target.value }))
-            }
+            value={data.street}
+            onChange={handleChange}
           />
           <TextField
             required
             variant="filled"
             type="text"
             name="city"
+            id="city"
             label="City"
             helperText="Enter your City"
-            value={formData.city}
+            value={data.city}
             margin="dense"
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, city: e.target.value }))
-            }
+            onChange={handleChange}
           />
           <TextField
             required
             variant="filled"
             type="text"
+            name="state"
+            id="state"
             label="State"
             helperText="Enter your State"
-            value={formData.state}
+            value={data.state}
             margin="dense"
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, state: e.target.value }))
-            }
+            onChange={handleChange}
           />
           <TextField
             required
             variant="filled"
             type="number"
+            name="pin"
+            id="pin"
             label="Pin Code"
-            value={formData.pin}
+            value={data.pin}
             helperText="Enter your Pin code"
             margin="dense"
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, pin: e.target.value }))
-            }
+            onChange={handleChange}
           />
         </Grid>
         <Grid item sm={4} xs={12}>
@@ -124,15 +114,15 @@ const ShippingAddress = ({ name }) => {
               <Typography variant="h6" component="h4" gutterBottom>
                 Entered Address
               </Typography>
-              {formData.name && `${formData.name}`}
+              {data.name && `${data.name}`}
               <br />
-              {formData.street && `${formData.street},`}
+              {data.street && `${data.street},`}
               <br />
-              {formData.city && `${formData.city},`}
+              {data.city && `${data.city},`}
               <br />
-              {formData.state && `${formData.state},`}
+              {data.state && `${data.state},`}
               <br />
-              {formData.pin && `${formData.pin}`}
+              {data.pin && `${data.pin}`}
             </Paper>
           </Container>
         </Grid>
