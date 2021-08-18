@@ -48,3 +48,8 @@ export const loginUserAPI = (email, userPass) => {
   }
   return { status: 1, statusMSG: "Error: Password Not Matched!!" };
 };
+
+export const logoutUserAPI = () => {
+  localStorage.setItem('currentUser','');
+  return {status:0, statusMSG:"Logged Out!!"}
+}
