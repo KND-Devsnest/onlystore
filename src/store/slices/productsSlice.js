@@ -14,7 +14,18 @@ const productSlice = createSlice({
     setCurrentProduct: (state, action) => {
       state.currentProduct = action.payload;
     },
+    findAndSetCurrentProduct: (state, action) => {
+      let found = false;
+      state.productItems.map((el) => {
+        if (action.payload === el.id) {
+          state.currentProduct = el;
+          found = true;
+        }
+      });
+      if (!found) state.currentProduct = "noprod";
+    },
   },
 });
-export const { addTotalProduct, setCurrentProduct } = productSlice.actions;
+export const { addTotalProduct, setCurrentProduct, findAndSetCurrentProduct } =
+  productSlice.actions;
 export default productSlice.reducer;

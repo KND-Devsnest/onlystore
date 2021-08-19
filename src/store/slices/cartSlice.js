@@ -16,7 +16,6 @@ const calculatetotalPrice = (state) => {
   let temp = 0;
   for (let i in state.cartItems) {
     temp += state.cartItems[i].price * state.cartItems[i].quantity;
-    console.log("i", i);
   }
   state.totalPrice = temp;
 };
@@ -47,7 +46,6 @@ const cartSlice = createSlice({
       logoutSave(state, state.currentUser);
     },
     changeQuantity: (state, action) => {
-      console.log(action);
       state.cartItems[action.payload.id].quantity = action.payload.quantity;
       calculatetotalPrice(state);
       logoutSave(state, state.currentUser);

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  const {productItems} = useSelector(state => state.products);
+  const { productItems } = useSelector((state) => state.products);
   let data = productItems.slice().sort(() => Math.random() - 0.5);
   return (
     <div className={classes.root}>
@@ -31,7 +31,8 @@ const Home = () => {
               title={elem.title}
               price={elem.price}
               imageUrl={elem.imgs[0]}
-              category = {elem.category}
+              category={elem.category}
+              specs={elem.specs}
             />
           </Grid>
         ))}
