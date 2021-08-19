@@ -8,7 +8,9 @@ import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { addCartItem } from "../store/slices/cartSlice";
+import { addWishListItem } from "../store/slices/wishlistSlice";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import { triggerSnackbar } from "../store/slices/uiSlice";
@@ -99,6 +101,22 @@ const BasicCard = ({ id, title, price, imageUrl, category }) => {
           }}
         >
           🛒
+        </IconButton>
+        <IconButton
+          aria-label="add to favorites"
+          onClick={() => {
+            dispatch(
+              addWishListItem({id, title, price, imageUrl, category})
+            );
+            dispatch(
+              triggerSnackbar({
+                severity: "success",
+                message: "Product added to your wishlist 🥳",
+              })
+            );
+          }}
+        >
+          <FavoriteBorderIcon/>
         </IconButton>
         <CardContent>Price Rs. {price}</CardContent>
         <IconButton
