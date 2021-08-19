@@ -25,10 +25,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BasicCard = ({ id, title, price, imageUrl, category }) => {
+const BasicCard = ({ id, title, price, imageUrl, category, deliveryTime }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  console.log(id, title, price, imageUrl);
+  //console.log(id, title, price, imageUrl);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -87,7 +87,15 @@ const BasicCard = ({ id, title, price, imageUrl, category }) => {
           aria-label="add to favorites"
           onClick={() => {
             dispatch(
-              addCartItem({ id, title, price, imageUrl, category, quantity: 1 })
+              addCartItem({
+                id,
+                title,
+                price,
+                imageUrl,
+                category,
+                quantity: 1,
+                deliveryTime,
+              })
             );
           }}
         >

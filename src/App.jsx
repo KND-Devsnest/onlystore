@@ -19,6 +19,7 @@ import { loadCartItem } from "./store/slices/cartSlice";
 import { useEffect } from "react";
 import Cart from "./components/Cart";
 import PlaceOrder from "./pages/PlaceOrder";
+import { loadOrders } from "./store/slices/orderSlice";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function App() {
   useEffect(() => {
     if (currentUser) {
       dispatch(loadCartItem(currentUser));
+      dispatch(loadOrders(currentUser));
     }
   }, []);
 
