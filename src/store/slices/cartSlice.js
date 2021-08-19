@@ -12,6 +12,14 @@ const logoutSave = (state, currentUser) => {
     })
   );
 };
+const calculatetotalPrice = (state) => {
+  let temp = 0;
+  for (let i in state.cartItems) {
+    temp += state.cartItems[i].price * state.cartItems[i].quantity;
+    console.log("i", i);
+  }
+  state.totalPrice = temp;
+};
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -26,18 +34,22 @@ const cartSlice = createSlice({
       if (!temp) return;
       state.cartItems = temp[state.currentUser]["items"];
       state.totalPrice = temp[state.currentUser]["totalPrice"];
+      calculatetotalPrice(state);
     },
     addCartItem: (state, action) => {
       state.cartItems[action.payload.id] = action.payload;
+      calculatetotalPrice(state);
       logoutSave(state, state.currentUser);
     },
     removeCartItem: (state, action) => {
       delete state.cartItems[action.payload.id];
+      calculatetotalPrice(state);
       logoutSave(state, state.currentUser);
     },
     changeQuantity: (state, action) => {
       console.log(action);
       state.cartItems[action.payload.id].quantity = action.payload.quantity;
+      calculatetotalPrice(state);
       logoutSave(state, state.currentUser);
     },
     toggleVisible: (state) => {
