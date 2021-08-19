@@ -11,6 +11,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { addCartItem } from "../store/slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
+import { triggerSnackbar } from "../store/slices/uiSlice";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "25rem",
@@ -88,6 +89,12 @@ const BasicCard = ({ id, title, price, imageUrl, category }) => {
           onClick={() => {
             dispatch(
               addCartItem({ id, title, price, imageUrl, category, quantity: 1 })
+            );
+            dispatch(
+              triggerSnackbar({
+                severity: "success",
+                message: "Product added to your cart 🥳",
+              })
             );
           }}
         >
