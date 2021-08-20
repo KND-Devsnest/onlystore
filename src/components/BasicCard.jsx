@@ -8,11 +8,14 @@ import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { addCartItem } from "../store/slices/cartSlice";
+import { addWishListItem } from "../store/slices/wishlistSlice";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import { setCurrentProduct } from "../store/slices/productsSlice";
 import { Link } from "react-router-dom";
+import { triggerSnackbar } from "../store/slices/uiSlice";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: "25rem",
@@ -91,8 +94,10 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem }) => {
         </CardContent>
         <CardActions disableSpacing>
           <IconButton
-            aria-label="add to favorites"
-            onClick={() => {
+            aria-label="add to cart"
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
               dispatch(
                 addCartItem({
                   ...elem,
@@ -100,9 +105,33 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem }) => {
                   quantity: 1,
                 })
               );
+              dispatch(
+                triggerSnackbar({
+                  severity: "success",
+                  message: "Product added to your cart 🥳",
+                })
+              );
             }}
           >
             🛒
+          </IconButton>
+          <IconButton
+            aria-label="add to favorites"
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              dispatch(
+                addWishListItem({ id, title, price, imageUrl, category })
+              );
+              dispatch(
+                triggerSnackbar({
+                  severity: "success",
+                  message: "Product added to your wishlist 🥳",
+                })
+              );
+            }}
+          >
+            <FavoriteBorderIcon />
           </IconButton>
           <CardContent>Price Rs. {price}</CardContent>
           <IconButton

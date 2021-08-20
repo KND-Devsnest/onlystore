@@ -1,24 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+const logoutSave = (state, currentUser) => {
+  const temp = JSON.parse(localStorage.getItem("wishlist"));
+  localStorage.setItem(
+    "wishlist",
+    JSON.stringify({
+      ...temp,
+      [currentUser]: {
+        items: state.wishlistItems,
+        totalPrice: state.totalPrice,
+      },
+    })
+  );
+};
 const WishListSlice = createSlice({
   name: "wishlist",
   initialState: {
-    wishlistItems: localStorage.getItem("wishlist") | [],
+    wishlistItems: {},
+    currentUser: localStorage.getItem("currentUser"),
+    isVisible: false,
   },
   reducers: {
+    loadWishListItem: (state) => {
+      const temp = JSON.parse(localStorage.getItem("wishlist"));
+      if (!temp) return;
+      state.wishlistItems = temp[state.currentUser]["items"];
+    },
     addWishListItem: (state, action) => {
-      state.wishlistItems = [...state.wishlistItems, action.payload];
-      localStorage.setItem("wishlist", JSON.stringify(state.wishlistItems));
+      state.wishlistItems[action.payload.id] = action.payload;
+      logoutSave(state, state.currentUser);
     },
     removeWishlistItem: (state, action) => {
-      let newItems = state.wishlistItems.filter(
-        (item) => item.id !== action.payload.id
-      );
-      state.wishlistItems = [...newItems];
-      localStorage.setItem("wishlist", JSON.stringify(state.wishlistItems));
+      delete state.wishlistItems[action.payload.id];
+      logoutSave(state, state.currentUser);
+    },
+    toggleVisible: (state) => {
+      state.isVisible = !state.isVisible;
     },
   },
 });
 
-export const { addWishListItem, removeWishlistItem } = WishListSlice.actions;
+export const { addWishListItem, removeWishlistItem,toggleVisible,loadWishListItem} = WishListSlice.actions;
 export default WishListSlice.reducer;

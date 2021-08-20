@@ -19,6 +19,7 @@ import { loadCartItem } from "./store/slices/cartSlice";
 import { useEffect } from "react";
 import Cart from "./components/Cart";
 import PlaceOrder from "./pages/PlaceOrder";
+import GlobalSnackbar from "./components/GlobalSnackbar";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function App() {
           <Route exact path="/placeorder" component={PlaceOrder} />
           <Redirect to="/" />
         </Switch>
+        <GlobalSnackbar />
       </Router>
     </div>
   );
