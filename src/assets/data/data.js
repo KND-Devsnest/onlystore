@@ -131,6 +131,34 @@ export const products = [
     eta: 30, // in mins
     id: "m1",
     rating: 4.2,
+    reviews: [
+      {
+        name: "Shubham",
+        title: "Don't buy this phone",
+        content: `Both 13 MP and 5MP Camera quality is good. Have lot of pre installed apps. 
+        But can be uninstalled if not required. Overall good performance . I am using Asus zenfone max and according to me far better than Asus except Camera quality. It comes in 5000 mah battery and one can't get a better option at this price range. Go for it. It's really goodAfter one week useEdit:- please don't buy this phone. It hangs a lot and sometimes there is problem in touch screen.`,
+        rated: "1",
+      },
+      {
+        name: "Swanand",
+        title: "One of the good choice for low budget phone",
+        content: `If you are looking for low budget phone this can be a good choice for you.
+      If you wanna android phone just for day to day work then it's really good.
+      On playing heavy games it will hange obviously. Camera is fine at this range. When you start your new device it take some time but later it will work smoothly.
+      Phone is light weight with a good look`,
+        rated: "4",
+      },
+      {
+        name: "Sanskar",
+        title:
+          "Simply excellent. Read complete review written after my 30 days of experience",
+        content: `Excellent mobile for daily use @7500/-. Don't belive in negative reviews at all. If course the product parts made in China, entire assembly, software all are of India. Even this mobile have no bloat ware or Chinese apps and it's 3gb variant is excellent and black colour looks great.
+        Camera is good at it's price range and has autofocus and AI potrait feature.
+        Regarding battery is really huge and with normal daily usage it lasts for about 24 hrs as of my experience. With heavy usage and gaming it lasts for 7-10 hrs.
+        Regarding gaming, since it has gaming processor helio G25 (equal to Snapdragon 625), and it's hyperdrive technology, no lag in gaming and better network connectivity makes games more aweful.`,
+        rated: "5",
+      },
+    ],
   },
   {
     Brand: "Samsung",
@@ -152,6 +180,28 @@ export const products = [
     eta: 20,
     id: "m2",
     rating: 4.7,
+    reviews: [
+      {
+        name: "Rohit",
+        title: "Best mobile in buget",
+        content: "I higely recoomend this mobile",
+        rating: 5,
+      },
+      {
+        name: "Doraemon",
+        title: "Value for money",
+        content:
+          "Really a good budget phone with big battery. Camera performance also awesome, but in pro mode there no control for shutter speed and while changing the iso i don't feel any differences. I need more update on camera modes. Phone performance and charging speed is good. Except camera modes i love this phone.",
+        rating: 4,
+      },
+      {
+        name: "Nobita",
+        title: "Best in the market with this price range",
+        content:
+          "A Descent phone Definitely not for pro pubg player but can work fine Super amoled gives it best performance Descent camera Improved Selfie camera compared to M30 Long battery life Nice Security No ads unlike MI Works smoothly",
+        rating: 5,
+      },
+    ],
   },
   {
     Brand: "Apple",
@@ -173,6 +223,29 @@ export const products = [
     eta: 5,
     id: "m3",
     rating: 4.3,
+    reviews: [
+      {
+        name: "Johhny S",
+        title: "This took one of my kidneys and a testicle. But worth it",
+        content:
+          "Impressed! I’ve tested it with iphone11 and other iphones, it’s remarkable. It has unquestionably better video quality and touch sensitivity. The screen is bigger than I thought. I loved the Gold variant. But if u have a 11 max or a X max I wouldn’t suggest for an upgradation. I feel that the next iphone will have way more cooler features so wouldn’t hurt to wait. My previous iphone was 6, so in my case am totally peachy with this phone. Though it has a ceramic glass wouldn’t hurt to buy a screen guard. If u can afford it u can totally go 4 it.",
+        rating: 5,
+      },
+      {
+        name: "Arjun",
+        title: "The best iPhone in 2020. Phone of the year.",
+        content:
+          "This is the best iPhone yes. The Max model gives you the better screen and overall is a camera beast. I would highly recommend this to anyone. Regarding value for money, its sad that we live in a country where Falling Rupee, Import Duty and High GST are the reasons for such high poricing. A rich country like USA pays only $1099 (Rs. 81,500) whereas its priced a whopping Rs. 48,400 more in India. Thats slmost 60% more. Shame!",
+        rating: "5",
+      },
+      {
+        name: "Sahith",
+        title: "Best & Biggest iPhone i ever owned 🥰",
+        content:
+          "Just no words, what a beauty. Upgrading from iPhone X, this feels so big and heavy. But do not has much discomfort while using, you will get used to it.Make sure to get a decent Screen guard and clear case just to safeguard this beauty.",
+        rating: "4",
+      },
+    ],
   },
   {
     Brand: "OnePlus",
@@ -194,6 +267,30 @@ export const products = [
     eta: 10,
     id: "m4",
     rating: 4.9,
+    reviews: [
+      {
+        name: "Bakwas",
+        title: "Bakwas phone",
+        content: "Bakwas phone",
+        rating: 1,
+      },
+      {
+        name: "Vikas",
+        title: "Good overall",
+        content: `The best part of the phone is it's super simple and user friendly operating system. Camera doesn't oversaturate colours and captures decent photos. Battery charging is super fast. People argue that this is overpriced in this segment but I guess ease of using the phone and mainly the OS wouldn't be so good in other comparable phones. It is super light and handy.
+
+      Edit: taking away 1 star from the review after a month's usage.
+      Phone app lags all the time. Phone starts ringing when I receive a call while the name of caller appears 5 seconds later. This is very annoying. Similar issue while calling. Hope some software update fixes this issue.`,
+        rating: "4",
+      },
+      {
+        name: "Smooth John",
+        title: "Smooth user experience",
+        content:
+          "Very nice Phone with really nice features! I didn't even know I needed a phone but it is so good ",
+        rating: "5",
+      },
+    ],
   },
   {
     Brand: "Jio",
@@ -215,6 +312,27 @@ export const products = [
     eta: 2,
     id: "m5",
     rating: 3.5,
+    reviews: [
+      {
+        name: "BabaKun",
+        title: "Good for My Dad",
+        content:
+          "Like really I was looking for a phone in which I can be always connected with my family but they didn't want a smartphone. So really good for filling the niche",
+        rating: 4,
+      },
+      {
+        name: "Ambani",
+        title: "Buy This",
+        content: "Very good Must Buy!",
+        rating: 5,
+      },
+      {
+        name: "Average Consumer",
+        title: "Ok",
+        content: "ok for like daily use but not much",
+        rating: 3,
+      },
+    ],
   },
   {
     Language: "English",
@@ -231,6 +349,28 @@ export const products = [
     eta: 5,
     id: "b1",
     rating: 4.0,
+    reviews: [
+      {
+        name: "Takumi",
+        title: "I sold my ae86 after this",
+        content:
+          "Very nice thriller story It inspired me to sell my car like the monk.",
+        rating: 5,
+      },
+      {
+        name: "Om",
+        title: "My kids liked It",
+        content:
+          "Was fine as my kids liked it thats all it matters ultimately, however i would say its a little overpriced for its quality and",
+        rating: 3,
+      },
+      {
+        name: "Shyam",
+        title: "Very nice read",
+        content: "I thourougly enjoyed the content of this",
+        rating: 4,
+      },
+    ],
   },
   {
     Language: "English",
@@ -247,6 +387,32 @@ export const products = [
     eta: 5,
     id: "b2",
     rating: 4.1,
+    reviews: [
+      {
+        name: "Himanshu",
+        title: "Amazing",
+        content: `We'll I'm not a great critic but here's my honest review about what I felt after reading this book.
+      At first I was hesitant to buy the book thinking that it would contain the same unbelievable fictional aspects where the gods can fly and cure the incurable diseases by their touch. I was blown away by the simplicity of the protagonist. He didn't have any powers, instead he had the skill and intelligence which led to his rise to become a Mahadev.
+      The story is well narrated with twists and turns of comedy, drama, rage and emotions which leaves you hooked till you read the last chapter and then, the other two books. The characters are well developed making you feel their pain and happiness.
+      10/10`,
+        rating: 4,
+      },
+      {
+        name: "Divyani",
+        title: "Too much like a dramatic Script of a TV show",
+        content: `I got this thanks to its popularity but unfortunately its a little too dramatic for me, it reads like a script for a Zee TV show which I don't watch but know about thanks to some family members fascinations.......
+      There is no character development, poor scripting, no historical research has gone into this I can presume since their are facts that don't match with what's written along with others........
+      Also Lord Shiva is not an angry God but when he will get angry its the end or so say the Purans but Lord Shiva is perpetually angry in this book, vendetta is raging in his veins, revenge is his middle name and for what......`,
+        rating: 1,
+      },
+      {
+        name: "Vaishnavi",
+        title: "Could have been better",
+        content:
+          "Mediocre writing at best. Hindu mythology is quite rich and author benifits from choosing it. Besides one trick of imputing a benign, logical rationale (which i can hope were the case in reality) to hindu customs, the author doesnt have much to write about. Its feels like just another hero's journey.",
+        rating: 2,
+      },
+    ],
   },
   {
     Language: "English",
@@ -263,6 +429,29 @@ export const products = [
     eta: 1,
     id: "b3",
     rating: 4.0,
+    reviews: [
+      {
+        name: "Elle",
+        title: "I Tried it But,",
+        content: `I never expected this book to be as flagrantly, unforgivably bad as it was.
+
+      To start, Bronte's technical choice of narrating the story of the primary characters by having the housekeeper explain everything to a tenant 20 years after it happened completely kills suspense and intimacy.`,
+        rating: "",
+      },
+      {
+        name: "Sophie",
+        title: "Interestingly enough",
+        content:
+          "Ah the classics. Everybody can read their own agenda in them. So, first a short plot guide for dinner conversations when one needs to fake acculturation, and then on to the critics’ view.",
+        rating: 2,
+      },
+      {
+        name: "American Dragon",
+        title: "Childhood Memory",
+        content: `I first read this in AP English Literature - senior year of high school. This book is dense and thick and confusing, and with a class full of haters, it was hard to wrap my head around it. I subsequently read it three or four more times for classes in college and every time I read it, I loved it more.`,
+        rating: 5,
+      },
+    ],
   },
   {
     Language: "Hindi",
@@ -279,6 +468,27 @@ export const products = [
     eta: 1,
     id: "b4",
     rating: 4.6,
+    reviews: [
+      {
+        name: "Tony",
+        title: "One of the best detective stories book ever.",
+        content: `Fantastic. Simply superb. I thought after watching it's series on TV I might not like reading it. But, it was an amazing experience. Due to the above-mentioned fear, I couldn't buy it in the first time but only after a couple of days after thinking a couple of times. But, once I bought it, I couldn't stop. Finished it in less than a week's time. Totally enjoyed it. Highly recommended. Don't miss for anything. Wish I could write something like this!`,
+        rating: 4,
+      },
+      {
+        name: "Ram Singh",
+        title: " One of the Best Story Book",
+        content:
+          "It is an honour to review the Story book of Byomkesh Sir. He was fantastic and Wise. His assumptions were so accurate. The main theme of the book is successful. Nice book.",
+        rating: 3,
+      },
+      {
+        name: "Shizuka",
+        title: "Don't trust seller.",
+        content: `I ordered it at low price from Amazon but when the book reached, what i seen was one page miss print. So i reordered the book but second time they confirmed the order at high price. But as i was buying it to gift someone on her birthday, i ordered it. When i opened to check the miss prints, all the pages were well printed. But when the person to whom i gifted it, opened the book what she seen was missing pages. Example - after 112 page number you jump to direct page no. 129. I mean where are the pages? It all destroyed the emotions of the gift. I will not buy any product from seller 'Cloudtale' at all cost.`,
+        rating: 4,
+      },
+    ],
   },
   {
     Language: "English",
@@ -295,6 +505,29 @@ export const products = [
     eta: 1,
     id: "b5",
     rating: 4.3,
+    reviews: [
+      {
+        name: "raze",
+        title: "Boom",
+        content:
+          "Imagine having a pride when you get blown up and shattered like a bot",
+        rating: 4,
+      },
+      {
+        name: "Max Walters",
+        title: "Simply Amazing",
+        content:
+          "My partner really loved it , she said that its really potrays the issues which you might need to face but might not be able to solve cause of pride. I say it was like a really good investment for my partner as she liked it.",
+        rating: 4,
+      },
+      {
+        name: "Robert Williams",
+        title: "Imagine Dealing with",
+        content:
+          "Issues potrayed in the book, can really be disturbing right ? It can be really hard on you sometimes, as it can be really real sometimes",
+        rating: 4,
+      },
+    ],
   },
   {
     For: "Men",
@@ -315,6 +548,27 @@ export const products = [
     eta: 10,
     id: "c1",
     rating: 4.7,
+    reviews: [
+      {
+        name: "Rahul Sharma",
+        title: "Good cotton Shirt",
+        content: "It gets the job done, really gets me looking sexy and cool!",
+        rating: 4,
+      },
+      {
+        name: "Ayush Goyal",
+        title: "Fabric not that good",
+        content:
+          "It shrank and is losing color after every wash. I don't think its as premium as advertised or I got a fake product. Really Disappointed...",
+        rating: 2,
+      },
+      {
+        name: "Gon",
+        title: "Ok",
+        content: "Gets the work done Its ok for me nothing really special",
+        rating: 2,
+      },
+    ],
   },
   {
     For: "Women",
@@ -333,6 +587,29 @@ export const products = [
     eta: 2,
     id: "c2",
     rating: 4.2,
+    reviews: [
+      {
+        name: "Motu",
+        title: "I got the wrong size Feel cheated",
+        content:
+          "I ordered it 2 weeks ago and I not only got a wrong product as but they also denied my refund request quoting its non refundable even though its their fault!!!",
+        rating: 1,
+      },
+      {
+        name: "Forsen",
+        title: "ZULUL",
+        content:
+          "I Wore this as my wife nina forced me too, I felt really good and nice but she still left me now I wear it to remember her",
+        rating: 5,
+      },
+      {
+        name: "Viper",
+        title: "Toxic Screen Down",
+        content:
+          "My coworker said you are looking fire bruh which is really weird but really tells how much it suits me",
+        rating: 4,
+      },
+    ],
   },
   {
     For: "Women",
@@ -353,6 +630,27 @@ export const products = [
     eta: 5,
     id: "c3",
     rating: 3.7,
+    reviews: [
+      {
+        name: "Shizuka",
+        title: "If apple made a tshirt",
+        content: "Like It wont be good and cheap. So its really good",
+        rating: 4,
+      },
+      {
+        name: "Anonymous",
+        title: "Seller Asking for reviews ",
+        content:
+          "I ordered the product which is really fine but the seller is sending a note to give it 5 star for money. I don't like Amazon not taking practices against this",
+        rating: 2,
+      },
+      {
+        name: "Kiteretsu",
+        title: "bad quality",
+        content: "It faded colours after few washes and now doesnt look good",
+        rating: 2,
+      },
+    ],
   },
   {
     For: "Kids",
@@ -370,6 +668,29 @@ export const products = [
     eta: 10,
     id: "c4",
     rating: 2.9,
+    reviews: [
+      {
+        name: "Giyan",
+        title: "Trusted Brand",
+        content:
+          "Always wearing the Tshirts of this brand really amazing and durable,I still have my class 12th tshirt which still fits well and has decent colours and fabric",
+        rating: 5,
+      },
+      {
+        name: "Patlu",
+        title: "thik thak hai!",
+        content:
+          "Mujhe ye acche se aaya par merko umeed thi ki isse saastha hoga kyoki ye kid baacho ka hai 500 mai tho mere liye tshirt aajaati merko laagta ye log loot raahe hai ",
+        rating: 3,
+      },
+      {
+        name: "Priya",
+        title: "TOO SMALL",
+        content:
+          "Ordered 3-6 month size for my 1.5 month baby just in case I thought. Toy surprise he couldn't wear it till his 2 months bday. The sleeves got too tight and the length is too short too. Waste of money.",
+        rating: 2,
+      },
+    ],
   },
   {
     For: "Mens",
@@ -389,6 +710,22 @@ export const products = [
     eta: 1,
     id: "c5",
     rating: 4.3,
+    reviews: [
+      {
+        name: "Neeta",
+        title: "Fitting",
+        content: `As such there is nithing wrong with the product but for me, it was fitting very oddly.Though i wear regular fit standard36 " waist trousers, this trousers were too tight on thighs as well as below ankle.Not at all comfortable.Below the knee, it fitted more like a chudidar`,
+        rating: 3,
+      },
+      { name: "Sarvesh", title: "Very thin Cloth", content: "Good", rating: 4 },
+      {
+        name: "Joker",
+        title: "About jeans",
+        content:
+          "I was expecting that the material of the jeans would be really soft but it's not it's hard material, I'm a bit dissatisfied though i am keeping the item because it fits very well",
+        rating: 4,
+      },
+    ],
   },
   {
     Type: "Bath and Body",
@@ -408,6 +745,28 @@ export const products = [
     eta: 5,
     id: "be1",
     rating: 4.4,
+    reviews: [
+      {
+        name: "Manisha Gupta",
+        title: "Body wash better than milk",
+        content: `I always use to prefer dove products whether it is shampoo or soap so I tried some other product of dove that is body wash and it's really worth it as it nourishes deep into the surface layers of the skin
+      Mild, gentle formula is kind to your skin`,
+        rating: 5,
+      },
+      {
+        name: "Monika",
+        title: "A must buy definitely..!!",
+        content:
+          "This Dove Bodywash is one of the best body washes I’ve used till date .. it nourishes deep into the surface layers of the skin.. it’s really mild and gentle on the skin.. it will give you super soft and smooth skin after just one use.",
+        rating: 4,
+      },
+      {
+        name: "Neha",
+        title: "Disappointed",
+        content: `Very disappointed with exchange policy. Amazon denied exchange even with the item of same price during offer period and current price is also same. What to do of too tight Jean. Wastage of time. Don't buy anything from Amazon with such disappointed exchange policy.`,
+        rating: 2,
+      },
+    ],
   },
   {
     Type: "Fragrance",
@@ -427,6 +786,31 @@ export const products = [
     eta: 10,
     id: "be2",
     rating: 3.6,
+    reviews: [
+      {
+        name: "Ram",
+        title: "The Quality of the product.",
+        content:
+          "This Body Spray is too good, smells nice and value for money. I shall buy it again. Definitely recommended.",
+        rating: 5,
+      },
+      {
+        name: "Raj Singh",
+        title: "BIG LIE",
+        content:
+          "AMAZON IS LYING ITS NOT 150 ML... ITS 130ML THE SELLER HAS LISTED IT AS 150ML AND ARE DENYING ANY REFUNDS I FEEl chEATED, but the quality of product is as advertised",
+        rating: "",
+      },
+      {
+        name: "Ankit",
+        title: "Read Comment Full",
+        content: `Lets Be Honest
+      The Quality of packaging is worst
+      The deo fragrance is Ultimate as it contain Vanilla
+      Vanilla is the first things which attracts women`,
+        rating: 4,
+      },
+    ],
   },
   {
     Type: "Fragrance",
@@ -447,6 +831,26 @@ export const products = [
     eta: 2,
     id: "be3",
     rating: 4.3,
+    reviews: [
+      {
+        name: "Ritik",
+        title: "BAD,WORST, NOT WORTH",
+        content: `i was using this for past two day's. It not even smelling. I don't know why they selling this stupid product. Dont buy this guys buy the Fogg it is more than this.`,
+        rating: 2,
+      },
+      {
+        name: "Ninja",
+        title: "Good,Nive as Always",
+        content: "I am a regular user, nothing to dislike.",
+        rating: 5,
+      },
+      {
+        name: "Nani",
+        title: "Very Good Smell",
+        content: "Got this product in good price. Scent also good",
+        rating: 4,
+      },
+    ],
   },
   {
     Type: "Skin Care",
@@ -466,6 +870,29 @@ export const products = [
     eta: 2,
     id: "be4",
     rating: 4.8,
+    reviews: [
+      {
+        name: "Ashwin",
+        title: "GOOD ONE",
+        content:
+          "Quality assurance as claimed I look at every product I buy from any company. I will discontine if product is'nt upto the standards displayed",
+        rating: 4,
+      },
+      {
+        name: "Gauri",
+        title: "BEST FACE WASH",
+        content:
+          "It's the best face wash I ever used. It's suitable for all type of skin. Clean the skin deeply and keeps skin healthy and nourished.",
+        rating: 4,
+      },
+      {
+        name: "Martin",
+        title: "Best face wash for oil skin....",
+        content:
+          "I have been using this face wash for a month it is satisfied with the product ....",
+        rating: 5,
+      },
+    ],
   },
   {
     Type: "Hair Care",
@@ -487,6 +914,32 @@ export const products = [
     eta: 3,
     id: "be5",
     rating: 4.2,
+    reviews: [
+      {
+        name: "Payal P",
+        title: "Idiot Seller",
+        content:
+          "The oil is good but really disappointed with what seller has done here,  he knowing sent damaged bottle and tried to fix it with tape and stop the leak,",
+        rating: 5,
+      },
+      {
+        name: "Md Shahzad Hassan",
+        title: "The quality of packaging destroys value",
+        content: `Parachute coconut oil needs no introduction and has been a favorite and household name for decades.
+
+        Quality and purity is top notch.
+        
+        For last few times the packaging has been disappointment. Every single time the cap will break apart in initial few days and then the whole oil wastes by spilling or dropping
+        `,
+        rating: 3,
+      },
+      {
+        name: "Nitesh",
+        title: "Do not buy",
+        content: `some product with same manufacturing date found cheaper in local market with low printed price.so before u buy have a look with near by retail shop.`,
+        rating: 1,
+      },
+    ],
   },
   {
     Type: "Office Chair",
@@ -508,6 +961,29 @@ export const products = [
     eta: 30,
     id: "f1",
     rating: 3.5,
+    reviews: [
+      {
+        name: "Sayanak S",
+        title: "Paint Coming Out",
+        content: "The paints are coming out even with slightest touch",
+        rating: 1,
+      },
+      {
+        name: "Kamlesh K",
+        title: "Product received was different from what's pictured",
+        content: `The chair I received was different from the one shown in the image. It's cheating.. I would like to return it, but it seems the option is not there.`,
+        rating: 2,
+      },
+      {
+        name: "Sam B",
+        title: "stars Chair with many problems",
+        content: `Fitting is good and fast. But chair is slightly damage on handle. Feels like old stock.
+
+      Edit :
+      After few Months, started to make sounds when u sit on it, the back lock is weak and slips every time . Not happy with this buy.`,
+        rating: 4,
+      },
+    ],
   },
   {
     Type: "Desk",
@@ -528,6 +1004,30 @@ export const products = [
     eta: 60,
     id: "f2",
     rating: 3.9,
+    reviews: [
+      {
+        name: "Anjali",
+        title: "Value For Money",
+        content: `This product is really a value for money.
+      The board sturdiness is really good. The ply is quiet tough.
+      A little difficult to assemble. I assembled it at my home with the help of my father and sister.
+      Overall 4/5. Really helpful for me`,
+        rating: 4,
+      },
+      {
+        name: "Prashant",
+        title: "A good value for money product",
+        content: `I ordered the table on 7th June and it was delivered on 28th June. So it took almost 20 days for the product to reach.
+      Overall the quality of the table is good. You get a manual to assemble the table. It can be easily done by two people. I took almost an hour to assemble it.`,
+        rating: 4,
+      },
+      {
+        name: "Shiva",
+        title: "stars Worst than worst",
+        content: `I'm just not happy with the product. It wasn't easy to assemble and the wood quality is so bad. Please don't take this product. Not at all worthy. And after leaving this review I started getting calls from that company asking to remove the review`,
+        rating: 1,
+      },
+    ],
   },
   {
     Type: "Beds",
@@ -547,6 +1047,28 @@ export const products = [
     eta: 50,
     id: "f3",
     rating: 4,
+    reviews: [
+      {
+        name: "Ram",
+        title: "Very Nice",
+        content:
+          "I was having a hard time finding a king size bed which looks sleek and is in my budget this really ticks all the corners and I am not disappointed.",
+        rating: 5,
+      },
+      {
+        name: "Mohan",
+        title: "Disappointed",
+        content:
+          "The quality of wood is not that great. The colour and the wood started peeling after few months of use",
+        rating: 2,
+      },
+      {
+        name: "Komodo",
+        title: "Gets the Job Done",
+        content: "OK and good",
+        rating: 4,
+      },
+    ],
   },
   {
     Type: "Sofas",
@@ -567,6 +1089,27 @@ export const products = [
     eta: 50,
     id: "f4",
     rating: 4.3,
+    reviews: [
+      {
+        name: "Vinit",
+        title: "Good product as described",
+        content: `The packaging was sturdy, secure and the delivery guys were very couteous and polite and helped getting the sofa on first floor. The installation was quick and sofa is sturdy, no creeeks or sound, cushions are comfortable as as prescribed in dimensions.`,
+        rating: 4,
+      },
+      {
+        name: "Chota Lakshit",
+        title: "Sofa is too good but unfortunately the sevice is worst.",
+        content: `Sofa is too good but unfortunately the sevice is worst.
+      Service people broke 1 leg while fixing legs and did not replaced it with new one and now my one sofa is useless with 3 legs. They also behaved very rudely.`,
+        rating: 4,
+      },
+      {
+        name: "Sigma Male Soap",
+        title: "Comfort wise not good and aesthetically good product",
+        content: "but good...",
+        rating: 4,
+      },
+    ],
   },
   {
     Type: "Wardrobes",
@@ -587,5 +1130,27 @@ export const products = [
     eta: 35,
     id: "f5",
     rating: 3.7,
+    reviews: [
+      {
+        name: "M.D. Luffy",
+        title: "Misleading picture of the product.",
+        content:
+          "I thought it would be able to keep all the food I capture from sea but it couldnt, Smaller than it looks",
+        rating: 2,
+      },
+      {
+        name: "Sad Customer",
+        title: "Damaged product",
+        content:
+          "Damaged product. Asked for replacement but no one is replying properly to my mails.",
+        rating: 1,
+      },
+      {
+        name: "Yash K",
+        title: "Good Value",
+        content: "It is quality stuff. Good value for spend.",
+        rating: 4,
+      },
+    ],
   },
 ];

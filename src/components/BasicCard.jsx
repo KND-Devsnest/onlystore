@@ -8,11 +8,13 @@ import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { addCartItem } from "../store/slices/cartSlice";
 import { addWishListItem } from "../store/slices/wishlistSlice";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
+import { setCurrentProduct } from "../store/slices/productsSlice";
+import { Link } from "react-router-dom";
 import { triggerSnackbar } from "../store/slices/uiSlice";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,10 +30,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BasicCard = ({ id, title, price, imageUrl, category }) => {
+const BasicCard = ({ id, title, price, imageUrl, category, elem }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  console.log(id, title, price, imageUrl);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -79,60 +80,75 @@ const BasicCard = ({ id, title, price, imageUrl, category }) => {
   const month = monthList[updated.getMonth()];
   const date = updated.getDate();
   return (
-    <Card className={classes.root}>
-      <CardMedia className={classes.media} image={imageUrl} />
-      <CardHeader title={title} subheader={category} />
-      <CardContent>
-        Get it by {day}, {month} {date} after {m} minutes
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton
-          aria-label="add to favorites"
-          onClick={() => {
-            dispatch(
-              addCartItem({ id, title, price, imageUrl, category, quantity: 1 })
-            );
-            dispatch(
-              triggerSnackbar({
-                severity: "success",
-                message: "Product added to your cart 🥳",
-              })
-            );
-          }}
-        >
-          🛒
-        </IconButton>
-        <IconButton
-          aria-label="add to favorites"
-          onClick={() => {
-            dispatch(
-              addWishListItem({id, title, price, imageUrl, category})
-            );
-            dispatch(
-              triggerSnackbar({
-                severity: "success",
-                message: "Product added to your wishlist 🥳",
-              })
-            );
-          }}
-        >
-          <FavoriteBorderIcon/>
-        </IconButton>
-        <CardContent>Price Rs. {price}</CardContent>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={() => {
-            handleExpandClick();
-          }}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
+    <Link
+      to={"product/" + id}
+      onClick={() => {
+        dispatch(setCurrentProduct(elem));
+      }}
+    >
+      <Card className={classes.root}>
+        <CardMedia className={classes.media} image={imageUrl} />
+        <CardHeader title={title} subheader={category} />
+        <CardContent>
+          Get it by {day}, {month} {date} after {m} minutes
+        </CardContent>
+        <CardActions disableSpacing>
+          <IconButton
+            aria-label="add to cart"
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              dispatch(
+                addCartItem({
+                  ...elem,
+                  imageUrl: elem.imgs[0],
+                  quantity: 1,
+                })
+              );
+              dispatch(
+                triggerSnackbar({
+                  severity: "success",
+                  message: "Product added to your cart 🥳",
+                })
+              );
+            }}
+          >
+            🛒
+          </IconButton>
+          <IconButton
+            aria-label="add to favorites"
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              dispatch(
+                addWishListItem({ id, title, price, imageUrl, category })
+              );
+              dispatch(
+                triggerSnackbar({
+                  severity: "success",
+                  message: "Product added to your wishlist 🥳",
+                })
+              );
+            }}
+          >
+            <FavoriteBorderIcon />
+          </IconButton>
+          <CardContent>Price Rs. {price}</CardContent>
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={() => {
+              handleExpandClick();
+            }}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+      </Card>
+    </Link>
   );
 };
 
