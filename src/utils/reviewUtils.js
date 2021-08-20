@@ -16,6 +16,7 @@ export const saveReview = (
   if (!reviewObject) reviewObject = {};
   reviewObject[currentUser] = { name: name, payload };
   localStorage.setItem("review_" + productId, JSON.stringify(reviewObject));
+
   return reviewObject;
 };
 

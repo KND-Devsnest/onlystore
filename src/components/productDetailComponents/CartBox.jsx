@@ -5,12 +5,28 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartItem } from "../../store/slices/cartSlice";
 import { checkIfValidCartValue } from "../../utils/checkIfValidCartValue";
+import { makeStyles } from "@material-ui/styles";
+const useStyles = makeStyles((theme) => ({
+  root: {
+    minHeight: "100%",
+    width: "100%",
+  },
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  button: {
+    marginLeft: "1rem",
+  },
+}));
 const CartBox = () => {
   const [cartValue, setValue] = useState(1);
   const elem = useSelector((state) => state.products.currentProduct);
   const dispatch = useDispatch();
+  const classes = useStyles();
   return (
-    <Container>
+    <Container className={classes.container}>
       <TextField
         id="outlined-basic"
         value={cartValue}
@@ -21,6 +37,7 @@ const CartBox = () => {
       />
       <Button
         variant="contained"
+        className={classes.button}
         color="primary"
         onClick={() => {
           dispatch(
