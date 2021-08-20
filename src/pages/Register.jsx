@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { registerUser } from "../store/slices/authSlice";
 import { loadCartItem } from "../store/slices/cartSlice";
-
+import { loadWishListItem } from "../store/slices/wishlistSlice";
 const Register = () => {
   const { isAuth, email } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ const Register = () => {
     e.preventDefault();
     dispatch(registerUser(userDetails));
     dispatch(loadCartItem(userDetails.email));
+    dispatch(loadWishListItem(userDetails.email));
   };
   if (isAuth) return <Redirect to="/" />;
   return (

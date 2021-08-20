@@ -20,16 +20,21 @@ const WishListSlice = createSlice({
     isVisible: false,
   },
   reducers: {
-    loadWishListItem: (state) => {
+    loadWishListItem: (state, action) => {
+      state.currentUser = action.payload;
+      if (!state.currentUser) return state;
       const temp = JSON.parse(localStorage.getItem("wishlist"));
-      if (!temp) return;
+      if (!temp) return state;
+      if (!temp[state.currentUser]) return state;
       state.wishlistItems = temp[state.currentUser]["items"];
     },
     addWishListItem: (state, action) => {
+      if (!state.currentUser) return state;
       state.wishlistItems[action.payload.id] = action.payload;
       logoutSave(state, state.currentUser);
     },
     removeWishlistItem: (state, action) => {
+      if (!state.currentUser) return state;
       delete state.wishlistItems[action.payload.id];
       logoutSave(state, state.currentUser);
     },
@@ -39,5 +44,10 @@ const WishListSlice = createSlice({
   },
 });
 
-export const { addWishListItem, removeWishlistItem,toggleVisible,loadWishListItem} = WishListSlice.actions;
+export const {
+  addWishListItem,
+  removeWishlistItem,
+  toggleVisible,
+  loadWishListItem,
+} = WishListSlice.actions;
 export default WishListSlice.reducer;

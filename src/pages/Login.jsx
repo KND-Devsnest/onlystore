@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { loginUser } from "../store/slices/authSlice";
 import { loadCartItem } from "../store/slices/cartSlice";
+import { loadWishListItem } from "../store/slices/wishlistSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,6 +48,7 @@ const Login = ({ redirect, callback }) => {
     callback();
     dispatch(loginUser(userDetails));
     dispatch(loadCartItem(userDetails.email));
+    dispatch(loadWishListItem(userDetails.email))
   };
   if (redirect && isAuth) return <Redirect to="/" />;
   return (

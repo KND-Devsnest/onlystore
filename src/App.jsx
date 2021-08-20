@@ -14,22 +14,11 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import FullCart from "./pages/FullCart";
 import Register from "./pages/Register";
-import { useDispatch, useSelector } from "react-redux";
-import { loadCartItem } from "./store/slices/cartSlice";
-import { useEffect } from "react";
 import Cart from "./components/Cart";
 import PlaceOrder from "./pages/PlaceOrder";
 import GlobalSnackbar from "./components/GlobalSnackbar";
 
 function App() {
-  const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.auth.email);
-  useEffect(() => {
-    if (currentUser) {
-      dispatch(loadCartItem(currentUser));
-    }
-  }, []);
-
   return (
     <div className="App">
       <Cart />

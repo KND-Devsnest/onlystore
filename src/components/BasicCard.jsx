@@ -105,12 +105,20 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem }) => {
                   quantity: 1,
                 })
               );
-              dispatch(
-                triggerSnackbar({
-                  severity: "success",
-                  message: "Product added to your cart 🥳",
-                })
-              );
+              if (currentUser)
+                dispatch(
+                  triggerSnackbar({
+                    severity: "success",
+                    message: "Product added to your cart 🥳",
+                  })
+                );
+              else
+                dispatch(
+                  triggerSnackbar({
+                    severity: "error",
+                    message: "Error! Login to add to your cart ❌",
+                  })
+                );
             }}
           >
             🛒
@@ -123,12 +131,20 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem }) => {
               dispatch(
                 addWishListItem({ id, title, price, imageUrl, category })
               );
-              dispatch(
-                triggerSnackbar({
-                  severity: "success",
-                  message: "Product added to your wishlist 🥳",
-                })
-              );
+              if (currentUser)
+                dispatch(
+                  triggerSnackbar({
+                    severity: "success",
+                    message: "Product added to your wishlist 🥳",
+                  })
+                );
+              else
+                dispatch(
+                  triggerSnackbar({
+                    severity: "error",
+                    message: "Error! Login to add to your wishlist ❌",
+                  })
+                );
             }}
           >
             <FavoriteBorderIcon />
