@@ -88,7 +88,7 @@ const Reviews = ({ paramId, reviews }) => {
                       <Rating
                         className={classes.ratings}
                         name="half-rating"
-                        defaultValue={userReviews[el].payload.rating}
+                        value={userReviews[el].payload.rating}
                         precision={0.5}
                         size="small"
                         readOnly
@@ -114,7 +114,7 @@ const Reviews = ({ paramId, reviews }) => {
                     <div className={classes.imgContainer}>
                       <Rating
                         name="half-rating"
-                        defaultValue={parseInt(el.rating)}
+                        value={parseInt(el.rating)}
                         size="small"
                         readOnly
                       />{" "}
