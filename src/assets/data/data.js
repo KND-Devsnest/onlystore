@@ -799,7 +799,7 @@ export const products = [
         title: "BIG LIE",
         content:
           "AMAZON IS LYING ITS NOT 150 ML... ITS 130ML THE SELLER HAS LISTED IT AS 150ML AND ARE DENYING ANY REFUNDS I FEEl chEATED, but the quality of product is as advertised",
-        rating: "",
+        rating: 4,
       },
       {
         name: "Ankit",
@@ -889,7 +889,7 @@ export const products = [
         name: "Martin",
         title: "Best face wash for oil skin....",
         content:
-          "I have been using this face wash for a month it is satisfied with the product ....",
+          "I have been using this face wash for a month it is satisfied with the product and it is really nice to use also helps in dematiris skin condition.",
         rating: 5,
       },
     ],
