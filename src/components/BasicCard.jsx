@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BasicCard = ({ id, title, price, imageUrl, category, specs }) => {
+const BasicCard = ({ id, title, price, imageUrl, category, elem }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
@@ -80,9 +80,7 @@ const BasicCard = ({ id, title, price, imageUrl, category, specs }) => {
     <Link
       to={"product/" + id}
       onClick={() => {
-        dispatch(
-          setCurrentProduct({ id, title, price, imageUrl, category, specs })
-        );
+        dispatch(setCurrentProduct(elem));
       }}
     >
       <Card className={classes.root}>
@@ -97,12 +95,8 @@ const BasicCard = ({ id, title, price, imageUrl, category, specs }) => {
             onClick={() => {
               dispatch(
                 addCartItem({
-                  id,
-                  title,
-                  price,
-                  imageUrl,
-                  category,
-                  specs,
+                  ...elem,
+                  imageUrl: elem.imgs[0],
                   quantity: 1,
                 })
               );

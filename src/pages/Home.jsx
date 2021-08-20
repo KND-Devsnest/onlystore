@@ -32,7 +32,7 @@ const Home = () => {
               price={elem.price}
               imageUrl={elem.imgs[0]}
               category={elem.category}
-              specs={elem.specs}
+              elem={elem}
             />
           </Grid>
         ))}
