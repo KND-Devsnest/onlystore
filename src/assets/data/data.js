@@ -436,7 +436,7 @@ export const products = [
         content: `I never expected this book to be as flagrantly, unforgivably bad as it was.
 
       To start, Bronte's technical choice of narrating the story of the primary characters by having the housekeeper explain everything to a tenant 20 years after it happened completely kills suspense and intimacy.`,
-        rating: "",
+        rating: 1,
       },
       {
         name: "Sophie",

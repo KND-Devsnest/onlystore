@@ -3,6 +3,7 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: {
     snackbar: { showSnackbar: false, severity: "info", message: "" },
+    reviewModal: false,
   },
   reducers: {
     triggerSnackbar: (state, action) => {
@@ -13,7 +14,13 @@ const uiSlice = createSlice({
     hideSnackbar: (state) => {
       state.snackbar.showSnackbar = false;
     },
+    triggerModal: (state, action) => {
+      state.reviewModal = true;
+    },
+    closeModal: (state, action) => {
+      state.reviewModal = false;
+    },
   },
 });
-export const { triggerSnackbar, hideSnackbar } = uiSlice.actions;
+export const { triggerSnackbar, hideSnackbar,triggerModal,closeModal } = uiSlice.actions;
 export default uiSlice.reducer;
