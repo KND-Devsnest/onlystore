@@ -50,6 +50,6 @@ export const loginUserAPI = (email, userPass) => {
 };
 
 export const logoutUserAPI = () => {
-  localStorage.setItem('currentUser','');
-  return {status:0, statusMSG:"Logged Out!!"}
-}
+  localStorage.setItem("currentUser", "");
+  return { status: 0, statusMSG: "Logged Out!!" };
+};

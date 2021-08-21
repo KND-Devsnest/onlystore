@@ -27,11 +27,11 @@ const AuthSlice = createSlice({
       updateUserDetailsAPI(action.payload);
     },
     registerUser: (state, action) => {
-      const { email, name, addr, pass } = action.payload;
+      const { email, name, pass } = action.payload;
       const { status, statusMSG } = registerNewUser(email, {
         name,
         pass,
-        addr,
+        addr: { street: "", city: "", state: "", pin: "", name: "" },
       });
       console.log(statusMSG);
       alert(statusMSG);
@@ -39,7 +39,7 @@ const AuthSlice = createSlice({
         state.isAuth = true;
         state.email = email;
         state.name = name;
-        state.addr = addr;
+        //state.addr = addr;
         //state = { ...state, ...action.payload };
       }
     },
@@ -59,7 +59,13 @@ const AuthSlice = createSlice({
     logOutUser: (state, action) => {
       const { status, statusMSG } = logoutUserAPI();
       console.log(statusMSG);
-      alert(statusMSG);
+      if (!status) {
+        state.isAuth = false;
+        state.email = "";
+        state.name = "";
+        state.addr = { street: "", city: "", state: "", pin: "", name: "" };
+      }
+      //alert(statusMSG);
     },
     // setAuthName: (state, action) => {
     //   state.name = action.payload;

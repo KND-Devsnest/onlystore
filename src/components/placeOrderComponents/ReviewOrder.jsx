@@ -154,11 +154,6 @@ const ReviewOrder = ({ orderData }) => {
         </Grid>
         <Grid item xs={4}>
           <Paper className={classes.orderDetails} elevation={3}>
-            <Typography variant="h6">Payment Method :</Typography>
-            <Typography variant="subtitle1">
-              {paymentMethod === "COD" ? " Cash on Delivery" : "Online Payment"}
-            </Typography>
-            <br />
             <Typography variant="h6">Delivery Address : </Typography>
             {name && `${name}`}
             <br />
@@ -170,6 +165,11 @@ const ReviewOrder = ({ orderData }) => {
             <br />
             {pin && `${pin}`}
             <br />
+            <br />
+            <Typography variant="h6">Payment Method :</Typography>
+            <Typography variant="subtitle1">
+              {paymentMethod === "COD" ? " Cash on Delivery" : "Online Payment"}
+            </Typography>
             <br />
             <Typography variant="h6">Order Total</Typography>
             <Typography variant="subtitle1">Rs. {totalPrice}</Typography>
