@@ -1,4 +1,5 @@
 import {
+  Checkbox,
   Container,
   Grid,
   makeStyles,
@@ -27,7 +28,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ShippingAddress = ({ data, handleChange }) => {
+const ShippingAddress = ({
+  data,
+  handleChange,
+  togglePersistance,
+  persistAddress,
+}) => {
   const classes = useStyles();
   return (
     <Container>
@@ -102,6 +108,23 @@ const ShippingAddress = ({ data, handleChange }) => {
             margin="dense"
             onChange={handleChange}
           />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Checkbox
+              color="primary"
+              value={persistAddress}
+              onChange={togglePersistance}
+            />
+            <Typography variant="caption">
+              Save Address for future use
+            </Typography>
+          </div>
         </Grid>
         <Grid item sm={4} xs={12}>
           <Container className={classes.shippingRight}>

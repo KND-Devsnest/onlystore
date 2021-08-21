@@ -121,7 +121,9 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem }) => {
                 );
             }}
           >
-            🛒
+            <span role="img" aria-label="cart">
+              🛒
+            </span>
           </IconButton>
           <IconButton
             aria-label="add to favorites"
