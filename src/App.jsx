@@ -17,6 +17,7 @@ import Register from "./pages/Register";
 import Cart from "./components/Cart";
 import PlaceOrder from "./pages/PlaceOrder";
 import GlobalSnackbar from "./components/GlobalSnackbar";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/search/:query" component={SearchResults} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <ProtectedRoute exact path="/orders">

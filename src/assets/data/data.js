@@ -137,7 +137,7 @@ export const products = [
         title: "Don't buy this phone",
         content: `Both 13 MP and 5MP Camera quality is good. Have lot of pre installed apps. 
         But can be uninstalled if not required. Overall good performance . I am using Asus zenfone max and according to me far better than Asus except Camera quality. It comes in 5000 mah battery and one can't get a better option at this price range. Go for it. It's really goodAfter one week useEdit:- please don't buy this phone. It hangs a lot and sometimes there is problem in touch screen.`,
-        rated: "1",
+        rating: 1,
       },
       {
         name: "Swanand",
@@ -146,7 +146,7 @@ export const products = [
       If you wanna android phone just for day to day work then it's really good.
       On playing heavy games it will hange obviously. Camera is fine at this range. When you start your new device it take some time but later it will work smoothly.
       Phone is light weight with a good look`,
-        rated: "4",
+        rating: "4",
       },
       {
         name: "Sanskar",
@@ -156,7 +156,7 @@ export const products = [
         Camera is good at it's price range and has autofocus and AI potrait feature.
         Regarding battery is really huge and with normal daily usage it lasts for about 24 hrs as of my experience. With heavy usage and gaming it lasts for 7-10 hrs.
         Regarding gaming, since it has gaming processor helio G25 (equal to Snapdragon 625), and it's hyperdrive technology, no lag in gaming and better network connectivity makes games more aweful.`,
-        rated: "5",
+        rating: "5",
       },
     ],
   },

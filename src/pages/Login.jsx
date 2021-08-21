@@ -47,10 +47,12 @@ const Login = ({ redirect, callback }) => {
     }
     callback();
     dispatch(loginUser(userDetails));
-    dispatch(loadCartItem(userDetails.email));
-    dispatch(loadWishListItem(userDetails.email))
   };
-  if (redirect && isAuth) return <Redirect to="/" />;
+  if (redirect && isAuth) {
+    dispatch(loadCartItem(userDetails.email));
+    dispatch(loadWishListItem(userDetails.email));
+    return <Redirect to="/" />;
+  }
   return (
     <div className={styles.root}>
       <Typography variant="h4">Login</Typography>
