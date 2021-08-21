@@ -34,7 +34,7 @@ const AuthSlice = createSlice({
         addr: { street: "", city: "", state: "", pin: "", name: "" },
       });
       console.log(statusMSG);
-      alert(statusMSG);
+      //alert(statusMSG);
       if (!status) {
         state.isAuth = true;
         state.email = email;
@@ -47,7 +47,7 @@ const AuthSlice = createSlice({
       const { email, pass } = action.payload;
       const { status, statusMSG, user } = loginUserAPI(email, pass);
       console.log(statusMSG);
-      alert(statusMSG);
+      //alert(statusMSG);
       if (!status) {
         const { name, addr } = user;
         state.isAuth = true;
