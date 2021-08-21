@@ -1,7 +1,7 @@
 import { Button, makeStyles, TextField, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { loginUser } from "../store/slices/authSlice";
 import { loadCartItem } from "../store/slices/cartSlice";
 import { loadWishListItem } from "../store/slices/wishlistSlice";
@@ -23,11 +23,16 @@ const useStyles = makeStyles((theme) => ({
   textfield: {
     margin: theme.spacing(2),
   },
+  actions: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
   submitButton: { margin: theme.spacing(1) },
 }));
 
 const Login = ({ redirect, callback }) => {
-  const styles = useStyles();
+  const classes = useStyles();
   const { isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [userDetails, setUserDetails] = useState({
@@ -54,11 +59,11 @@ const Login = ({ redirect, callback }) => {
     return <Redirect to="/" />;
   }
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       <Typography variant="h4">Login</Typography>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={classes.form} onSubmit={handleSubmit}>
         <TextField
-          className={styles.textfield}
+          className={classes.textfield}
           fullWidth
           id="email"
           label="Email"
@@ -67,7 +72,7 @@ const Login = ({ redirect, callback }) => {
           onChange={handleChange}
         />
         <TextField
-          className={styles.textfield}
+          className={classes.textfield}
           fullWidth
           id="pass"
           label="Password"
@@ -75,15 +80,20 @@ const Login = ({ redirect, callback }) => {
           variant="filled"
           onChange={handleChange}
         />
-        <Button
-          className={styles.submitButton}
-          type="submit"
-          color="primary"
-          variant="contained"
-          size="large"
-        >
-          Login
-        </Button>
+        <div className={classes.actions}>
+          <Button
+            className={classes.submitButton}
+            type="submit"
+            color="primary"
+            variant="contained"
+            size="large"
+          >
+            Login
+          </Button>
+          <Button variant="outlined" color="primary">
+            <Link to="/register">Register</Link>
+          </Button>
+        </div>
       </form>
     </div>
   );

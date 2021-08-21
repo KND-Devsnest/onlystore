@@ -11,7 +11,6 @@ const Register = () => {
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
-    addr: "",
     pass: "",
   });
   console.log(isAuth, email);
@@ -62,13 +61,6 @@ const Register = () => {
         <TextField
           id="name"
           label="Name"
-          type="text"
-          variant="outlined"
-          onChange={handleChange}
-        />
-        <TextField
-          id="addr"
-          label="Address"
           type="text"
           variant="outlined"
           onChange={handleChange}

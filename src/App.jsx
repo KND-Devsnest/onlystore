@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./assets/App.css";
 import {
   BrowserRouter as Router,
@@ -18,8 +18,20 @@ import Cart from "./components/Cart";
 import PlaceOrder from "./pages/PlaceOrder";
 import GlobalSnackbar from "./components/GlobalSnackbar";
 import SearchResults from "./pages/SearchResults";
+import { loadOrders } from "./store/slices/orderSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { loadCartItem } from "./store/slices/cartSlice";
 
 function App() {
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.email);
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(loadCartItem(currentUser));
+      dispatch(loadOrders(currentUser));
+    }
+  }, []);
+
   return (
     <div className="App">
       <Cart />
