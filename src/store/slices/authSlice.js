@@ -6,6 +6,8 @@ import {
   registerUserAPI,
   updateUserDetailsAPI,
 } from "../../utils/fakeUsers";
+import { loadCartItem } from "./cartSlice";
+import { loadOrders } from "./orderSlice";
 import { triggerSnackbar } from "./uiSlice";
 
 export const loginUser = createAsyncThunk(
@@ -19,6 +21,8 @@ export const loginUser = createAsyncThunk(
         message: statusMSG,
       })
     );
+    thunkAPI.dispatch(loadCartItem(email));
+    thunkAPI.dispatch(loadOrders(email));
     return { email, status, ...user };
     //alert(statusMSG);
   }
@@ -52,6 +56,7 @@ export const registerUser = createAsyncThunk(
         message: statusMSG,
       })
     );
+    thunkAPI.dispatch(loadCartItem(email));
   }
 );
 
