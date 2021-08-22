@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./assets/App.css";
 import {
   BrowserRouter as Router,
   Redirect,
