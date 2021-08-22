@@ -23,6 +23,8 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     display: "block",
+    width: "100%",
+    height: "auto",
   },
   rating: {
     marginTop: "1rem",

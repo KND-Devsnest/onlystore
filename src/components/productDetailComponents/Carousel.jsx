@@ -2,6 +2,13 @@ import { Paper, Container } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { useState } from "react";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addWishListItem,
+  removeWishlistItem,
+} from "../../store/slices/wishlistSlice";
+import { triggerSnackbar } from "../../store/slices/uiSlice";
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100%",
@@ -58,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     textAlign: "center",
     flexWrap: "nowrap",
+    position: "relative",
   },
   imgContainer: {
     width: "100%",
@@ -72,14 +80,63 @@ const useStyles = makeStyles((theme) => ({
     objectFit: "contain",
     transition: "transform 0.2s",
   },
+  heart: {
+    position: "absolute",
+    right: "5%",
+    top: "5%",
+    transition: "0.2s ease-in",
+    "&:hover": {
+      transform: "scale(1.1)",
+      cursor: "pointer",
+    },
+  },
+
+  heartClicked: {
+    position: "absolute",
+    right: "5%",
+    top: "5%",
+    transition: "0.2s ease-in",
+    color: "pink",
+    "&:hover": {
+      transform: "scale(1.1)",
+      cursor: "pointer",
+    },
+  },
 }));
-const Carousel = ({ images }) => {
+const Carousel = ({ currentProd }) => {
   const classes = useStyles();
+  const images = currentProd.imgs;
   const [imageState, setImage] = useState(images[0]);
+  const wishlist = useSelector((state) => state.wishlist.wishlistItems);
+  const dispatch = useDispatch();
   return (
     <Container className={classes.container}>
       <div>
         <Paper className={classes.test}>
+          <FavoriteIcon
+            className={
+              wishlist[currentProd.id] ? classes.heartClicked : classes.heart
+            }
+            onClick={() => {
+              if (!wishlist[currentProd.id]) {
+                dispatch(addWishListItem(currentProd));
+                dispatch(
+                  triggerSnackbar({
+                    severity: "success",
+                    message: "Product added to your wishlist 🥳",
+                  })
+                );
+              } else {
+                dispatch(removeWishlistItem(currentProd));
+                dispatch(
+                  triggerSnackbar({
+                    severity: "error",
+                    message: "Removed Item from your wishlist!",
+                  })
+                );
+              }
+            }}
+          />
           {images.length > 1 ? (
             <div className={classes.carouselBar}>
               {images.map((el, index) => (

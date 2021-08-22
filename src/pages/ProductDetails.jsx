@@ -52,10 +52,7 @@ const ProductDetails = () => {
         <Container className={classes.root}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={5} className={classes.imgContainer}>
-              <Carousel
-                currentImg={currentProduct.imgs[0]}
-                images={currentProduct.imgs}
-              />
+              <Carousel currentProd={currentProduct} />
             </Grid>
             <Grid item xs={12} sm={5}>
               <Paper className={classes.container}>
