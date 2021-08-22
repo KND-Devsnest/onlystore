@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Cart />
+        <Cart isFromDrawer />
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />

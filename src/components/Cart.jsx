@@ -2,113 +2,131 @@ import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import {
   changeQuantity,
+  hideDrawer,
   removeCartItem,
   toggleVisible,
 } from "../store/slices/cartSlice";
-import AddIcon from "@material-ui/icons/Add";
 import {
   Drawer,
   Paper,
-  Card,
   Container,
   makeStyles,
-  Grid,
   Button,
+  Box,
+  IconButton,
 } from "@material-ui/core";
-import RemoveIcon from "@material-ui/icons/Remove";
 import Login from "../pages/Login";
+import CartWishCard from "./CartWishCard";
+import { Link } from "react-router-dom";
+import { CloseOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
+    minWidth: theme.spacing(40),
+    minHeight: "100vh",
+    background: theme.palette.background.default,
+    display: "flex",
+    alignItems: "flex-start",
+  },
+  mainContainer: {
+    padding: theme.spacing(4, 0),
   },
   cardContainer: {
-    padding: theme.spacing(4, 2),
-    minHeight: "100vh",
+    padding: theme.spacing(2),
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
     alignItems: "center",
     gap: theme.spacing(2),
   },
   card: {
     padding: theme.spacing(2),
   },
+  close: {
+    backgroundColor: theme.palette.background.default,
+  },
 }));
 
-const Cart = () => {
+const Cart = ({ isFromDrawer }) => {
   const classes = useStyles();
   const { isVisible, cartItems, currentUser } = useSelector(
     (state) => state.cart
   );
   const dispatch = useDispatch();
-  return (
-    <Drawer
-      anchor="right"
-      open={isVisible}
-      onClose={() => dispatch(toggleVisible())}
-      className={classes.root}
-    >
+
+  const handleCartRemoveItem = (id) => {
+    dispatch(removeCartItem({ id }));
+  };
+  const handleCartChangeQuantity = (id, quantity, op) => {
+    if (op === "add") {
+      dispatch(changeQuantity({ id: id, quantity: quantity + 1 }));
+    } else if (op === "subtract") {
+      dispatch(changeQuantity({ id: id, quantity: quantity - 1 }));
+    }
+  };
+
+  const CartContent = () => {
+    return (
       <Container maxWidth="sm" className={classes.root}>
         {currentUser ? (
-          <Grid container className={classes.cardContainer}>
-            {Object.keys(cartItems).length
-              ? Object.keys(cartItems).map((el, index) => (
-                  <Grid item xs={12} key={index}>
-                    <Card variant="outlined" className={classes.card}>
-                      <img
-                        style={{ width: "20vmin" }}
-                        src={cartItems[el].imageUrl}
-                        alt={cartItems[el].title}
-                      />
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => {
-                          dispatch(removeCartItem(cartItems[el]));
-                        }}
-                      >
-                        Delete
-                      </Button>
-                      <AddIcon
-                        onClick={() => {
-                          let temp = cartItems[el].quantity;
-                          dispatch(
-                            changeQuantity({
-                              id: cartItems[el].id,
-                              quantity: temp + 1,
-                            })
-                          );
-                        }}
-                      ></AddIcon>
-                      <input value={cartItems[el].quantity}></input>
-                      <RemoveIcon
-                        onClick={() => {
-                          let temp = cartItems[el].quantity;
-                          if (temp > 1) {
-                            temp -= 1;
-                            dispatch(
-                              changeQuantity({
-                                id: cartItems[el].id,
-                                quantity: temp,
-                              })
-                            );
-                          }
-                        }}
-                      ></RemoveIcon>
-                    </Card>
-                  </Grid>
-                ))
-              : "Cart is Empty"}
-          </Grid>
+          <Container className={classes.mainContainer}>
+            {Object.keys(cartItems).length ? (
+              <Paper elevation={2} className={classes.cardContainer}>
+                {Object.keys(cartItems).map((el, index) => (
+                  <CartWishCard
+                    isCartItem={true}
+                    key={index}
+                    element={cartItems[el]}
+                    removeItem={handleCartRemoveItem}
+                    changeQuantity={handleCartChangeQuantity}
+                  />
+                ))}
+                <Box
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-end"
+                >
+                  <Link to="/placeorder" onClick={() => dispatch(hideDrawer())}>
+                    <Button variant="contained" color="secondary">
+                      Checkout
+                    </Button>
+                  </Link>
+                </Box>
+              </Paper>
+            ) : (
+              <Box
+                style={{ minHeight: "100%" }}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                Come on, buy something!
+              </Box>
+            )}
+          </Container>
         ) : (
           <Container>
             <Login redirect={false} isPage={false} />
           </Container>
         )}
       </Container>
-    </Drawer>
-  );
+    );
+  };
+  if (isFromDrawer) {
+    return (
+      <Drawer
+        anchor="right"
+        open={isVisible}
+        onClose={() => dispatch(toggleVisible())}
+      >
+        <Box className={classes.close}>
+          <IconButton onClick={() => dispatch(hideDrawer())}>
+            <CloseOutlined color="primary" />
+          </IconButton>
+        </Box>
+        <CartContent />
+      </Drawer>
+    );
+  } else return <CartContent />;
 };
 
 export default Cart;

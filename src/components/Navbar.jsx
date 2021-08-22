@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React from "react";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import {
@@ -133,7 +133,6 @@ export default function PrimarySearchAppBar() {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const { isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const location = useLocation();
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);

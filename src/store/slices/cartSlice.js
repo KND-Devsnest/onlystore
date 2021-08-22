@@ -59,6 +59,12 @@ const cartSlice = createSlice({
     toggleVisible: (state) => {
       state.isVisible = !state.isVisible;
     },
+    showDrawer: (state) => {
+      state.isVisible = true;
+    },
+    hideDrawer: (state) => {
+      state.isVisible = false;
+    },
     clearCart: (state) => {
       state.cartItems = {};
       state.totalPrice = 0;
@@ -71,6 +77,8 @@ export const {
   addCartItem,
   removeCartItem,
   toggleVisible,
+  showDrawer,
+  hideDrawer,
   changeQuantity,
   loadCartItem,
   clearCart,
