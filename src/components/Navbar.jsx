@@ -13,6 +13,7 @@ import {
   Box,
   Grid,
   Container,
+  Hidden,
 } from "@material-ui/core";
 import {
   Search as SearchIcon,
@@ -248,7 +249,12 @@ export default function PrimarySearchAppBar() {
         <Toolbar className={classes.toolbar}>
           <Container maxWidth="xl">
             <Grid container alignItems={"center"}>
-              <Grid item xs={10} md={4}>
+              <Hidden smUp>
+                <Grid item xs={2}>
+                  <LogoIcon />
+                </Grid>
+              </Hidden>
+              <Grid item xs={8} md={4}>
                 <div className={classes.searchBox}>
                   <div className={classes.search}>
                     <InputBase
