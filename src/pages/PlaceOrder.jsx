@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import Login from "./Login";
 import { Container, Paper } from "@material-ui/core";
 import PaymentMethod from "../components/placeOrderComponents/PaymentMethod";
 import ShippingAddress from "../components/placeOrderComponents/ShippingAddress";
+import ReviewOrder from "../components/placeOrderComponents/ReviewOrder";
+import { addOrderItem } from "../store/slices/orderSlice";
+import { clearCart } from "../store/slices/cartSlice";
+import { Redirect } from "react-router-dom";
+import { updateUserDetails } from "../store/slices/authSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,21 +41,26 @@ const useStyles = makeStyles((theme) => ({
 const PlaceOrder = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { isAuth, name } = useSelector((state) => state.auth);
+  const { isAuth, email, addr } = useSelector((state) => state.auth);
+  const { street, city, state, pin, name } = addr;
+  const { cartItems, totalPrice } = useSelector((state) => state.cart);
+  console.log(totalPrice);
   const [formData, setFormData] = useState({
     shippingAddress: {
-      name: name,
-      street: "",
-      city: "",
-      state: "",
-      pin: "",
+      name,
+      street,
+      city,
+      state,
+      pin,
     },
     paymentMethod: "COD",
+    persistAddress: false,
+    isLoaded: false,
   });
   const [activeStep, setActiveStep] = React.useState(isAuth ? 1 : 0);
-
   const handleShippingAddressChange = (e) => {
     setFormData({
+      ...formData,
       shippingAddress: {
         ...formData.shippingAddress,
         [e.target.id]: e.target.value,
@@ -59,8 +68,15 @@ const PlaceOrder = () => {
     });
   };
 
+  const handleToggleShippingAddressPersistance = (e) => {
+    setFormData({
+      ...formData,
+      persistAddress: e.target.checked,
+    });
+  };
+
   function getSteps() {
-    return ["Login", "Shipping Address", "Payment Method", "Review and Place"];
+    return ["Login", "Shipping Address", "Payment Method", "Review and Buy"];
   }
   const steps = getSteps();
 
@@ -73,16 +89,53 @@ const PlaceOrder = () => {
           <ShippingAddress
             data={formData.shippingAddress}
             handleChange={handleShippingAddressChange}
+            togglePersistance={handleToggleShippingAddressPersistance}
+            persistAddress={formData.persistAddress}
           />
         );
       case 2:
         return <PaymentMethod />;
+      case 3:
+        return <ReviewOrder orderData={{ ...formData }} />;
+      case 4:
+        return <Redirect to="/orders" />;
       default:
-        return "Review and Place";
+        return "";
     }
   }
 
   const handleNext = () => {
+    if (activeStep === 1) {
+      const { street, city, state, pin } = formData.shippingAddress;
+      if (
+        name === "" ||
+        street === "" ||
+        city === "" ||
+        state === "" ||
+        pin === ""
+      ) {
+        alert("Boss, Kidhar bhejna vo to batao :|");
+        return;
+      }
+    }
+    if (activeStep == getSteps().length - 1) {
+      let order = {
+        orderTime: new Date().getTime(),
+        totalAmount: totalPrice,
+        products: [],
+        shippingAddress: formData.shippingAddress,
+      };
+      order["id"] = `ORDER-${order["orderTime"]}`;
+      Object.keys(cartItems).forEach((key) => {
+        let { quantity, deliveryTime } = cartItems[key];
+        order["products"].push({ id: key, quantity, deliveryTime });
+      });
+      console.log(order);
+      if (formData.persistAddress)
+        dispatch(updateUserDetails({ addr: formData.shippingAddress }));
+      dispatch(addOrderItem({ user: email, order }));
+      dispatch(clearCart());
+    }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
@@ -93,6 +146,14 @@ const PlaceOrder = () => {
   const loginCallback = () => {
     setActiveStep(1);
   };
+  useEffect(() => {
+    console.log(cartItems);
+    if (cartItems) setFormData({ ...formData, isLoaded: true });
+  }, []);
+  if (formData.isLoaded && Object.keys(cartItems).length === 0) {
+    alert("Cart Empty(Replace with Snack)");
+    return <Redirect to="/" />;
+  }
 
   return (
     <Container className={classes.root}>
@@ -105,34 +166,26 @@ const PlaceOrder = () => {
           ))}
         </Stepper>
         <div>
-          {activeStep === steps.length ? (
-            <div>
-              <Typography className={classes.instructions}>
-                All steps completed
-              </Typography>
+          <div className={classes.content}>
+            {getStepContent(activeStep, loginCallback)}
+            <div className={classes.buttons}>
+              <Button
+                disabled={activeStep === 0 || (activeStep === 1 && isAuth)}
+                onClick={handleBack}
+                className={classes.backButton}
+              >
+                Back
+              </Button>
+              <Button
+                disabled={activeStep === 0 && !isAuth}
+                variant="contained"
+                color="primary"
+                onClick={handleNext}
+              >
+                {activeStep === steps.length - 1 ? "Confirm Order" : "Next"}
+              </Button>
             </div>
-          ) : (
-            <div className={classes.content}>
-              {getStepContent(activeStep, loginCallback)}
-              <div className={classes.buttons}>
-                <Button
-                  disabled={activeStep === 0 || (activeStep === 1 && isAuth)}
-                  onClick={handleBack}
-                  className={classes.backButton}
-                >
-                  Back
-                </Button>
-                <Button
-                  disabled={activeStep === 0 && !isAuth}
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                >
-                  {activeStep === steps.length - 1 ? "Confirm Order" : "Next"}
-                </Button>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       </Paper>
     </Container>

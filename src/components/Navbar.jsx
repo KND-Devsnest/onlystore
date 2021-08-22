@@ -12,8 +12,9 @@ import Menu from "@material-ui/core/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleVisible } from "../store/slices/cartSlice";
+import { logOutUser } from "../store/slices/authSlice";
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -89,7 +90,7 @@ export default function PrimarySearchAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+  const { isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const handleProfileMenuOpen = (event) => {
@@ -103,6 +104,11 @@ export default function PrimarySearchAppBar() {
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
+  };
+
+  const handleLogOut = () => {
+    handleMobileMenuClose();
+    dispatch(logOutUser());
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -120,8 +126,23 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      {isAuth ? (
+        <div>
+          <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+          <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+          <MenuItem>
+            <Link to="/login" onClick={handleLogOut}>
+              Log Out
+            </Link>
+          </MenuItem>
+        </div>
+      ) : (
+        <MenuItem>
+          <Link onClick={handleMenuClose} to="/login">
+            Log In
+          </Link>
+        </MenuItem>
+      )}
     </Menu>
   );
 

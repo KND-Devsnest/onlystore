@@ -59,6 +59,11 @@ const cartSlice = createSlice({
     toggleVisible: (state) => {
       state.isVisible = !state.isVisible;
     },
+    clearCart: (state) => {
+      state.cartItems = {};
+      state.totalPrice = 0;
+      logoutSave(state, state.currentUser);
+    },
   },
 });
 
@@ -68,5 +73,6 @@ export const {
   toggleVisible,
   changeQuantity,
   loadCartItem,
+  clearCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;
