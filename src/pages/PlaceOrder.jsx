@@ -14,6 +14,7 @@ import { addOrderItem } from "../store/slices/orderSlice";
 import { clearCart } from "../store/slices/cartSlice";
 import { Redirect } from "react-router-dom";
 import { updateUserDetails } from "../store/slices/authSlice";
+import { triggerSnackbar } from "../store/slices/uiSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +45,7 @@ const PlaceOrder = () => {
   const { isAuth, email, addr } = useSelector((state) => state.auth);
   const { street, city, state, pin, name } = addr;
   const { cartItems, totalPrice } = useSelector((state) => state.cart);
-  console.log(totalPrice);
+  //console.log(totalPrice);
   const [formData, setFormData] = useState({
     shippingAddress: {
       name,
@@ -106,7 +107,8 @@ const PlaceOrder = () => {
 
   const handleNext = () => {
     if (activeStep === 1) {
-      const { street, city, state, pin } = formData.shippingAddress;
+      //console.log(formData.shippingAddress);
+      const { street, city, state, pin, name } = formData.shippingAddress;
       if (
         name === "" ||
         street === "" ||
@@ -114,7 +116,13 @@ const PlaceOrder = () => {
         state === "" ||
         pin === ""
       ) {
-        alert("Boss, Kidhar bhejna vo to batao :|");
+        //alert("Boss, Kidhar bhejna vo to batao :|");
+        dispatch(
+          triggerSnackbar({
+            severity: "error",
+            message: "Please provide the Shipping Address!",
+          })
+        );
         return;
       }
     }
@@ -130,9 +138,13 @@ const PlaceOrder = () => {
         let { quantity, deliveryTime } = cartItems[key];
         order["products"].push({ id: key, quantity, deliveryTime });
       });
-      console.log(order);
+      //console.log(order);
+      setFormData({ ...formData, isLoaded: false });
       if (formData.persistAddress)
         dispatch(updateUserDetails({ addr: formData.shippingAddress }));
+      dispatch(
+        triggerSnackbar({ severity: "success", message: "Order Placed!" })
+      );
       dispatch(addOrderItem({ user: email, order }));
       dispatch(clearCart());
     }
@@ -151,7 +163,10 @@ const PlaceOrder = () => {
     if (cartItems) setFormData({ ...formData, isLoaded: true });
   }, []);
   if (formData.isLoaded && Object.keys(cartItems).length === 0) {
-    alert("Cart Empty(Replace with Snack)");
+    //alert("Cart Empty(Replace with Snack)");
+    dispatch(
+      triggerSnackbar({ severity: "info", message: "Your Cart is Empty!" })
+    );
     return <Redirect to="/" />;
   }
 

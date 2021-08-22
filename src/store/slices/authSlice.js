@@ -1,20 +1,65 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   loadUser,
   loginUserAPI,
   logoutUserAPI,
-  registerNewUser,
+  registerUserAPI,
   updateUserDetailsAPI,
 } from "../../utils/fakeUsers";
+import { triggerSnackbar } from "./uiSlice";
+
+export const loginUser = createAsyncThunk(
+  "auth/login",
+  ({ email, pass }, thunkAPI) => {
+    const { status, statusMSG, user } = loginUserAPI(email, pass);
+    console.log(statusMSG);
+    thunkAPI.dispatch(
+      triggerSnackbar({
+        severity: status ? "error" : "success",
+        message: statusMSG,
+      })
+    );
+    return { email, status, ...user };
+    //alert(statusMSG);
+  }
+);
+
+export const logOutUser = createAsyncThunk("auth/logout", (_, thunkAPI) => {
+  const { status, statusMSG } = logoutUserAPI();
+  console.log(statusMSG);
+  thunkAPI.dispatch(
+    triggerSnackbar({
+      severity: status ? "error" : "success",
+      message: statusMSG,
+    })
+  );
+  return { status };
+});
+
+export const registerUser = createAsyncThunk(
+  "auth/register",
+  ({ email, name, pass }, thunkAPI) => {
+    //const { email, name, pass } = action.payload;
+    const { status, statusMSG } = registerUserAPI(email, {
+      name,
+      pass,
+      addr: { street: "", city: "", state: "", pin: "", name: "" },
+    });
+    console.log(statusMSG);
+    thunkAPI.dispatch(
+      triggerSnackbar({
+        severity: status ? "error" : "success",
+        message: statusMSG,
+      })
+    );
+  }
+);
 
 const AuthSlice = createSlice({
   name: "auth",
   initialState: {
     ...loadUser(),
-    // isAuth: localStorage.getItem("isAuth") | false,
-    // email: localStorage.getItem("auth_email") | "",
-    // name: localStorage.getItem("auth_name") | "",
-    // address: localStorage.getItem("auth_addr") | "",
+    authError: false,
   },
   reducers: {
     toggleAuth: (state) => {
@@ -26,15 +71,27 @@ const AuthSlice = createSlice({
       for (let key in action.payload) state[key] = action.payload[key];
       updateUserDetailsAPI(action.payload);
     },
-    registerUser: (state, action) => {
-      const { email, name, pass } = action.payload;
-      const { status, statusMSG } = registerNewUser(email, {
-        name,
-        pass,
-        addr: { street: "", city: "", state: "", pin: "", name: "" },
-      });
-      console.log(statusMSG);
-      //alert(statusMSG);
+  },
+  extraReducers: {
+    [loginUser.fulfilled]: (state, action) => {
+      const { email, name, addr, status } = action.payload;
+      if (!status) {
+        state.isAuth = true;
+        state.email = email;
+        state.name = name;
+        state.addr = addr;
+      }
+    },
+    [logOutUser.fulfilled]: (state, action) => {
+      if (!action.payload.status) {
+        state.isAuth = false;
+        state.email = "";
+        state.name = "";
+        state.addr = { street: "", city: "", state: "", pin: "", name: "" };
+      }
+    },
+    [registerUser.fulfilled]: (state, action) => {
+      const { email, name, status } = action.payload;
       if (!status) {
         state.isAuth = true;
         state.email = email;
@@ -43,50 +100,8 @@ const AuthSlice = createSlice({
         //state = { ...state, ...action.payload };
       }
     },
-    loginUser: (state, action) => {
-      const { email, pass } = action.payload;
-      const { status, statusMSG, user } = loginUserAPI(email, pass);
-      console.log(statusMSG);
-      //alert(statusMSG);
-      if (!status) {
-        const { name, addr } = user;
-        state.isAuth = true;
-        state.email = email;
-        state.name = name;
-        state.addr = addr;
-      }
-    },
-    logOutUser: (state, action) => {
-      const { status, statusMSG } = logoutUserAPI();
-      console.log(statusMSG);
-      if (!status) {
-        state.isAuth = false;
-        state.email = "";
-        state.name = "";
-        state.addr = { street: "", city: "", state: "", pin: "", name: "" };
-      }
-      //alert(statusMSG);
-    },
-    // setAuthName: (state, action) => {
-    //   state.name = action.payload;
-    //   localStorage.setItem("auth_name", state.name);
-    // },
-    // setAuthEmail: (state, action) => {
-    //   state.email = action.payload;
-    //   localStorage.setItem("auth_email", state.email);
-    // },
-    // setAuthAddress: (state, action) => {
-    //   state.address = action.payload;
-    //   localStorage.setItem("auth_addr", state.address);
-    // },
   },
 });
 
-export const {
-  toggleAuth,
-  registerUser,
-  loginUser,
-  logOutUser,
-  updateUserDetails,
-} = AuthSlice.actions;
+export const { toggleAuth, updateUserDetails } = AuthSlice.actions;
 export default AuthSlice.reducer;

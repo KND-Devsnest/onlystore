@@ -1,4 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  registerUser,
+  loginUser,
+  logOutUser,
+  updateUserDetails,
+} from "./authSlice";
 const uiSlice = createSlice({
   name: "ui",
   initialState: {
@@ -14,13 +20,14 @@ const uiSlice = createSlice({
     hideSnackbar: (state) => {
       state.snackbar.showSnackbar = false;
     },
-    triggerModal: (state, action) => {
+    triggerModal: (state) => {
       state.reviewModal = true;
     },
-    closeModal: (state, action) => {
+    closeModal: (state) => {
       state.reviewModal = false;
     },
   },
 });
-export const { triggerSnackbar, hideSnackbar,triggerModal,closeModal } = uiSlice.actions;
+export const { triggerSnackbar, hideSnackbar, triggerModal, closeModal } =
+  uiSlice.actions;
 export default uiSlice.reducer;
