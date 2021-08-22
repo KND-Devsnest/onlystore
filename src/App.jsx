@@ -34,8 +34,8 @@ function App() {
 
   return (
     <div className="App">
-      <Cart />
       <Router>
+        <Cart />
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
