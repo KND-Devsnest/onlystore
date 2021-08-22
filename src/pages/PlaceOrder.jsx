@@ -44,7 +44,7 @@ const PlaceOrder = () => {
   const { isAuth, email, addr } = useSelector((state) => state.auth);
   const { street, city, state, pin, name } = addr;
   const { cartItems, totalPrice } = useSelector((state) => state.cart);
-  console.log(totalPrice);
+  //console.log(totalPrice);
   const [formData, setFormData] = useState({
     shippingAddress: {
       name,
@@ -106,7 +106,8 @@ const PlaceOrder = () => {
 
   const handleNext = () => {
     if (activeStep === 1) {
-      const { street, city, state, pin } = formData.shippingAddress;
+      //console.log(formData.shippingAddress);
+      const { street, city, state, pin, name } = formData.shippingAddress;
       if (
         name === "" ||
         street === "" ||
@@ -130,7 +131,8 @@ const PlaceOrder = () => {
         let { quantity, deliveryTime } = cartItems[key];
         order["products"].push({ id: key, quantity, deliveryTime });
       });
-      console.log(order);
+      //console.log(order);
+      setFormData({ ...formData, isLoaded: false });
       if (formData.persistAddress)
         dispatch(updateUserDetails({ addr: formData.shippingAddress }));
       dispatch(addOrderItem({ user: email, order }));

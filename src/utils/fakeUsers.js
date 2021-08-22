@@ -51,5 +51,6 @@ export const loginUserAPI = (email, userPass) => {
 
 export const logoutUserAPI = () => {
   localStorage.setItem("currentUser", "");
+  // triggerSnackbarFromUtil("success", "Success! Logged Out!!");
   return { status: 0, statusMSG: "Logged Out!!" };
 };
