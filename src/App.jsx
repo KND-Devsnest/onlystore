@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./assets/App.css";
 import {
   BrowserRouter as Router,
   Redirect,
@@ -17,6 +16,7 @@ import Register from "./pages/Register";
 import Cart from "./components/Cart";
 import PlaceOrder from "./pages/PlaceOrder";
 import GlobalSnackbar from "./components/GlobalSnackbar";
+import SearchResults from "./pages/SearchResults";
 import { loadOrders } from "./store/slices/orderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCartItem } from "./store/slices/cartSlice";
@@ -33,11 +33,12 @@ function App() {
 
   return (
     <div className="App">
-      <Cart />
       <Router>
+        <Cart />
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/search/:query?" component={SearchResults} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <ProtectedRoute exact path="/orders">

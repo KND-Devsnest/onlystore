@@ -18,14 +18,14 @@ const structureOfCategoryData = [
 ];
 
 // Structure of filter array
-const filtersStructure = [
+const filtersStructure = {
   // Filter 1
-  {
+  filterName: {
     filterName: "", // title of filter
     filterList: ["", ""], // array of filter values of type String
   },
-  {}, // Filter 2 ...
-];
+  filter2: {}, // Filter 2 ...
+};
 
 // Structure of product array
 const productsStructure = [
@@ -46,66 +46,67 @@ const productsStructure = [
 ];
 
 // Actual Data
-export const categories = [
-  {
+export const categories = {
+  Mobiles: {
     title: "Mobiles",
     keywords: [],
-    filters: [
-      {
+    filters: {
+      Brand: {
         filterName: "Brand",
         filterList: ["Apple", "Samsung", "Redmi", "Jio", "OnePlus"],
       },
-      {
+
+      RAM: {
         filterName: "RAM",
         filterList: ["4 MB", "2 GB", "6 GB", "8 GB"],
       },
-    ],
+    },
   },
-  {
+  Books: {
     title: "Books",
     keywords: "",
-    filters: [
-      {
+    filters: {
+      Language: {
         filterName: "Language",
         filterList: ["English", "Hindi", "Marathi"],
       },
-      {
+      Genre: {
         filterName: "Genre",
         filterList: ["Fiction", "Historical", "Mystery", "Romance"],
       },
-    ],
+    },
   },
-  {
+  Clothings: {
     title: "Clothings",
     keywords: "",
-    filters: [
-      {
+    filters: {
+      For: {
         filterName: "For",
         filterList: ["Kids", "Men", "Women"],
       },
-    ],
+    },
   },
-  {
+  Beauty: {
     title: "Beauty",
     keywords: "",
-    filters: [
-      {
+    filters: {
+      Type: {
         filterName: "Type",
         filterList: ["Bath and Body", "Fragrance", "Skin Care", "Hair Care"],
       },
-    ],
+    },
   },
-  {
+  Furniture: {
     title: "Furniture",
     keywords: "",
-    filters: [
-      {
+    filters: {
+      Type: {
         filterName: "Type",
         filterList: ["Office Chair", "Desk", "Beds", "Sofas", "Wardrobes"],
       },
-    ],
+    },
   },
-];
+};
 
 // Products
 export const products = [
@@ -137,7 +138,7 @@ export const products = [
         title: "Don't buy this phone",
         content: `Both 13 MP and 5MP Camera quality is good. Have lot of pre installed apps. 
         But can be uninstalled if not required. Overall good performance . I am using Asus zenfone max and according to me far better than Asus except Camera quality. It comes in 5000 mah battery and one can't get a better option at this price range. Go for it. It's really goodAfter one week useEdit:- please don't buy this phone. It hangs a lot and sometimes there is problem in touch screen.`,
-        rated: "1",
+        rating: 1,
       },
       {
         name: "Swanand",
@@ -146,7 +147,7 @@ export const products = [
       If you wanna android phone just for day to day work then it's really good.
       On playing heavy games it will hange obviously. Camera is fine at this range. When you start your new device it take some time but later it will work smoothly.
       Phone is light weight with a good look`,
-        rated: "4",
+        rating: "4",
       },
       {
         name: "Sanskar",
@@ -156,7 +157,7 @@ export const products = [
         Camera is good at it's price range and has autofocus and AI potrait feature.
         Regarding battery is really huge and with normal daily usage it lasts for about 24 hrs as of my experience. With heavy usage and gaming it lasts for 7-10 hrs.
         Regarding gaming, since it has gaming processor helio G25 (equal to Snapdragon 625), and it's hyperdrive technology, no lag in gaming and better network connectivity makes games more aweful.`,
-        rated: "5",
+        rating: "5",
       },
     ],
   },
@@ -338,7 +339,7 @@ export const products = [
     Language: "English",
     Genre: "Fiction",
     title: "The Monk Who Sold His Ferrari",
-    category: "Mobiles",
+    category: "Books",
     price: 159,
     imgs: [
       "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/monksoldhisferrari.jpg",

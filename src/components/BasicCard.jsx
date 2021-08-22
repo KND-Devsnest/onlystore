@@ -81,7 +81,7 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem }) => {
   const date = updated.getDate();
   return (
     <Link
-      to={"product/" + id}
+      to={"/product/" + id}
       onClick={() => {
         dispatch(setCurrentProduct(elem));
       }}

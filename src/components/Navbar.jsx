@@ -14,6 +14,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleVisible } from "../store/slices/cartSlice";
+import { useHistory } from "react-router";
+
 import { logOutUser } from "../store/slices/authSlice";
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -87,7 +89,7 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const history = useHistory();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const { isAuth } = useSelector((state) => state.auth);
@@ -192,10 +194,16 @@ export default function PrimarySearchAppBar() {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="type here to search"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
+              }}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") {
+                  console.log(e.target.value);
+                  history.push("/search/" + e.target.value);
+                }
               }}
               inputProps={{ "aria-label": "search" }}
             />
