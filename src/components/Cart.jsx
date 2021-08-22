@@ -51,6 +51,7 @@ const Cart = ({ isFromDrawer }) => {
   const { isVisible, cartItems, currentUser } = useSelector(
     (state) => state.cart
   );
+  console.log(currentUser);
   const dispatch = useDispatch();
 
   const handleCartRemoveItem = (id) => {
