@@ -16,7 +16,10 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(2),
   },
   form: {
-    width: "40%",
+    width: "90%",
+    [theme.breakpoints.up("sm")]: {
+      width: (props) => (props.isPage ? "40%" : "100%"),
+    },
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -32,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
   submitButton: { margin: theme.spacing(1) },
 }));
 
-const Login = ({ redirect, callback }) => {
-  const classes = useStyles();
+const Login = ({ redirect, callback, isPage }) => {
+  const classes = useStyles({ isPage });
   const { isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [userDetails, setUserDetails] = useState({
@@ -41,7 +44,7 @@ const Login = ({ redirect, callback }) => {
     pass: "",
     error: false,
   });
-  console.log(isAuth);
+  //console.log(isAuth);
   const handleChange = (e) => {
     if (userDetails.error)
       setUserDetails({
@@ -109,9 +112,11 @@ const Login = ({ redirect, callback }) => {
           >
             Login
           </Button>
-          <Button variant="outlined" color="primary">
-            <Link to="/register">Register</Link>
-          </Button>
+          <Link to="/register">
+            <Button variant="outlined" color="primary">
+              Register
+            </Button>
+          </Link>
         </div>
       </form>
     </div>
@@ -120,9 +125,10 @@ const Login = ({ redirect, callback }) => {
 
 Login.defaultProps = {
   callback: () => {
-    console.log("default");
+    //console.log("default");
   },
   redirect: true,
+  isPage: true,
 };
 
 export default Login;
