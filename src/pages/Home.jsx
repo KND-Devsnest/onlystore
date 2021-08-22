@@ -39,6 +39,7 @@ const Home = () => {
           </Grid>
         ))}
       </Grid>
+      <div id="search">asd</div>
     </div>
   );
 };

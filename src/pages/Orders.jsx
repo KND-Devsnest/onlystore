@@ -1,9 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 
 const Orders = () => {
-  const orders = useSelector((state) => state.orders);
-  console.log(orders);
+  //const orders = useSelector((state) => state.orders);
+  //console.log(orders);
   return <div>Your Orders here</div>;
 };
 

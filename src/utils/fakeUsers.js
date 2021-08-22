@@ -24,7 +24,7 @@ export const updateUserDetailsAPI = (newData) => {
   localStorage.setItem("users", JSON.stringify(users));
 };
 
-export const registerNewUser = (email, userData) => {
+export const registerUserAPI = (email, userData) => {
   let users = fetchUsers();
   //console.log(users[email]);
   if (users[email] !== undefined)
@@ -51,5 +51,6 @@ export const loginUserAPI = (email, userPass) => {
 
 export const logoutUserAPI = () => {
   localStorage.setItem("currentUser", "");
+  // triggerSnackbarFromUtil("success", "Success! Logged Out!!");
   return { status: 0, statusMSG: "Logged Out!!" };
 };

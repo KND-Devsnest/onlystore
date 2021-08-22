@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { loginUser } from "../store/slices/authSlice";
 import { loadCartItem } from "../store/slices/cartSlice";
+import { triggerSnackbar } from "../store/slices/uiSlice";
 import { loadWishListItem } from "../store/slices/wishlistSlice";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,16 +39,30 @@ const Login = ({ redirect, callback }) => {
   const [userDetails, setUserDetails] = useState({
     email: "",
     pass: "",
+    error: false,
   });
   console.log(isAuth);
   const handleChange = (e) => {
-    setUserDetails({ ...userDetails, [e.target.id]: e.target.value });
+    if (userDetails.error)
+      setUserDetails({
+        ...userDetails,
+        [e.target.id]: e.target.value,
+        error: false,
+      });
+    else setUserDetails({ ...userDetails, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userDetails.email === "" || userDetails.pass === "") {
-      alert("Please fill Proper Credentials!");
+      //alert("Please fill Proper Credentials!");
+      setUserDetails({ ...userDetails, error: true });
+      dispatch(
+        triggerSnackbar({
+          severity: "error",
+          message: "Fill Valid Credentials!",
+        })
+      );
       return;
     }
     callback();
@@ -70,6 +85,8 @@ const Login = ({ redirect, callback }) => {
           type="email"
           variant="filled"
           onChange={handleChange}
+          error={userDetails.error}
+          helperText={userDetails.error ? "Enter valid Username" : ""}
         />
         <TextField
           className={classes.textfield}
@@ -79,6 +96,8 @@ const Login = ({ redirect, callback }) => {
           type="password"
           variant="filled"
           onChange={handleChange}
+          error={userDetails.error}
+          helperText={userDetails.error ? "Enter valid Password" : ""}
         />
         <div className={classes.actions}>
           <Button
