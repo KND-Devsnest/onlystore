@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import React from "react";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import {
@@ -135,6 +135,14 @@ export default function PrimarySearchAppBar() {
   const { isAuth } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const searchRef = React.useRef(null);
+  const location = useLocation();
+
+  React.useEffect(() => {
+    if (!location.pathname.startsWith("/search")) {
+      searchRef.current.value = "";
+    }
+  }, [location.pathname]);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -262,12 +270,14 @@ export default function PrimarySearchAppBar() {
                           history.push("/search/" + e.target.value);
                         }
                       }}
-                      inputProps={{ "aria-label": "search" }}
+                      inputProps={{ "aria-label": "search", ref: searchRef }}
                     />
                     <Box
                       className={classes.enter}
                       zIndex="tooltip"
-                      onClick={(e) => history.push("/search/" + e.target.value)}
+                      onClick={() =>
+                        history.push("/search/" + searchRef.current.value)
+                      }
                     >
                       <SearchIcon />
                     </Box>
