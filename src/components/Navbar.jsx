@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React from "react";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import {
@@ -135,7 +135,6 @@ export default function PrimarySearchAppBar() {
   const { isAuth } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const location = useLocation();
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -175,7 +174,9 @@ export default function PrimarySearchAppBar() {
     >
       {isAuth ? (
         <div>
-          <MenuItem onClick={handleMenuClose}>Account</MenuItem>
+          <Link onClick={handleMenuClose} to="/account">
+            <MenuItem>My Account</MenuItem>
+          </Link>
           <MenuItem onClick={handleLogOut}>Log Out</MenuItem>
         </div>
       ) : (
