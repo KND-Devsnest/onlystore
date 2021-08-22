@@ -91,7 +91,6 @@ const Filter = ({ setSearchData, query }) => {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
-          
         >
           Filters
         </AccordionSummary>
