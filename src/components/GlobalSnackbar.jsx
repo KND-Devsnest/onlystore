@@ -27,7 +27,7 @@ const GlobalSnackbar = () => {
       onClose={handleClose}
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
     >
-      <Alert onClose={handleClose} severity={severity}>
+      <Alert variant="filled" onClose={handleClose} severity={severity}>
         {message}
       </Alert>
     </Snackbar>
