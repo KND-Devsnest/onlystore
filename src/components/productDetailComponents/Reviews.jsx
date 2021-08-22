@@ -55,7 +55,7 @@ const Reviews = ({ paramId, reviews }) => {
       {currentUser.email ? (
         <>
           <Button
-            onClick={() => dispatch(triggerModal())}
+            onClick={() => dispatch(triggerModal(paramId))}
             variant="contained"
             className={classes.buttonEdit}
             color="primary"

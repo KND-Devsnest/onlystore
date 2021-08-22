@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UiModal(props) {
   const classes = useStyles();
-  const reviewModalVisible = useSelector((state) => state.ui.reviewModal);
+  const reviewModalVisible = !!useSelector((state) => state.ui.reviewModal);
   const dispatch = useDispatch();
   return (
     <div>

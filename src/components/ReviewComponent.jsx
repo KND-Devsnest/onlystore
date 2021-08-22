@@ -5,7 +5,7 @@ import { loadReview, saveReview } from "../utils/reviewUtils";
 import { useState } from "react";
 import { Rating } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeModal, triggerSnackbar } from "../store/slices/uiSlice";
 import { useEffect } from "react";
 const useStyles = makeStyles((theme) => ({
@@ -38,20 +38,28 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "1rem",
   },
 }));
-const ReviewComponent = ({ setReviews, paramId, currentUser }) => {
+const ReviewComponent = ({ setReviews }) => {
   const [textarea, setTextArea] = useState("");
   const [title, setTitle] = useState("");
   const [rating, setRating] = useState(1);
+  const paramId = useSelector((state) => state.ui.reviewModal);
+
+  const currentUser = useSelector((state) => state.auth);
   useEffect(() => {
     const reviews = loadReview(paramId);
+
     if (reviews) {
       if (reviews[currentUser.email]) {
         setTextArea(reviews[currentUser.email].payload.content);
         setTitle(reviews[currentUser.email].payload.title);
         setRating(reviews[currentUser.email].payload.rating);
+      } else {
+        setTextArea("");
+        setTitle("");
+        setRating(1);
       }
     }
-  }, []);
+  }, [paramId]);
   const classes = useStyles();
   const dispatch = useDispatch();
   return (
@@ -83,13 +91,21 @@ const ReviewComponent = ({ setReviews, paramId, currentUser }) => {
         />
         <Button
           onClick={() => {
-            setReviews(
+            if (setReviews) {
+              setReviews(
+                saveReview(paramId, currentUser.email, currentUser.name, {
+                  title: title,
+                  rating: rating,
+                  content: textarea,
+                })
+              );
+            } else
               saveReview(paramId, currentUser.email, currentUser.name, {
                 title: title,
                 rating: rating,
                 content: textarea,
-              })
-            );
+              });
+
             dispatch(
               triggerSnackbar({
                 severity: "success",
