@@ -21,6 +21,7 @@ import {
   ShoppingCartOutlined as ShoppingCartOutlinedIcon,
   LocalShippingOutlined as LocalShippingOutlinedIcon,
   FavoriteBorderOutlined,
+  HomeOutlined,
 } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleVisible } from "../store/slices/cartSlice";
@@ -79,26 +80,32 @@ const useStyles = makeStyles((theme) => ({
       width: "50%",
     },
   },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
+  enter: {
+    backgroundColor: alpha(theme.palette.common.white, 0.05),
+    padding: theme.spacing(0, 1),
     position: "absolute",
-    pointerEvents: "none",
+    top: 0,
+    bottom: 0,
+    right: 0,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    cursor: "pointer",
   },
   inputRoot: {
     color: "inherit",
   },
   inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
+    padding: theme.spacing(1, 1, 1, 1),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(5)}px)`,
+    paddingRight: `calc(1em + ${theme.spacing(5)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: "50ch",
+      width: "100ch",
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: "100%",
     },
   },
   sectionDesktop: {
@@ -197,6 +204,12 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem onClick={() => history.push("/")}>
+        <IconButton aria-label="Wishlist of the user" color="inherit">
+          <HomeOutlined />
+        </IconButton>
+        <p>Home</p>
+      </MenuItem>
       <MenuItem onClick={() => history.push("/cart")}>
         <IconButton aria-label="Wishlist of the user" color="inherit">
           <ShoppingCartOutlinedIcon />
@@ -238,9 +251,6 @@ export default function PrimarySearchAppBar() {
               <Grid item xs={10} md={4}>
                 <div className={classes.searchBox}>
                   <div className={classes.search}>
-                    <div className={classes.searchIcon}>
-                      <SearchIcon />
-                    </div>
                     <InputBase
                       placeholder="Type to search"
                       classes={{
@@ -255,10 +265,17 @@ export default function PrimarySearchAppBar() {
                       }}
                       inputProps={{ "aria-label": "search" }}
                     />
+                    <Box
+                      className={classes.enter}
+                      zIndex="tooltip"
+                      onClick={(e) => history.push("/search/" + e.target.value)}
+                    >
+                      <SearchIcon />
+                    </Box>
                   </div>
                 </div>
               </Grid>
-              <Grid item xs={0} md={4}>
+              <Grid item md={4}>
                 <Box
                   className={classes.brand}
                   onClick={() => history.push("/")}
@@ -270,7 +287,7 @@ export default function PrimarySearchAppBar() {
                 </Box>
               </Grid>
               {/* <div className={classes.grow} /> */}
-              <Grid item xs={0} md={4} className={classes.rightSide}>
+              <Grid item md={4} className={classes.rightSide}>
                 <div className={classes.sectionDesktop}>
                   <IconButton color="inherit" onClick={handleSearchIconClick}>
                     <SearchIcon fontSize="medium" />
