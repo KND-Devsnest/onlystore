@@ -65,10 +65,10 @@ const cartSlice = createSlice({
     hideDrawer: (state) => {
       state.isVisible = false;
     },
-    clearCart: (state) => {
+    clearCart: (state, action) => {
       state.cartItems = {};
       state.totalPrice = 0;
-      logoutSave(state, state.currentUser);
+      if (action.payload.clear) logoutSave(state, state.currentUser);
     },
   },
 });

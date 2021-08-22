@@ -146,7 +146,7 @@ const PlaceOrder = () => {
         triggerSnackbar({ severity: "success", message: "Order Placed!" })
       );
       dispatch(addOrderItem({ user: email, order }));
-      dispatch(clearCart());
+      dispatch(clearCart({ clear: true }));
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
