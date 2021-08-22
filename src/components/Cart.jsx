@@ -103,7 +103,7 @@ const Cart = () => {
           </Grid>
         ) : (
           <Container>
-            <Login redirect={false} />
+            <Login redirect={false} isPage={false} />
           </Container>
         )}
       </Container>
