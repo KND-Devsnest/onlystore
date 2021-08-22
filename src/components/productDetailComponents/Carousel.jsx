@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     minHeight: "100%",
-    width: "100%",
+    minWidth: "100%",
     marginTop: "1rem",
     padding: "1rem",
   },
@@ -55,10 +55,22 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     margin: "1rem",
-
     overflow: "hidden",
-
-    flexWrap: "no   wrap",
+    textAlign: "center",
+    flexWrap: "nowrap",
+  },
+  imgContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  currentImageNoMargin: {
+    maxWidth: "351px",
+    maxHeight: "251px",
+    borderRadius: "1rem",
+    objectFit: "contain",
+    transition: "transform 0.2s",
   },
 }));
 const Carousel = ({ images }) => {
@@ -68,27 +80,36 @@ const Carousel = ({ images }) => {
     <Container className={classes.container}>
       <div>
         <Paper className={classes.test}>
-          <div className={classes.carouselBar}>
-            {images.map((el, index) => (
-              <Paper
-                className={classes.carouselImagesContainer}
-                onClick={() => setImage(images[index])}
-                key={index}
-              >
-                <img
-                  className={classes.carouselImages}
-                  src={el}
-                  alt={"carousel Images"}
-                />
-              </Paper>
-            ))}
+          {images.length > 1 ? (
+            <div className={classes.carouselBar}>
+              {images.map((el, index) => (
+                <Paper
+                  className={classes.carouselImagesContainer}
+                  onClick={() => setImage(images[index])}
+                  key={index}
+                >
+                  <img
+                    className={classes.carouselImages}
+                    src={el}
+                    alt={"carousel Images"}
+                  />
+                </Paper>
+              ))}
+            </div>
+          ) : (
+            ""
+          )}
+          <div className={classes.imgContainer}>
+            <img
+              className={
+                images.length > 1
+                  ? classes.currentImage
+                  : classes.currentImageNoMargin
+              }
+              src={imageState}
+              alt="currentProduct"
+            />{" "}
           </div>
-
-          <img
-            className={classes.currentImage}
-            src={imageState}
-            alt="currentProduct"
-          />
         </Paper>
       </div>
     </Container>
