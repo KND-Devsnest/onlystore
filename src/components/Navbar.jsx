@@ -135,12 +135,6 @@ export default function PrimarySearchAppBar() {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const handleSearchIconClick = () => {
-    if (location.pathname === "/") {
-      history.push("#search");
-    } else history.push("/#search");
-  };
-
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -295,9 +289,6 @@ export default function PrimarySearchAppBar() {
               {/* <div className={classes.grow} /> */}
               <Grid item md={4} className={classes.rightSide}>
                 <div className={classes.sectionDesktop}>
-                  <IconButton color="inherit" onClick={handleSearchIconClick}>
-                    <SearchIcon fontSize="medium" />
-                  </IconButton>
                   <IconButton
                     color="inherit"
                     onClick={() => history.push("/orders")}
