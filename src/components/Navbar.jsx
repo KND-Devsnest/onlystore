@@ -151,8 +151,11 @@ export default function PrimarySearchAppBar() {
   };
 
   const handleLogOut = () => {
-    handleMobileMenuClose();
+    handleMenuClose();
     dispatch(logOutUser());
+    setTimeout(() => {
+      history.push("/login");
+    }, 200);
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -173,11 +176,7 @@ export default function PrimarySearchAppBar() {
       {isAuth ? (
         <div>
           <MenuItem onClick={handleMenuClose}>Account</MenuItem>
-          <MenuItem>
-            <Link to="/login" onClick={handleLogOut}>
-              Log Out
-            </Link>
-          </MenuItem>
+          <MenuItem onClick={handleLogOut}>Log Out</MenuItem>
         </div>
       ) : (
         <MenuItem>
