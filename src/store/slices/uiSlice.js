@@ -27,13 +27,6 @@ const uiSlice = createSlice({
       state.reviewModal = false;
     },
   },
-  extraReducers: {
-    // [logOutUser](state) {
-    //   state.snackbar.severity = "sucess";
-    //   state.snackbar.message = "Success! Logged Out!";
-    //   state.snackbar.showSnackbar = true;
-    // },
-  },
 });
 export const { triggerSnackbar, hideSnackbar, triggerModal, closeModal } =
   uiSlice.actions;

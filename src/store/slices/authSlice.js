@@ -3,7 +3,7 @@ import {
   loadUser,
   loginUserAPI,
   logoutUserAPI,
-  registerNewUser,
+  registerUserAPI,
   updateUserDetailsAPI,
 } from "../../utils/fakeUsers";
 import { triggerSnackbar } from "./uiSlice";
@@ -27,22 +27,20 @@ export const loginUser = createAsyncThunk(
 export const logOutUser = createAsyncThunk("auth/logout", (_, thunkAPI) => {
   const { status, statusMSG } = logoutUserAPI();
   console.log(statusMSG);
-  if (!status) {
-    thunkAPI.dispatch(
-      triggerSnackbar({
-        severity: "success",
-        message: statusMSG,
-      })
-    );
-    return { status };
-  }
+  thunkAPI.dispatch(
+    triggerSnackbar({
+      severity: status ? "error" : "success",
+      message: statusMSG,
+    })
+  );
+  return { status };
 });
 
 export const registerUser = createAsyncThunk(
   "auth/register",
   ({ email, name, pass }, thunkAPI) => {
     //const { email, name, pass } = action.payload;
-    const { status, statusMSG } = registerNewUser(email, {
+    const { status, statusMSG } = registerUserAPI(email, {
       name,
       pass,
       addr: { street: "", city: "", state: "", pin: "", name: "" },

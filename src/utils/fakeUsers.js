@@ -24,7 +24,7 @@ export const updateUserDetailsAPI = (newData) => {
   localStorage.setItem("users", JSON.stringify(users));
 };
 
-export const registerNewUser = (email, userData) => {
+export const registerUserAPI = (email, userData) => {
   let users = fetchUsers();
   //console.log(users[email]);
   if (users[email] !== undefined)
