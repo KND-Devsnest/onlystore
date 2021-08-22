@@ -14,6 +14,7 @@ import {
   Grid,
   Container,
   Hidden,
+  Tooltip,
 } from "@material-ui/core";
 import {
   Search as SearchIcon,
@@ -132,6 +133,7 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const { isAuth } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -170,8 +172,7 @@ export default function PrimarySearchAppBar() {
     >
       {isAuth ? (
         <div>
-          <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-          <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+          <MenuItem onClick={handleMenuClose}>Account</MenuItem>
           <MenuItem>
             <Link to="/login" onClick={handleLogOut}>
               Log Out
@@ -200,19 +201,19 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem onClick={() => history.push("/")}>
-        <IconButton aria-label="Wishlist of the user" color="inherit">
+        <IconButton aria-label="Landing Page" color="inherit">
           <HomeOutlined />
         </IconButton>
         <p>Home</p>
       </MenuItem>
       <MenuItem onClick={() => history.push("/cart")}>
-        <IconButton aria-label="Wishlist of the user" color="inherit">
+        <IconButton aria-label="Cart of the User" color="inherit">
           <ShoppingCartOutlinedIcon />
         </IconButton>
         <p>Cart</p>
       </MenuItem>
       <MenuItem onClick={() => history.push("/orders")}>
-        <IconButton aria-label="Wishlist of the user" color="inherit">
+        <IconButton aria-label="Orders of the User" color="inherit">
           <LocalShippingOutlinedIcon />
         </IconButton>
         <p>Orders</p>
@@ -289,40 +290,48 @@ export default function PrimarySearchAppBar() {
               {/* <div className={classes.grow} /> */}
               <Grid item md={4} className={classes.rightSide}>
                 <div className={classes.sectionDesktop}>
-                  <IconButton
-                    color="inherit"
-                    onClick={() => history.push("/orders")}
-                  >
-                    <LocalShippingOutlinedIcon fontSize="medium" />
-                  </IconButton>
-                  <IconButton
-                    color="inherit"
-                    onClick={() => history.push("/wishlist")}
-                  >
-                    <FavoriteBorderOutlined fontSize="medium" />
-                  </IconButton>
-                  <IconButton
-                    aria-label="account of current user"
-                    aria-controls={menuId}
-                    aria-haspopup="true"
-                    onClick={handleProfileMenuOpen}
-                    color="inherit"
-                  >
-                    <AccountCircle fontSize="medium" />
-                  </IconButton>
-                  <IconButton
-                    edge="end"
-                    color="inherit"
-                    onClick={() => dispatch(toggleVisible())}
-                  >
-                    <Badge
-                      badgeContent={3}
-                      color="secondary"
-                      className={classes.badge}
+                  <Tooltip title="Orders" color="primary" placement="bottom">
+                    <IconButton
+                      color="inherit"
+                      onClick={() => history.push("/orders")}
                     >
-                      <ShoppingCartOutlinedIcon fontSize="medium" />
-                    </Badge>
-                  </IconButton>
+                      <LocalShippingOutlinedIcon fontSize="medium" />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Wishlist">
+                    <IconButton
+                      color="inherit"
+                      onClick={() => history.push("/wishlist")}
+                    >
+                      <FavoriteBorderOutlined fontSize="medium" />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Account">
+                    <IconButton
+                      aria-label="account of current user"
+                      aria-controls={menuId}
+                      aria-haspopup="true"
+                      onClick={handleProfileMenuOpen}
+                      color="inherit"
+                    >
+                      <AccountCircle fontSize="medium" />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Cart">
+                    <IconButton
+                      edge="end"
+                      color="inherit"
+                      onClick={() => dispatch(toggleVisible())}
+                    >
+                      <Badge
+                        badgeContent={Object.keys(cartItems).length}
+                        color="secondary"
+                        className={classes.badge}
+                      >
+                        <ShoppingCartOutlinedIcon fontSize="medium" />
+                      </Badge>
+                    </IconButton>
+                  </Tooltip>
                 </div>
               </Grid>
               <Grid item xs={2}>
