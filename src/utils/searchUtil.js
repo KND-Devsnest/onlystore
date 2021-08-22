@@ -10,7 +10,7 @@ export const searchUtil = (param, category = "all", filters = "all") => {
       if (filters !== "all") {
         let tempFlag = true;
         for (let i in filters) {
-          if (filters[i][el[i]]) continue;
+          if (filters[i] === "all" || filters[i][el[i]]) continue;
           else tempFlag = false;
         }
         if (
@@ -40,10 +40,15 @@ function helper2(filters) {
     total = 0;
   for (let i in filters) {
     total += Object.keys(filters[i]).length;
+    let temp = 0;
     for (let j in filters[i]) {
       if (!filters[i][j]) {
         count++;
+        temp++;
       }
+    }
+    if (Object.keys(filters[i]).length == temp) {
+      filters[i] = "all";
     }
   }
   if (total === count) return "all";
