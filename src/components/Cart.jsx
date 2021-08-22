@@ -51,7 +51,7 @@ const Cart = () => {
     >
       <Container maxWidth="sm" className={classes.root}>
         {currentUser ? (
-          <Grid container xs={12} className={classes.cardContainer}>
+          <Grid container className={classes.cardContainer}>
             {Object.keys(cartItems).length
               ? Object.keys(cartItems).map((el, index) => (
                   <Grid item xs={12} key={index}>
@@ -102,9 +102,9 @@ const Cart = () => {
               : "Cart is Empty"}
           </Grid>
         ) : (
-          <Grid container xs={12}>
+          <Container>
             <Login redirect={false} />
-          </Grid>
+          </Container>
         )}
       </Container>
     </Drawer>

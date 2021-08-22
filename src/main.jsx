@@ -11,7 +11,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#1F1F1F",
-      contrastText: "#fff",
+      contractText: "#ffffff",
     },
     secondary: {
       main: "#FEDD0A",
@@ -19,7 +19,7 @@ const theme = createTheme({
     },
     background: {
       default: "#EBEBEB",
-      paper: "#EBEBEB",
+      paper: "#fff",
     },
   },
 });
