@@ -59,10 +59,10 @@ const cartSlice = createSlice({
     toggleVisible: (state) => {
       state.isVisible = !state.isVisible;
     },
-    clearCart: (state) => {
+    clearCart: (state, action) => {
       state.cartItems = {};
       state.totalPrice = 0;
-      logoutSave(state, state.currentUser);
+      if (action.payload.clear) logoutSave(state, state.currentUser);
     },
   },
 });
