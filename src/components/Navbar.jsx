@@ -6,11 +6,13 @@ import {
   Toolbar,
   IconButton,
   Typography,
-  //InputBase,
+  InputBase,
   Badge,
   Menu,
   MenuItem,
   Box,
+  Grid,
+  Container,
 } from "@material-ui/core";
 import {
   Search as SearchIcon,
@@ -30,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     [theme.breakpoints.up("md")]: { height: theme.spacing(14) },
   },
+  rightSide: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
   grow: {
     flexGrow: 1,
   },
@@ -37,20 +43,24 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   brand: {
-    display: "flex",
+    display: "none",
+    flexGrow: "none",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     gap: "1rem",
     cursor: "pointer",
     [theme.breakpoints.up("md")]: {
+      display: "flex",
       flexDirection: "column",
       gap: 0,
     },
   },
-
   badge: {
     fontSize: "1.2rem",
+  },
+  searchBox: {
+    flex: "0 1 auto",
   },
   search: {
     position: "relative",
@@ -59,11 +69,14 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
-    marginRight: theme.spacing(4),
+    // marginRight: theme.spacing(4),
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "auto",
+      width: "100%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "50%",
     },
   },
   searchIcon: {
@@ -96,6 +109,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sectionMobile: {
     display: "flex",
+    justifyContent: "flex-end",
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
@@ -219,79 +233,99 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar className={classes.toolbar}>
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Type to search"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  console.log(e.target.value);
-                  history.push("/search/" + e.target.value);
-                }
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div> */}
-          <Box className={classes.brand} onClick={() => history.push("/")}>
-            <LogoIcon fontSize="large" />
-            <Typography className={classes.title} variant="h6" noWrap>
-              OnlyStore
-            </Typography>
-          </Box>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton color="inherit" onClick={handleSearchIconClick}>
-              <SearchIcon fontSize="medium" />
-            </IconButton>
-            <IconButton color="inherit" onClick={() => history.push("/orders")}>
-              <LocalShippingOutlinedIcon fontSize="medium" />
-            </IconButton>
-            <IconButton
-              color="inherit"
-              onClick={() => history.push("/wishlist")}
-            >
-              <FavoriteBorderOutlined fontSize="medium" />
-            </IconButton>
-            <IconButton
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle fontSize="medium" />
-            </IconButton>
-            <IconButton
-              edge="end"
-              color="inherit"
-              onClick={() => dispatch(toggleVisible())}
-            >
-              <Badge
-                badgeContent={3}
-                color="secondary"
-                className={classes.badge}
-              >
-                <ShoppingCartOutlinedIcon fontSize="medium" />
-              </Badge>
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon fontSize="medium" />
-            </IconButton>
-          </div>
+          <Container maxWidth="xl">
+            <Grid container alignItems={"center"}>
+              <Grid item xs={10} md={4}>
+                <div className={classes.searchBox}>
+                  <div className={classes.search}>
+                    <div className={classes.searchIcon}>
+                      <SearchIcon />
+                    </div>
+                    <InputBase
+                      placeholder="Type to search"
+                      classes={{
+                        root: classes.inputRoot,
+                        input: classes.inputInput,
+                      }}
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          console.log(e.target.value);
+                          history.push("/search/" + e.target.value);
+                        }
+                      }}
+                      inputProps={{ "aria-label": "search" }}
+                    />
+                  </div>
+                </div>
+              </Grid>
+              <Grid item xs={0} md={4}>
+                <Box
+                  className={classes.brand}
+                  onClick={() => history.push("/")}
+                >
+                  <LogoIcon fontSize="large" />
+                  <Typography className={classes.title} variant="h6" noWrap>
+                    OnlyStore
+                  </Typography>
+                </Box>
+              </Grid>
+              {/* <div className={classes.grow} /> */}
+              <Grid item xs={0} md={4} className={classes.rightSide}>
+                <div className={classes.sectionDesktop}>
+                  <IconButton color="inherit" onClick={handleSearchIconClick}>
+                    <SearchIcon fontSize="medium" />
+                  </IconButton>
+                  <IconButton
+                    color="inherit"
+                    onClick={() => history.push("/orders")}
+                  >
+                    <LocalShippingOutlinedIcon fontSize="medium" />
+                  </IconButton>
+                  <IconButton
+                    color="inherit"
+                    onClick={() => history.push("/wishlist")}
+                  >
+                    <FavoriteBorderOutlined fontSize="medium" />
+                  </IconButton>
+                  <IconButton
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    onClick={handleProfileMenuOpen}
+                    color="inherit"
+                  >
+                    <AccountCircle fontSize="medium" />
+                  </IconButton>
+                  <IconButton
+                    edge="end"
+                    color="inherit"
+                    onClick={() => dispatch(toggleVisible())}
+                  >
+                    <Badge
+                      badgeContent={3}
+                      color="secondary"
+                      className={classes.badge}
+                    >
+                      <ShoppingCartOutlinedIcon fontSize="medium" />
+                    </Badge>
+                  </IconButton>
+                </div>
+              </Grid>
+              <Grid item xs={2}>
+                <div className={classes.sectionMobile}>
+                  <IconButton
+                    aria-label="show more"
+                    aria-controls={mobileMenuId}
+                    aria-haspopup="true"
+                    onClick={handleMobileMenuOpen}
+                    color="inherit"
+                  >
+                    <MoreIcon fontSize="medium" />
+                  </IconButton>
+                </div>
+              </Grid>
+            </Grid>
+          </Container>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
