@@ -9,6 +9,7 @@ import { Rating } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/styles";
 import { calculateRatings } from "../utils/reviewUtils";
 import CartBox from "../components/productDetailComponents/CartBox";
+import Carousel from "../components/productDetailComponents/Carousel";
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100%",
@@ -51,14 +52,7 @@ const ProductDetails = () => {
         <Container className={classes.root}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={5} className={classes.imgContainer}>
-              {currentProduct.imgs.map((el, index) => (
-                <img
-                  className={classes.images}
-                  src={el}
-                  alt={currentProduct.title}
-                  key={index}
-                ></img>
-              ))}
+              <Carousel currentProd={currentProduct} />
             </Grid>
             <Grid item xs={12} sm={5}>
               <Paper className={classes.container}>
