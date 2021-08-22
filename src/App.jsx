@@ -39,7 +39,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/search/:query" component={SearchResults} />
+          <Route exact path="/search/:query?" component={SearchResults} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <ProtectedRoute exact path="/orders">
