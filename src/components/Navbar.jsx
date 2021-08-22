@@ -182,7 +182,9 @@ export default function PrimarySearchAppBar() {
     >
       {isAuth ? (
         <div>
-          <MenuItem onClick={handleMenuClose}>Account</MenuItem>
+          <Link onClick={handleMenuClose} to="/account">
+            <MenuItem>My Account</MenuItem>
+          </Link>
           <MenuItem onClick={handleLogOut}>Log Out</MenuItem>
         </div>
       ) : (
