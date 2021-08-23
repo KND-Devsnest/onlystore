@@ -30,6 +30,7 @@ import { toggleVisible } from "../store/slices/cartSlice";
 import { useHistory } from "react-router";
 import { logOutUser } from "../store/slices/authSlice";
 import LogoIcon from "./LogoIcon";
+import { openWishlistDrawer } from "../store/slices/wishlistSlice";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -314,7 +315,7 @@ export default function PrimarySearchAppBar() {
                   <Tooltip title="Wishlist">
                     <IconButton
                       color="inherit"
-                      onClick={() => history.push("/wishlist")}
+                      onClick={() => dispatch(openWishlistDrawer())}
                     >
                       <FavoriteBorderOutlined fontSize="medium" />
                     </IconButton>

@@ -57,7 +57,13 @@ const QuantityBox = ({ id, quantity, changeQuantity }) => {
   );
 };
 
-const CartWishCard = ({ element, removeItem, changeQuantity, isCartItem }) => {
+const CartWishCard = ({
+  element,
+  removeItem,
+  changeQuantity,
+  isCartItem,
+  addToCart,
+}) => {
   const classes = useStyles();
   const { id, title, imageUrl, quantity, price } = element;
   return (
@@ -98,11 +104,11 @@ const CartWishCard = ({ element, removeItem, changeQuantity, isCartItem }) => {
           </Button>
           {!isCartItem ? (
             <Button
-              variant="text"
+              variant="contained"
               color="primary"
               onClick={() => {
                 //addtoCart
-                //removeItem(id);
+                addToCart(id);
               }}
             >
               Add To Cart
@@ -112,6 +118,12 @@ const CartWishCard = ({ element, removeItem, changeQuantity, isCartItem }) => {
       </Box>
     </Paper>
   );
+};
+
+CartWishCard.defaultProps = {
+  addToCart: () => {},
+  removeItem: () => {},
+  changeQuantity: () => {},
 };
 
 export default CartWishCard;
