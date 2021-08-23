@@ -26,12 +26,6 @@ const Home = () => {
     .filter((el) => el.category === "Mobiles")
     .splice(0, 4);
   let books = productItems.filter((el) => el.category === "Books").splice(0, 4);
-  const { wishlistItems } = useSelector((state) => state.wishlist);
-
-  const isInWishList = (id) => {
-    //console.log(wishlistItems[id] !== undefined);
-    return wishlistItems[id] !== undefined;
-  };
 
   return (
     <Container className={classes.root} maxWidth="xl">
