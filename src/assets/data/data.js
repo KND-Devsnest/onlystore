@@ -53,12 +53,22 @@ export const categories = {
     filters: {
       Brand: {
         filterName: "Brand",
-        filterList: ["Apple", "Samsung", "Redmi", "Jio", "OnePlus"],
+        filterList: [
+          "Apple",
+          "Samsung",
+          "Redmi",
+          "Jio",
+          "OnePlus",
+          "Realme",
+          "Oppo",
+          "Vivo",
+          "Mi",
+        ],
       },
 
       RAM: {
         filterName: "RAM",
-        filterList: ["4 MB", "2 GB", "6 GB", "8 GB"],
+        filterList: ["4 MB", "2 GB", "4 GB", "6 GB", "8 GB"],
       },
     },
   },
@@ -333,6 +343,179 @@ export const products = [
         title: "Ok",
         content: "ok for like daily use but not much",
         rating: 3,
+      },
+    ],
+  },
+  {
+    Brand: "Realme",
+    RAM: "6 GB",
+    title: "realme narzo 30 (Racing Blue, 6GB RAM, 128GB Storage)",
+    category: "Mobiles",
+    price: 14999,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/realmeNazro1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/realmeNazro2.jpg",
+    ],
+    specs: [
+      "6 GB RAM | 128 GB ROM | Expandable Upto 256 GB",
+      "16.51 cm (6.5 inch) Full HD+ Display",
+      "48MP + 2MP + 2MP | 16MP Front Camera",
+      "5000 mAh Battery",
+      "MediaTek Helio G95 Processor",
+    ],
+    inStock: 20,
+    eta: 30,
+    id: "m6",
+    rating: 4,
+    reviews: [
+      {
+        name: "Navin Kumar",
+        title: "Amazing Product",
+        content:
+          "Like really I was looking for a phone in which I can be always connected with my family but they didn't want a smartphone. So really good for filling the nicheAll the things are nice. Only macro camera is not powerful. Good product go for it. Gorgeous. And the charger is also very heavy.",
+        rating: 5,
+      },
+      {
+        name: "Manish",
+        title: "THE PROCESSING POWER IS PHENOMENAL HELIO G95 IS A BEAST",
+        content:
+          "Overall a good phone camera performance is decent enough in this price point the front camera though does a great job because of sony imx471 sensor ultrawide on the back would be great the macro and b/w sensor is not that useful battery life is good for an average user iam getting a screen on time of about 45-50 minutes using 10% battery so it can give you about 8-9 hours of screen time daily the charging is powerful and charges quickly In short its a gaming phone The antutu score os this device is around 350k which is greater than redmi note 10 pro max score of 300k",
+        rating: 4,
+      },
+    ],
+  },
+  {
+    Brand: "Oppo",
+    RAM: "4 GB",
+    title: "OPPO A54 (Starry Blue, 4GB RAM, 128GB Storage)",
+    category: "Mobiles",
+    price: 15490,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/oppophone1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/oppophone2.jpg",
+    ],
+    specs: [
+      "6.51' Inch (16.5cm) HD+ Puch-hole Display with 1600x720 pixels. Larger screen to body ratio of 89.2%.|Side Fingerprint Sensor.",
+      "MediaTek Helio P35 GPU IMG GE8320 @ 680 MHz| Powerful 2.3 GHz Octa-core processor, support LPDDR4X memory",
+      "13MP Quad Camera ( 13MP Main + 2MP Macro + 2MP Bokeh Lens) | 16MP Front Camera.",
+      "5000 mAh lithium polymer battery",
+      "Memory, Storage & SIM: 4GB RAM | 128GB internal memory expandable up to 256GB | Dual SIM (nano+nano) dual-standby (4G+4G).| Color OS 7.2 based on Android 10.0 operating system.",
+    ],
+    inStock: 2,
+    eta: 15,
+    id: "m7",
+    rating: 4.2,
+    reviews: [
+      {
+        name: "Alwin",
+        title: "Good Phone",
+        content: "Good phone working fine good battery thanks",
+        rating: 5,
+      },
+      {
+        name: "Ankita",
+        title: "Extremely slow.",
+        content:
+          "Okay so this product is not expensive, affordable and very beautiful, this is only good thing about it. Phone freezes a lot and when someone calls, it keeps vibrating without showing any number on the screen. I bought this phone in may 2021. And this is July 2021. I hate this phone already",
+        rating: 2,
+      },
+    ],
+  },
+  {
+    Brand: "Vivo",
+    RAM: "8 GB",
+    title: "Vivo S1 Pro (Jazzy Blue, 8GB RAM, 128GB Storage)",
+    category: "Mobiles",
+    price: 29999,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/vivo1.jpg",
+    ],
+    specs: [
+      "48+8+2+2MP rear camera | 32MP front camera Front camera",
+      "Memory, Storage & SIM: 8GB RAM, 128GB internal memory | Dual SIM (nano+nano) dual-standby (4G+4G)",
+      "Android v9 based on OS 9.1 operating system with Qualcomm Snapdragon 665AIE octa core processor",
+      "1 year manufacturer warranty for device and 6 months manufacturer warranty for in-box accessories including batteries from the date of purchase",
+      "In display fingerprint",
+    ],
+    inStock: 0,
+    eta: 50,
+    id: "m8",
+    rating: 5,
+    reviews: [
+      {
+        name: "Blaze",
+        title: "Fast and great deal",
+        content: "Thanks, please manufacture more",
+        rating: 5,
+      },
+    ],
+  },
+  {
+    Brand: "Mi",
+    RAM: "8 GB",
+    title: "Mi 11X 5G Cosmic Black 8GB RAM 128GB ROM",
+    category: "Mobiles",
+    price: 31999,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/miphone1.jpg",
+    ],
+    specs: [
+      "Processor: Qualcomm Snapdragon 870 5G with Kryo 585 Octa-core; 7nm process; Up to 3.2GHz clock speed; Liquidcool technology",
+      "Camera: 48 MP Triple Rear camera with 8MP Ultra-wide and 5MP Super macro | 20 MP Front camera",
+      "Display: 120Hz high refresh rate FHD+ (1080x2400) AMOLED Dot display; 16.9 centimeters (6.67 inch); 2.76mm ultra tiny punch hole; HDR 10+ support; 360Hz touch sampling, MEMC technology",
+      "Battery: 4520 mAH large battery with 33W fast charger in-box and Type-C connectivity",
+      "Hands-Free access to Alexa: Alexa on your phone lets you make phone calls, open apps, control smart home devices, access the library of Alexa skills, and more using just your voice while on-the-go. Download the Alexa app and complete hands-free setup to get started. Just ask - and Alexa will respond instantly",
+    ],
+    inStock: 8,
+    eta: 50,
+    id: "m9",
+    rating: 4,
+    reviews: [
+      {
+        name: "Nitea Ghosh",
+        title: "Waste of money",
+        content:
+          "Very bad experience, i am going to return it, i am facing touch issue very much",
+        rating: 1,
+      },
+    ],
+  },
+  {
+    Brand: "Apple",
+    RAM: "6 GB",
+    title: "Apple iPhone XR (64GB) - White",
+    category: "Mobiles",
+    price: 41999,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/iphonXR1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/iphonXR2.jpg",
+    ],
+    specs: [
+      "6.1-inch (15.5 cm diagonal) Liquid Retina HD LCD display",
+      "Water and dust resistant (1 meter for up to 30 minutes, IP67)",
+      "Single 12MP Wide camera with Portrait mode, Portrait Lighting, Depth Control, Smart HDR, and 4K video up to 60fps",
+      "7MP TrueDepth front camera system with Portrait mode, Portrait Lighting, Depth Control, and 1080p video",
+      "Face ID for secure authentication",
+      "A12 Bionic with second-generation Neural Engine",
+    ],
+    inStock: 8,
+    eta: 20,
+    id: "m10",
+    rating: 4.5,
+    reviews: [
+      {
+        name: "Darshan Sanghvi",
+        title: "Fabulous!",
+        content:
+          "Thanks, the device was received well packed and before time! The device is fabulous, it's like love at first sight! It doesn't feel like a 2018 device, the speed, the sensors, the touch is pretty amazing! A12 Bionic works well! 3GB RAM is sufficient to run the phone, COD, BGMI and NFS can be played without lag. Face ID is fast and accurate to unlock the device in dark! In low to moderate usage, battery supports 30+ hours and in heavy usage, battery supports 20+ hours. This one doesn't have Adapter and Earphones, but you can buy them separately! Bought for 43K (128GB) during Prime Day Sale! Overall a value for money device! A good device to start if you’re moving to Apple from Android or upgrading from previous generation iPhones. Thank You Apple!",
+        rating: 5,
+      },
+      {
+        name: "Sushma",
+        title: "Economical Phone",
+        content:
+          "The phone is not lacking in any sphere. The halmark quality of iPhone is telltale. The size is very handy and convenient. Charging cord is working only on one side like USB cord but then, the charging is very fast. Battery is very long lasting, better than 6000 mah batteries of Android. Picture quality better than so called 4 camera android. Go for it without a second thought. Charger not provided in the box, is freely available outside. Must buy a good bluetooth headset also to enjoy the phone.",
+        rating: 5,
       },
     ],
   },
