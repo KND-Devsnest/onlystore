@@ -1,9 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Container } from "@material-ui/core/";
+import { Box, Container, Paper, Typography } from "@material-ui/core/";
 import { useSelector } from "react-redux";
 import CardsContainer from "../components/CardsContainer";
 import { useHistory } from "react-router-dom";
+import LogoIcon from "../components/LogoIcon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,6 +13,21 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(1, 2),
+  },
+  heroContainer: {
+    minHeight: "42vh",
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+  },
+  hero: {
+    height: "42vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  tagLine: {
+    marginTop: theme.spacing(2),
   },
 }));
 
@@ -34,29 +50,42 @@ const Home = () => {
     .splice(0, 4);
 
   return (
-    <Container className={classes.root} maxWidth="xl">
-      <CardsContainer title={"Most Popular"} items={popular} />
-      <CardsContainer
-        title={"Trending Mobiles"}
-        items={mobiles}
-        viewAll={() => history.push("/search/mobiles")}
-      />
-      <CardsContainer
-        title={"Popular Books"}
-        items={books}
-        viewAll={() => history.push("/search/books")}
-      />
-      <CardsContainer
-        title={"Top Clothings"}
-        items={clothings}
-        viewAll={() => history.push("/search/clothings")}
-      />
-      <CardsContainer
-        title={"Discounted Furniture"}
-        items={furniture}
-        viewAll={() => history.push("/search/clothings")}
-      />
-    </Container>
+    <>
+      <Box className={classes.heroContainer}>
+        <Container maxWidth="lg" className={classes.hero}>
+          <LogoIcon fontSize="large" />
+          <Typography variant="h2" style={{ marginTop: "0.5rem" }}>
+            onlyStore
+          </Typography>
+          <Typography variant="h5" component="div" className={classes.tagLine}>
+            The only store you need to visit for anything!
+          </Typography>
+        </Container>
+      </Box>
+      <Container className={classes.root} maxWidth="xl">
+        <CardsContainer title={"Most Popular"} items={popular} />
+        <CardsContainer
+          title={"Trending Mobiles"}
+          items={mobiles}
+          viewAll={() => history.push("/search/mobiles")}
+        />
+        <CardsContainer
+          title={"Popular Books"}
+          items={books}
+          viewAll={() => history.push("/search/books")}
+        />
+        <CardsContainer
+          title={"Top Clothings"}
+          items={clothings}
+          viewAll={() => history.push("/search/clothings")}
+        />
+        <CardsContainer
+          title={"Discounted Furniture"}
+          items={furniture}
+          viewAll={() => history.push("/search/clothings")}
+        />
+      </Container>
+    </>
   );
 };
 
