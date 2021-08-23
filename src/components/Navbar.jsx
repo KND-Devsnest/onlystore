@@ -85,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
   enter: {
     backgroundColor: alpha(theme.palette.common.white, 0.05),
     padding: theme.spacing(0, 1),
+    zIndex: 1,
     position: "absolute",
     top: 0,
     bottom: 0,
