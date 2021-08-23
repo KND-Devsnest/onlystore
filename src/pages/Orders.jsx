@@ -11,10 +11,9 @@ import ReviewComponent from "../components/ReviewComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "100%",
+    minHeight: "74vh",
     width: "100%",
-    marginTop: "1rem",
-    height: "100vh",
+    padding: theme.spacing(4, 2),
   },
   container: {
     width: "90%",
@@ -22,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   Headingcontainer: {
     width: "90%",
     marginBottom: "1rem",
-    marginTop: "1rem",
   },
 }));
 const Orders = () => {
@@ -48,7 +46,7 @@ const Orders = () => {
     setNotDelivered(tempNotDelivered);
   }, [ordersState]);
   return (
-    <Paper>
+    <Paper className={classes.root}>
       <div>
         {ordersState ? (
           <div>
