@@ -1,13 +1,18 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Container, Grid } from "@material-ui/core/";
+import { Box, Container, Grid, Paper } from "@material-ui/core/";
 import BasicCard from "../components/BasicCard";
 import { useSelector } from "react-redux";
+import CardsContainer from "../components/CardsContainer";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     padding: theme.spacing(2),
+  },
+  paper: {
+    padding: theme.spacing(1, 2),
   },
 }));
 
@@ -15,11 +20,21 @@ const Home = () => {
   const classes = useStyles();
   const { productItems } = useSelector((state) => state.products);
   const { cartItems } = useSelector((state) => state.cart);
+  const history = useHistory();
   // let data = productItems.slice().sort(() => Math.random() - 0.5);
-  console.log(cartItems);
+  let popular = productItems.filter((el) => el.popular);
+  let mobiles = productItems
+    .filter((el) => el.category === "Mobiles")
+    .splice(0, 4);
   return (
     <Container className={classes.root} maxWidth="xl">
-      <Grid
+      <CardsContainer title={"Customer Favorites"} items={popular} />
+      <CardsContainer
+        title={"Mobiles"}
+        items={mobiles}
+        viewAll={() => history.push("/search/mobiles")}
+      />
+      {/* <Grid
         container
         spacing={2}
         direction="row"
@@ -39,7 +54,7 @@ const Home = () => {
             />
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
     </Container>
   );
 };
