@@ -22,13 +22,13 @@ a {
 }
 
 ::-webkit-scrollbar {
-  background-color: #454a4d;
-  color: #181a1b;
+  background-color: #181a1b;
+  color: #454a4d;
 }
 ::-webkit-scrollbar-corner {
-  background-color: #454a4d;
+  background-color: #181a1b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #181a1b;
+  background-color: #454a4d;
 }
