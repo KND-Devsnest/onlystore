@@ -26,7 +26,6 @@ export const loginUser = createAsyncThunk(
     thunkAPI.dispatch(loadOrders(email));
     thunkAPI.dispatch(loadWishListItem(email));
     return { email, status, ...user };
-    //alert(statusMSG);
   }
 );
 
@@ -47,7 +46,6 @@ export const logOutUser = createAsyncThunk("auth/logout", (_, thunkAPI) => {
 export const registerUser = createAsyncThunk(
   "auth/register",
   ({ email, name, pass }, thunkAPI) => {
-    //const { email, name, pass } = action.payload;
     const { status, statusMSG } = registerUserAPI(email, {
       name,
       pass,
@@ -114,8 +112,6 @@ const AuthSlice = createSlice({
         state.isAuth = true;
         state.email = email;
         state.name = name;
-        //state.addr = addr;
-        //state = { ...state, ...action.payload };
       }
     },
     [updateUserDetails.fulfilled]: (state, { payload }) => {

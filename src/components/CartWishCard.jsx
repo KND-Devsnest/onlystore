@@ -107,7 +107,6 @@ const CartWishCard = ({
               variant="contained"
               color="primary"
               onClick={() => {
-                //addtoCart
                 addToCart(id);
               }}
             >

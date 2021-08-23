@@ -73,7 +73,6 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
-    // marginRight: theme.spacing(4),
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
@@ -101,7 +100,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 1),
-    // vertical padding + font size from searchIcon
     paddingRight: `calc(1em + ${theme.spacing(5)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",

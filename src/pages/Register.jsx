@@ -45,7 +45,6 @@ const Register = () => {
     pass: "",
     error: false,
   });
-  //console.log(isAuth, email);
   const handleChange = (e) => {
     setUserDetails({
       ...userDetails,

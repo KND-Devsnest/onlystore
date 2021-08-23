@@ -69,7 +69,6 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem, eta }) => {
       : daysList[updated.getDay()];
 
   const isInWishlist = (id) => {
-    //console.log(wishlistItems[id] !== undefined);
     return wishlistItems[id] !== undefined;
   };
 

@@ -38,7 +38,6 @@ const useQontoStepIconStyles = makeStyles({
     borderRadius: "50%",
     border: "solid",
     borderColor: "currentColor",
-    // backgroundColor: "currentColor",
   },
   completed: {
     color: "#784af4",

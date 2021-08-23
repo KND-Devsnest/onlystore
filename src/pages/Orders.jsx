@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { loadOrder } from "../utils/orders";
-//import { useSelector } from "react-redux";
 import OrderCard from "../components/Orders/OrderCard";
 import { Paper, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
