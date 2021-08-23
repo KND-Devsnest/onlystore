@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { loadOrder } from "../utils/orders";
 //import { useSelector } from "react-redux";
@@ -8,6 +8,9 @@ import { Paper, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { remainingTimeCalc } from "../utils/orders";
 import ReviewComponent from "../components/ReviewComponent";
+import { triggerSnackbar } from "../store/slices/uiSlice";
+import { Redirect } from "react-router-dom";
+import { showDrawer } from "../store/slices/cartSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 const Orders = () => {
   const currentUser = useSelector((state) => state.auth.email);
   const [ordersState, setOrdersState] = useState(loadOrder(currentUser));
+  const dispatch = useDispatch();
   const [delivered, setDelivered] = useState([]);
   const [notDelivered, setNotDelivered] = useState([]);
   const { cartItems, totalPrice } = useSelector((state) => state.cart);
@@ -45,6 +49,14 @@ const Orders = () => {
     setDelivered(tempDelivered);
     setNotDelivered(tempNotDelivered);
   }, [ordersState]);
+
+  if (!currentUser) {
+    dispatch(
+      triggerSnackbar({ severity: "error", message: "Please Login First!" })
+    );
+    dispatch(showDrawer());
+    return <Redirect to="/" />;
+  }
   return (
     <Paper className={classes.root}>
       <div>
