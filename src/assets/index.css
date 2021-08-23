@@ -16,3 +16,15 @@ a {
   color: inherit;
   text-decoration: inherit;
 }
+
+::-webkit-scrollbar {
+  background-color: #454a4d;
+  color: #181a1b;
+}
+::-webkit-scrollbar-corner {
+  background-color: #454a4d;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #181a1b;
+}

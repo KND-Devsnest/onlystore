@@ -18,6 +18,10 @@ import { Box, CardActionArea, Tooltip } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: theme.spacing(50),
+    minHeight: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   media: {
     height: 0,
