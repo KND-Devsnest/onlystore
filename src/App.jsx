@@ -23,6 +23,7 @@ import { loadCartItem } from "./store/slices/cartSlice";
 import MyAccount from "./pages/MyAccount";
 import { loadWishListItem } from "./store/slices/wishlistSlice";
 import Wishlist from "./components/Wishlist";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function App() {
           <Redirect to="/" />
         </Switch>
         <GlobalSnackbar />
+        <Footer />
       </Router>
     </div>
   );
