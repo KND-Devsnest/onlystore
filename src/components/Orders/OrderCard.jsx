@@ -12,7 +12,6 @@ import { makeStyles } from "@material-ui/styles";
 import { remainingTimeCalc } from "../../utils/orders";
 import { triggerModal } from "../../store/slices/uiSlice";
 import { useDispatch } from "react-redux";
-import ReviewComponent from "../ReviewComponent";
 import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -37,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 const OrderCard = ({ order, delivered, currentUser }) => {
   const classes = useStyles();
-  console.log(order);
   const dispatch = useDispatch();
   const [productId, setProductId] = useState("");
   return (
@@ -46,7 +44,6 @@ const OrderCard = ({ order, delivered, currentUser }) => {
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
-          id="panel1a-header"
         >
           <Container className={classes.headingAccordinContainer}>
             <Typography>Order #{order.orderTime}</Typography>
@@ -85,14 +82,6 @@ const OrderCard = ({ order, delivered, currentUser }) => {
               <div>
                 {Object.keys(order.products).map((el, index) => (
                   <div key={index}>
-                    <div
-                      onClick={(e) => {
-                        dispatch(triggerModal(el));
-                      }}
-                    >
-                      {" "}
-                      Write a Review
-                    </div>
                     {order.products[el].quantity * order.products[el].price}
                   </div>
                 ))}
@@ -132,10 +121,6 @@ const OrderCard = ({ order, delivered, currentUser }) => {
           )}
         </AccordionDetails>
       </Accordion>
-      <ReviewComponent
-        paramId={productId}
-        currentUser={currentUser}
-      ></ReviewComponent>{" "}
     </div>
   );
 };

@@ -8,7 +8,7 @@ import OrderCard from "../components/Orders/OrderCard";
 import { Paper, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { remainingTimeCalc } from "../utils/orders";
-import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
+import ReviewComponent from "../components/ReviewComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,8 +37,6 @@ const Orders = () => {
   useEffect(() => {
     const tempDelivered = [];
     const tempNotDelivered = [];
-    console.log(Math.floor(Date.now() / 1000));
-    let currentTime = Math.floor(Date.now() / 1000);
     if (ordersState)
       ordersState.orders.map((el, index) => {
         if (0 >= remainingTimeCalc(el.deliveryTime, el.orderTime)) {
@@ -50,7 +48,6 @@ const Orders = () => {
         setNotDelivered(tempNotDelivered);
       });
   }, []);
-  console.log(delivered, notDelivered);
   return (
     <Paper>
       <div>
@@ -102,6 +99,7 @@ const Orders = () => {
           "No orders"
         )}
       </div>
+      <ReviewComponent></ReviewComponent>{" "}
     </Paper>
   );
 };
