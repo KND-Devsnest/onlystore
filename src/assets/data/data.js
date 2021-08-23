@@ -228,7 +228,7 @@ export const products = [
     reviews: [
       {
         name: "Johhny S",
-        title: "This took one of my kidneys and a testicle. But worth it",
+        title: "This took one of my kidneys. But worth it",
         content:
           "Impressed! I’ve tested it with iphone11 and other iphones, it’s remarkable. It has unquestionably better video quality and touch sensitivity. The screen is bigger than I thought. I loved the Gold variant. But if u have a 11 max or a X max I wouldn’t suggest for an upgradation. I feel that the next iphone will have way more cooler features so wouldn’t hurt to wait. My previous iphone was 6, so in my case am totally peachy with this phone. Though it has a ceramic glass wouldn’t hurt to buy a screen guard. If u can afford it u can totally go 4 it.",
         rating: 5,
