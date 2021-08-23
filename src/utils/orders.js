@@ -6,13 +6,20 @@ export const loadOrder = (userEmail = null) => {
   else return null;
 };
 
-export const saveOrders = (orders = null, userEmail = null) => {
+export const saveOrders = (
+  orders = null,
+  userEmail = null,
+  deletexd = false
+) => {
   if (!orders) return null;
   else {
     let temp = JSON.parse(localStorage.getItem("orders"));
     if (!temp) temp = {};
     if (!temp[userEmail]) temp[userEmail] = { orders: [] };
-    temp[userEmail].orders = [...temp[userEmail].orders, orders];
+    if (deletexd) temp[userEmail].orders = orders;
+    else {
+      temp[userEmail].orders = [...temp[userEmail].orders, orders];
+    }
     localStorage.setItem("orders", JSON.stringify(temp));
   }
 };
@@ -65,4 +72,8 @@ export const remainingTimeCalc = (deliveryTime, orderTime) => {
   orderTime = Math.floor(orderTime / 1000);
   orderTime += deliveryTime * 60;
   return Math.floor((orderTime - currentTime) / 60);
+};
+
+export const deleteOrder = (orders, orderIdToDelete) => {
+  return orders.filter((el) => el.orderTime !== orderIdToDelete);
 };

@@ -9,10 +9,11 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-import { remainingTimeCalc } from "../../utils/orders";
+import { deleteOrder, remainingTimeCalc, saveOrders } from "../../utils/orders";
 import { triggerModal } from "../../store/slices/uiSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import OrderStatusCard from "../OrderStatusCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,10 +35,17 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
 }));
-const OrderCard = ({ order, delivered, currentUser }) => {
+const OrderCard = ({
+  order,
+  delivered,
+  currentUser,
+  ordersState,
+  setOrdersState,
+}) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [productId, setProductId] = useState("");
+  const time = remainingTimeCalc(order.deliveryTime, order.orderTime);
   return (
     <div>
       <Accordion className={classes.AccordionClass}>
@@ -49,8 +57,7 @@ const OrderCard = ({ order, delivered, currentUser }) => {
             <Typography>Order #{order.orderTime}</Typography>
             {!delivered ? (
               <Typography>
-                Delivery in{" "}
-                {remainingTimeCalc(order.deliveryTime, order.orderTime)}
+                Delivery in {time > 0 ? time : "0"}
                 &nbsp; Mins
               </Typography>
             ) : (
@@ -113,12 +120,21 @@ const OrderCard = ({ order, delivered, currentUser }) => {
           <br></br>
           <div></div>
           {!delivered ? (
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                const temp = deleteOrder(ordersState.orders, order.orderTime);
+                saveOrders(temp, currentUser, true);
+                setOrdersState({ orders: temp });
+              }}
+            >
               Cancel Order
             </Button>
           ) : (
             ""
           )}
+          <OrderStatusCard order={order} delivered={delivered} />
         </AccordionDetails>
       </Accordion>
     </div>
