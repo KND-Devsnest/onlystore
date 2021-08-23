@@ -13,7 +13,7 @@ import BasicCard from "./BasicCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: theme.breakpoints.values.sm - theme.spacing(10),
+    width: theme.breakpoints.values.sm - theme.spacing(34),
     [theme.breakpoints.up("sm")]: {
       width: theme.breakpoints.values.lg,
     },
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   container: {
-    width: theme.breakpoints.values.sm - theme.spacing(12),
+    width: theme.breakpoints.values.sm - theme.spacing(38),
     [theme.breakpoints.up("sm")]: {
       width: theme.breakpoints.values.lg - theme.spacing(5),
     },
@@ -91,7 +91,7 @@ const CardsContainer = ({ title, items, viewAll }) => {
   };
 
   return (
-    <Container className={classes.root}>
+    <Container className={classes.root} maxWidth="lg">
       <Box className={classes.heading}>
         <Typography variant="h6" color="inherit">
           {title}
