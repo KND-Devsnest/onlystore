@@ -20,6 +20,7 @@ import SearchResults from "./pages/SearchResults";
 import { loadOrders } from "./store/slices/orderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCartItem } from "./store/slices/cartSlice";
+import MyAccount from "./pages/MyAccount";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ function App() {
             <FullCart />
           </ProtectedRoute>
           <Route exact path="/placeorder" component={PlaceOrder} />
+          <Route exact path="/account" component={MyAccount} />
           <Redirect to="/" />
         </Switch>
         <GlobalSnackbar />

@@ -205,6 +205,7 @@ export const products = [
     ],
   },
   {
+    popular: true,
     Brand: "Apple",
     RAM: "6 GB",
     title: "Apple iPhone 12 Pro Max (128GB)",
@@ -336,6 +337,7 @@ export const products = [
     ],
   },
   {
+    popular: true,
     Language: "English",
     Genre: "Fiction",
     title: "The Monk Who Sold His Ferrari",
@@ -531,6 +533,7 @@ export const products = [
     ],
   },
   {
+    popular: true,
     For: "Men",
     title: "AEROPOSTALE Men's Casual Shirt",
     category: "Clothings",
@@ -659,7 +662,8 @@ export const products = [
     category: "Clothings",
     price: 499,
     imgs: [
-      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/womentop.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/kidvest1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/kidvest2.jpg",
     ],
     specs: [
       "Fit Type: Regular",
@@ -713,7 +717,7 @@ export const products = [
     rating: 4.3,
     reviews: [
       {
-        name: "Neeta",
+        name: "Nitin",
         title: "Fitting",
         content: `As such there is nithing wrong with the product but for me, it was fitting very oddly.Though i wear regular fit standard36 " waist trousers, this trousers were too tight on thighs as well as below ankle.Not at all comfortable.Below the knee, it fitted more like a chudidar`,
         rating: 3,
@@ -896,6 +900,7 @@ export const products = [
     ],
   },
   {
+    popular: true,
     Type: "Hair Care",
     title: "Parachute jumbo pack 100% pure coconut oil, 600ml",
     category: "Beauty",
@@ -987,6 +992,7 @@ export const products = [
     ],
   },
   {
+    popular: true,
     Type: "Desk",
     title: "Wood Study Desk(Wenge Finish,Wenge)",
     category: "Furniture",

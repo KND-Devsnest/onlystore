@@ -68,6 +68,7 @@ const cartSlice = createSlice({
     clearCart: (state, action) => {
       state.cartItems = {};
       state.totalPrice = 0;
+      state.currentUser = null;
       if (action.payload.clear) logoutSave(state, state.currentUser);
     },
   },

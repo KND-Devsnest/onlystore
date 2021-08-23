@@ -57,7 +57,7 @@ const QuantityBox = ({ id, quantity, changeQuantity }) => {
   );
 };
 
-const CartWishCard = ({ element, removeItem, changeQuantity }) => {
+const CartWishCard = ({ element, removeItem, changeQuantity, isCartItem }) => {
   const classes = useStyles();
   const { id, title, imageUrl, quantity, price } = element;
   return (
@@ -80,11 +80,13 @@ const CartWishCard = ({ element, removeItem, changeQuantity }) => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <QuantityBox
-            id={id}
-            quantity={quantity}
-            changeQuantity={changeQuantity}
-          />
+          {isCartItem ? (
+            <QuantityBox
+              id={id}
+              quantity={quantity}
+              changeQuantity={changeQuantity}
+            />
+          ) : null}
           <Button
             variant="text"
             color="primary"
@@ -94,6 +96,18 @@ const CartWishCard = ({ element, removeItem, changeQuantity }) => {
           >
             Remove
           </Button>
+          {!isCartItem ? (
+            <Button
+              variant="text"
+              color="primary"
+              onClick={() => {
+                //addtoCart
+                //removeItem(id);
+              }}
+            >
+              Add To Cart
+            </Button>
+          ) : null}
         </Box>
       </Box>
     </Paper>

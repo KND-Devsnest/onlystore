@@ -15,7 +15,7 @@ const Home = () => {
   const classes = useStyles();
   const { productItems } = useSelector((state) => state.products);
   const { cartItems } = useSelector((state) => state.cart);
-  let data = productItems.slice().sort(() => Math.random() - 0.5);
+  // let data = productItems.slice().sort(() => Math.random() - 0.5);
   console.log(cartItems);
   return (
     <Container className={classes.root} maxWidth="xl">
@@ -26,8 +26,8 @@ const Home = () => {
         justifyContent="flex-start"
         alignItems="flex-start"
       >
-        {data.map((elem) => (
-          <Grid item xs={12} sm={6} md={3} key={data.indexOf(elem)}>
+        {productItems.map((elem) => (
+          <Grid item xs={12} sm={6} md={3} key={productItems.indexOf(elem)}>
             <BasicCard
               id={elem.id}
               title={elem.title}
