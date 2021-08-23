@@ -122,10 +122,14 @@ const OrderStatusCard = ({ order, delivered }) => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setProgress(
+      const temp =
         ((Date.now() - order.orderTime) / (order.deliveryTime * 60 * 1000)) *
-          100
-      );
+        100;
+      if (!(temp >= 100)) setProgress(temp);
+      else {
+        clearInterval(timer);
+        setProgress(100);
+      }
     }, 1000);
     if (progress >= 100) {
       clearInterval(timer);
@@ -133,7 +137,7 @@ const OrderStatusCard = ({ order, delivered }) => {
     }
     return () => clearInterval(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setProgress]);
+  }, []);
   return (
     <div className={classes.kuchBhi}>
       <Stepper

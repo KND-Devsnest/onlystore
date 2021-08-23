@@ -5,7 +5,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { createTheme, ThemeProvider } from "@material-ui/core";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
