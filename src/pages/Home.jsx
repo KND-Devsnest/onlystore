@@ -39,13 +39,11 @@ const Home = () => {
       <CardsContainer
         title={"Mobiles"}
         items={mobiles}
-        isInWishList={isInWishList}
         viewAll={() => history.push("/search/mobiles")}
       />
       <CardsContainer
         title={"Popular Books"}
         items={books}
-        isInWishList={isInWishList}
         viewAll={() => history.push("/search/books")}
       />
     </Container>
