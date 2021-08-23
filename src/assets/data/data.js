@@ -698,7 +698,7 @@ export const products = [
     ],
   },
   {
-    For: "Mens",
+    For: "Men",
     title: "Ben Martin Men's Regular Fit Denim Jeans",
     category: "Clothings",
     price: 698,
