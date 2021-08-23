@@ -26,6 +26,7 @@ const Home = () => {
   let mobiles = productItems
     .filter((el) => el.category === "Mobiles")
     .splice(0, 4);
+  let books = productItems.filter((el) => el.category === "Books").splice(0, 4);
   return (
     <Container className={classes.root} maxWidth="xl">
       <CardsContainer title={"Customer Favorites"} items={popular} />
@@ -34,27 +35,11 @@ const Home = () => {
         items={mobiles}
         viewAll={() => history.push("/search/mobiles")}
       />
-      {/* <Grid
-        container
-        spacing={2}
-        direction="row"
-        justifyContent="flex-start"
-        alignItems="flex-start"
-      >
-        {productItems.map((elem) => (
-          <Grid item xs={12} sm={6} md={3} key={productItems.indexOf(elem)}>
-            <BasicCard
-              id={elem.id}
-              title={elem.title}
-              price={elem.price}
-              imageUrl={elem.imgs[0]}
-              category={elem.category}
-              eta={elem.eta}
-              elem={elem}
-            />
-          </Grid>
-        ))}
-      </Grid> */}
+      <CardsContainer
+        title={"Popular Books"}
+        items={books}
+        viewAll={() => history.push("/search/books")}
+      />
     </Container>
   );
 };

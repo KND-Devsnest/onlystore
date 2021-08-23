@@ -420,7 +420,7 @@ export const products = [
   {
     Language: "English",
     Genre: "Romance",
-    title: "Wuthering Heights",
+    title: "Wuthering Heights (Emily Brontë)",
     category: "Books",
     price: 69,
     imgs: [
