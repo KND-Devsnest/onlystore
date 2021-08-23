@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Container, Grid, Paper } from "@material-ui/core/";
-import BasicCard from "../components/BasicCard";
+import { Container } from "@material-ui/core/";
 import { useSelector } from "react-redux";
 import CardsContainer from "../components/CardsContainer";
 import { useHistory } from "react-router-dom";
@@ -27,17 +26,26 @@ const Home = () => {
     .filter((el) => el.category === "Mobiles")
     .splice(0, 4);
   let books = productItems.filter((el) => el.category === "Books").splice(0, 4);
+  const { wishlistItems } = useSelector((state) => state.wishlist);
+
+  const isInWishList = (id) => {
+    //console.log(wishlistItems[id] !== undefined);
+    return wishlistItems[id] !== undefined;
+  };
+
   return (
     <Container className={classes.root} maxWidth="xl">
       <CardsContainer title={"Customer Favorites"} items={popular} />
       <CardsContainer
         title={"Mobiles"}
         items={mobiles}
+        isInWishList={isInWishList}
         viewAll={() => history.push("/search/mobiles")}
       />
       <CardsContainer
         title={"Popular Books"}
         items={books}
+        isInWishList={isInWishList}
         viewAll={() => history.push("/search/books")}
       />
     </Container>

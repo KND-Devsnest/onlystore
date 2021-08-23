@@ -38,8 +38,15 @@ const WishListSlice = createSlice({
       delete state.wishlistItems[action.payload.id];
       logoutSave(state, state.currentUser);
     },
-    toggleVisible: (state) => {
-      state.isVisible = !state.isVisible;
+    openWishlistDrawer: (state) => {
+      state.isVisible = true;
+    },
+    closeWishlistDrawer: (state) => {
+      state.isVisible = false;
+    },
+    clearWishlist: (state) => {
+      state.wishlistItems = {};
+      state.currentUser = null;
     },
   },
 });
@@ -47,7 +54,9 @@ const WishListSlice = createSlice({
 export const {
   addWishListItem,
   removeWishlistItem,
-  toggleVisible,
   loadWishListItem,
+  clearWishlist,
+  openWishlistDrawer,
+  closeWishlistDrawer,
 } = WishListSlice.actions;
 export default WishListSlice.reducer;

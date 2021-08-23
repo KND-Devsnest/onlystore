@@ -9,6 +9,7 @@ import {
 import { clearCart, loadCartItem } from "./cartSlice";
 import { loadOrders } from "./orderSlice";
 import { triggerSnackbar } from "./uiSlice";
+import { clearWishlist, loadWishListItem } from "./wishlistSlice";
 
 export const loginUser = createAsyncThunk(
   "auth/login",
@@ -23,6 +24,7 @@ export const loginUser = createAsyncThunk(
     );
     thunkAPI.dispatch(loadCartItem(email));
     thunkAPI.dispatch(loadOrders(email));
+    thunkAPI.dispatch(loadWishListItem(email));
     return { email, status, ...user };
     //alert(statusMSG);
   }
@@ -32,6 +34,7 @@ export const logOutUser = createAsyncThunk("auth/logout", (_, thunkAPI) => {
   const { status, statusMSG } = logoutUserAPI();
   console.log(statusMSG);
   thunkAPI.dispatch(clearCart({ clear: false }));
+  thunkAPI.dispatch(clearWishlist());
   thunkAPI.dispatch(
     triggerSnackbar({
       severity: status ? "error" : "success",

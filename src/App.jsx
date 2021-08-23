@@ -21,6 +21,8 @@ import { loadOrders } from "./store/slices/orderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { loadCartItem } from "./store/slices/cartSlice";
 import MyAccount from "./pages/MyAccount";
+import { loadWishListItem } from "./store/slices/wishlistSlice";
+import Wishlist from "./components/Wishlist";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,17 +31,19 @@ function App() {
     if (currentUser) {
       dispatch(loadCartItem(currentUser));
       dispatch(loadOrders(currentUser));
+      dispatch(loadWishListItem(currentUser));
     }
+    // eslint-disable-next-line
   }, []);
 
   return (
     <div className="App">
       <Router>
         <Cart isFromDrawer />
+        <Wishlist isFromDrawer />
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/search/:query?" component={SearchResults} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <ProtectedRoute exact path="/orders">
@@ -51,8 +55,10 @@ function App() {
           <ProtectedRoute exact path="/cart">
             <FullCart />
           </ProtectedRoute>
+          <Route exact path="/search/:query?" component={SearchResults} />
           <Route exact path="/placeorder" component={PlaceOrder} />
           <Route exact path="/account" component={MyAccount} />
+          {/* <Route exact path="/wishlist" component={Wishlist} /> */}
           <Redirect to="/" />
         </Switch>
         <GlobalSnackbar />

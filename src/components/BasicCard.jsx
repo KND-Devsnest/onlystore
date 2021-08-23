@@ -8,12 +8,15 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { addCartItem } from "../store/slices/cartSlice";
-import { addWishListItem } from "../store/slices/wishlistSlice";
+import {
+  addWishListItem,
+  removeWishlistItem,
+} from "../store/slices/wishlistSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentProduct } from "../store/slices/productsSlice";
 import { Link } from "react-router-dom";
 import { triggerSnackbar } from "../store/slices/uiSlice";
-import { ShoppingCartRounded } from "@material-ui/icons";
+import { FavoriteSharp, ShoppingCartRounded } from "@material-ui/icons";
 import { Box, CardActionArea, Tooltip } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +37,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BasicCard = ({ id, title, price, imageUrl, category, elem, eta }) => {
+const BasicCard = ({
+  id,
+  title,
+  price,
+  imageUrl,
+  category,
+  elem,
+  eta,
+  isInWishlist,
+}) => {
   const classes = useStyles();
   const currentUser = useSelector((state) => state.auth.email);
   const dispatch = useDispatch();
@@ -63,6 +75,36 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem, eta }) => {
       : d.getDay() + 1 === updated.getDay()
       ? "Tomorrow"
       : daysList[updated.getDay()];
+
+  const handleWishlistClick = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (isInWishlist) {
+      dispatch(removeWishlistItem({ id }));
+      dispatch(
+        triggerSnackbar({
+          severity: "info",
+          message: "Product Removed from Wishlist!",
+        })
+      );
+    } else {
+      dispatch(addWishListItem({ id, title, price, imageUrl, category }));
+      if (currentUser)
+        dispatch(
+          triggerSnackbar({
+            severity: "success",
+            message: "Product added to your wishlist 🥳",
+          })
+        );
+      else
+        dispatch(
+          triggerSnackbar({
+            severity: "error",
+            message: "Error! Login to add to your wishlist ❌",
+          })
+        );
+    }
+  };
   return (
     <Card className={classes.root} variant="outlined">
       <Link
@@ -89,29 +131,13 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem, eta }) => {
         <Box display="flex" justifyContent="flex-end">
           <IconButton
             aria-label="add to favorites"
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-              dispatch(
-                addWishListItem({ id, title, price, imageUrl, category })
-              );
-              if (currentUser)
-                dispatch(
-                  triggerSnackbar({
-                    severity: "success",
-                    message: "Product added to your wishlist 🥳",
-                  })
-                );
-              else
-                dispatch(
-                  triggerSnackbar({
-                    severity: "error",
-                    message: "Error! Login to add to your wishlist ❌",
-                  })
-                );
-            }}
+            onClick={handleWishlistClick}
           >
-            <FavoriteBorderIcon />
+            {isInWishlist ? (
+              <FavoriteSharp color="error" />
+            ) : (
+              <FavoriteBorderIcon />
+            )}
           </IconButton>
           <IconButton
             aria-label="add to cart"
