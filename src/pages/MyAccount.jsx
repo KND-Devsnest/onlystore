@@ -9,7 +9,6 @@ import {
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import EditUserDetails from "../components/EditUserDetails";
-import UiModal from "../components/UiModal";
 import { triggerModal } from "../store/slices/uiSlice";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 const MyAccount = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { isAuth, email, name, addr } = useSelector((state) => state.auth);
+  const { email, name, addr } = useSelector((state) => state.auth);
   const { street, city, state, pin } = addr;
   const addrName = addr.name;
   const [activeEditContent, setActiveEditContent] = useState(null);

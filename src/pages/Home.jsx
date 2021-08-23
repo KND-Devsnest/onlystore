@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Container, Paper, Typography } from "@material-ui/core/";
+import { Box, Container, Typography } from "@material-ui/core/";
 import { useSelector } from "react-redux";
 import CardsContainer from "../components/CardsContainer";
 import { useHistory } from "react-router-dom";
@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
   const { productItems } = useSelector((state) => state.products);
-  const { cartItems } = useSelector((state) => state.cart);
   const history = useHistory();
   // let data = productItems.slice().sort(() => Math.random() - 0.5);
   let popular = productItems.filter((el) => el.popular);

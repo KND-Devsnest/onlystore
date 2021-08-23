@@ -8,6 +8,7 @@ import { withStyles } from "@material-ui/core";
 // Unlike static styles which are rendered in separate sheets and reused across all component instances.
 
 // withStylesProps HOC uses withStyles
+// eslint-disable-next-line react/display-name
 const withStylesProps = (styles) => (Component) => (props) => {
   const Comp = withStyles((theme) => styles({ ...props, theme }))(Component);
   return <Comp {...props} />;

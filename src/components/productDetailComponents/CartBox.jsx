@@ -1,13 +1,11 @@
 import { Container } from "@material-ui/core";
 import { useState } from "react";
-import { TextField, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCartItem } from "../../store/slices/cartSlice";
-import { checkIfValidCartValue } from "../../utils/checkIfValidCartValue";
 import { makeStyles } from "@material-ui/styles";
 import { QuantityBox } from "../CartWishCard";
-import { triggerSnackbar } from "../../store/slices/uiSlice";
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100%",

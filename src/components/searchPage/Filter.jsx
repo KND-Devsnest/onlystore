@@ -12,7 +12,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import { makeStyles } from "@material-ui/styles";
 import { searchUtil } from "../../utils/searchUtil";
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     minHeight: "100%",
     width: "100%",
@@ -28,6 +28,7 @@ const Filter = ({ setSearchData, query }) => {
     console.log("filter", category);
     console.log("useEffect", checkboxes);
     setSearchData(searchUtil(query.toLowerCase(), category, checkboxes));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
   const [category, setCategory] = useState("All");
   const classes = useStyles();

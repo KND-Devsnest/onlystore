@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import {
   Accordion,
   AccordionSummary,
@@ -12,10 +13,9 @@ import { makeStyles } from "@material-ui/styles";
 import { deleteOrder, remainingTimeCalc, saveOrders } from "../../utils/orders";
 import { triggerModal } from "../../store/slices/uiSlice";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import OrderStatusCard from "../OrderStatusCard";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     minHeight: "100%",
     width: "100%",
@@ -56,7 +56,6 @@ const OrderCard = ({
 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [productId, setProductId] = useState("");
   const time = remainingTimeCalc(order.deliveryTime, order.orderTime);
   return (
     <div>
@@ -113,16 +112,19 @@ const OrderCard = ({
                 <div>
                   {Object.keys(order.products).map((el, index) => (
                     <div key={index}>
-                      <div
-                        onClick={(e) => {
-                          dispatch(triggerModal(el));
-                        }}
-                      >
-                        {" "}
-                        <span className={classes.writeReview}>
-                          Write a Review
-                        </span>
-                      </div>
+                      {
+                        // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+                        <div
+                          onClick={() => {
+                            dispatch(triggerModal(el));
+                          }}
+                        >
+                          {" "}
+                          <span className={classes.writeReview}>
+                            Write a Review
+                          </span>
+                        </div>
+                      }
                     </div>
                   ))}
                 </div>

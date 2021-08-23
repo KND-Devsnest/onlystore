@@ -1,10 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  registerUser,
-  loginUser,
-  logOutUser,
-  updateUserDetails,
-} from "./authSlice";
+
 const uiSlice = createSlice({
   name: "ui",
   initialState: {

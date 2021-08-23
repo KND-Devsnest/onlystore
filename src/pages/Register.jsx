@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Register = () => {
   const classes = useStyles();
-  const { isAuth, email } = useSelector((state) => state.auth);
+  const { isAuth } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -70,6 +70,7 @@ const Register = () => {
     dispatch(loadCartItem(userDetails.email));
     dispatch(loadWishListItem(userDetails.email));
   };
+  console.log(isAuth);
   if (isAuth) return <Redirect to="/" />;
   return (
     <div className={classes.root}>

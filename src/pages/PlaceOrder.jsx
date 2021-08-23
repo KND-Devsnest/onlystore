@@ -109,6 +109,7 @@ const PlaceOrder = () => {
   const handleNext = () => {
     if (activeStep === 1) {
       const { street, city, state, pin, name } = formData.shippingAddress;
+      console.log(street, city, state, pin, name);
       if (
         name === "" ||
         street === "" ||

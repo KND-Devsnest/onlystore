@@ -31,14 +31,13 @@ const Orders = () => {
   const dispatch = useDispatch();
   const [delivered, setDelivered] = useState([]);
   const [notDelivered, setNotDelivered] = useState([]);
-  const { cartItems, totalPrice } = useSelector((state) => state.cart);
   const classes = useStyles();
 
   useEffect(() => {
     const tempDelivered = [];
     const tempNotDelivered = [];
     if (ordersState)
-      ordersState.orders.map((el, index) => {
+      ordersState.orders.map((el) => {
         if (0 >= remainingTimeCalc(el.deliveryTime, el.orderTime)) {
           tempDelivered.push(el);
         } else {
