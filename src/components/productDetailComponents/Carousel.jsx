@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   container: {
-    //minHeight: theme.spacing(40),
     minWidth: "100%",
     padding: "1rem",
   },

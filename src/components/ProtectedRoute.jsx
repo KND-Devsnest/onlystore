@@ -2,7 +2,6 @@ import React from "react";
 import { Redirect, Route } from "react-router";
 
 const ProtectedRoute = ({ children, ...rest }) => {
-  // load auth state from store
   const auth = { isAuth: true };
   return (
     <Route

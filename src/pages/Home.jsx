@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tagLine: {
     marginTop: theme.spacing(2),
+    textAlign: "center",
   },
 }));
 
@@ -53,8 +54,11 @@ const Home = () => {
     <>
       <Box className={classes.heroContainer}>
         <Container maxWidth="lg" className={classes.hero}>
-          <LogoIcon fontSize="large" />
-          <Typography variant="h2" style={{ marginTop: "0.5rem" }}>
+          <LogoIcon fontSize="large" id="homeLogo" />
+          <Typography
+            variant="h2"
+            style={{ marginTop: "3rem", textAlign: "center" }}
+          >
             onlyStore
           </Typography>
           <Typography variant="h5" component="div" className={classes.tagLine}>

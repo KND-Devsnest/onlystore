@@ -44,7 +44,6 @@ const Login = ({ redirect, callback, isPage }) => {
     pass: "",
     error: false,
   });
-  //console.log(isAuth);
   const handleChange = (e) => {
     if (userDetails.error)
       setUserDetails({
@@ -58,7 +57,6 @@ const Login = ({ redirect, callback, isPage }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userDetails.email === "" || userDetails.pass === "") {
-      //alert("Please fill Proper Credentials!");
       setUserDetails({ ...userDetails, error: true });
       dispatch(
         triggerSnackbar({
@@ -124,9 +122,7 @@ const Login = ({ redirect, callback, isPage }) => {
 };
 
 Login.defaultProps = {
-  callback: () => {
-    //console.log("default");
-  },
+  callback: () => {},
   redirect: true,
   isPage: true,
 };

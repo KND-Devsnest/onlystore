@@ -26,10 +26,8 @@ export const updateUserDetailsAPI = (newData) => {
 
 export const registerUserAPI = (email, userData) => {
   let users = fetchUsers();
-  //console.log(users[email]);
   if (users[email] !== undefined)
     return { statusMSG: "Error: User Already Registered!", status: 1 };
-  //console.log(email, userData);
   users[email] = { ...userData };
   localStorage.setItem("currentUser", email);
   localStorage.setItem("users", JSON.stringify(users));
@@ -51,6 +49,5 @@ export const loginUserAPI = (email, userPass) => {
 
 export const logoutUserAPI = () => {
   localStorage.setItem("currentUser", "");
-  // triggerSnackbarFromUtil("success", "Success! Logged Out!!");
   return { status: 0, statusMSG: "Logged Out!" };
 };

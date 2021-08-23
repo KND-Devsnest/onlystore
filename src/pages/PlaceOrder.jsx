@@ -47,7 +47,6 @@ const PlaceOrder = () => {
   const { isAuth, email, addr } = useSelector((state) => state.auth);
   const { street, city, state, pin, name } = addr;
   const { cartItems, totalPrice } = useSelector((state) => state.cart);
-  //console.log(totalPrice);
   const [formData, setFormData] = useState({
     shippingAddress: {
       name,
@@ -109,7 +108,6 @@ const PlaceOrder = () => {
 
   const handleNext = () => {
     if (activeStep === 1) {
-      //console.log(formData.shippingAddress);
       const { street, city, state, pin, name } = formData.shippingAddress;
       if (
         name === "" ||
@@ -118,7 +116,6 @@ const PlaceOrder = () => {
         state === "" ||
         pin === ""
       ) {
-        //alert("Boss, Kidhar bhejna vo to batao :|");
         dispatch(
           triggerSnackbar({
             severity: "error",
@@ -141,7 +138,6 @@ const PlaceOrder = () => {
         email
       );
 
-      //console.log(order);
       setFormData({ ...formData, isLoaded: false });
       if (formData.persistAddress)
         dispatch(updateUserDetails({ addr: formData.shippingAddress }));
@@ -166,7 +162,6 @@ const PlaceOrder = () => {
     // eslint-disable-next-line
   }, []);
   if (formData.isLoaded && Object.keys(cartItems).length === 0) {
-    //alert("Cart Empty(Replace with Snack)");
     dispatch(
       triggerSnackbar({ severity: "info", message: "Your Cart is Empty!" })
     );

@@ -7,6 +7,7 @@ import { addCartItem } from "../../store/slices/cartSlice";
 import { checkIfValidCartValue } from "../../utils/checkIfValidCartValue";
 import { makeStyles } from "@material-ui/styles";
 import { QuantityBox } from "../CartWishCard";
+import { triggerSnackbar } from "../../store/slices/uiSlice";
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100%",

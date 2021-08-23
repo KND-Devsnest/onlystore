@@ -23,28 +23,7 @@ export const saveOrders = (
     localStorage.setItem("orders", JSON.stringify(temp));
   }
 };
-//const orders = useSelector((state) => state.orders);
-//console.log(orders);
-// orders:[
-//   {
-//     orderid:'123',
-//     products:[
-//       {
-//         id:19,
-//         quantity:2,
-//         //additional properties
-//       },
-//       {
-//         id:12,
-//         quantity:3,
-//         //additional properties
-//       }
-//     ]
-//     totalPrice:25000,
-//     deliveryTime:3,//in mins
-//     orderTime:timestamp,
-//   }
-// ]
+
 export const OrderGenerator = (cartItems, totalPrice, address) => {
   const temp = {};
   temp["products"] = cartItems;

@@ -69,7 +69,6 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem, eta }) => {
       : daysList[updated.getDay()];
 
   const isInWishlist = (id) => {
-    //console.log(wishlistItems[id] !== undefined);
     return wishlistItems[id] !== undefined;
   };
 
@@ -148,20 +147,6 @@ const BasicCard = ({ id, title, price, imageUrl, category, elem, eta }) => {
                   quantity: 1,
                 })
               );
-              if (currentUser)
-                dispatch(
-                  triggerSnackbar({
-                    severity: "success",
-                    message: "Product added to your cart 🥳",
-                  })
-                );
-              else
-                dispatch(
-                  triggerSnackbar({
-                    severity: "error",
-                    message: "Error! Login to add to your cart ❌",
-                  })
-                );
             }}
           >
             <ShoppingCartRounded />
