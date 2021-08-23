@@ -1,5 +1,5 @@
 import { loadReview } from "../../utils/reviewUtils";
-import { Paper } from "@material-ui/core";
+import { Paper, Typography } from "@material-ui/core";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
@@ -7,13 +7,12 @@ import { makeStyles } from "@material-ui/styles";
 import { Container } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 import { Tooltip } from "@material-ui/core";
-import { triggerModal } from "../../store/slices/uiSlice";
-import ReviewComponent from "../ReviewComponent";
-import { Button } from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100%",
     width: "100%",
+    marginTop: theme.spacing(2),
   },
   container: {
     display: "flex",
@@ -24,23 +23,23 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "1rem",
   },
   reviewContainer: {
-    marginBottom: "1rem",
-    padding: "1rem",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(4),
+    padding: theme.spacing(0, 2),
   },
   user: {
     display: "inline-block",
+    padding: theme.spacing(2, 0, 0, 0),
   },
   title: {
-    marginTop: "0.25rem",
+    marginTop: theme.spacing(1),
   },
   imgContainer: {
     display: "inline-block",
   },
   reviewContent: {
-    marginTop: "1rem",
-  },
-  buttonEdit: {
-    marginBottom: "1rem",
+    marginTop: theme.spacing(1),
+    padding: theme.spacing(0, 0, 3, 0),
   },
 }));
 const Reviews = ({ paramId, reviews }) => {
@@ -48,30 +47,10 @@ const Reviews = ({ paramId, reviews }) => {
   const [userReviews, setReviews] = useState(loadReview(paramId));
 
   const currentUser = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-  return (
-    <Container>
-      <h1>Reviews</h1>
-      {currentUser.email ? (
-        <>
-          <Button
-            onClick={() => dispatch(triggerModal(paramId))}
-            variant="contained"
-            className={classes.buttonEdit}
-            color="primary"
-          >
-            Edit
-          </Button>
-          <ReviewComponent
-            currentUser={currentUser}
-            setReviews={setReviews}
-            paramId={paramId}
-          ></ReviewComponent>{" "}
-        </>
-      ) : (
-        ""
-      )}
 
+  return (
+    <Container className={classes.root}>
+      <Typography variant="h4">Reviews</Typography>
       <div className="review">
         {userReviews
           ? Object.keys(userReviews).map((el, index) => (
@@ -117,7 +96,7 @@ const Reviews = ({ paramId, reviews }) => {
                         value={parseInt(el.rating)}
                         size="small"
                         readOnly
-                      />{" "}
+                      />
                     </div>
                   </Tooltip>
                   <div className={classes.reviewContent}>{el.content}</div>

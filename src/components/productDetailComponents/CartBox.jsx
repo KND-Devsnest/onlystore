@@ -6,14 +6,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCartItem } from "../../store/slices/cartSlice";
 import { checkIfValidCartValue } from "../../utils/checkIfValidCartValue";
 import { makeStyles } from "@material-ui/styles";
+import { QuantityBox } from "../CartWishCard";
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100%",
     width: "100%",
+    marginTop: theme.spacing(2),
   },
   container: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
   },
   button: {
@@ -27,12 +29,20 @@ const CartBox = () => {
   const classes = useStyles();
   return (
     <Container className={classes.container}>
-      <TextField
-        id="outlined-basic"
-        value={cartValue}
-        variant="outlined"
-        onChange={(e) => {
-          setValue(checkIfValidCartValue(elem.inStock, e.target.value));
+      <QuantityBox
+        id={elem.id}
+        quantity={cartValue}
+        changeQuantity={(id, quantity, action) => {
+          switch (action) {
+            case "add":
+              setValue(cartValue + 1);
+              break;
+            case "subtract":
+              setValue(cartValue - 1);
+              break;
+            default:
+              break;
+          }
         }}
       />
       <Button
