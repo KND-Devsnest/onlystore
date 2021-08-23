@@ -294,6 +294,7 @@ export default function PrimarySearchAppBar() {
                 <Box
                   className={classes.brand}
                   onClick={() => history.push("/")}
+                  style={location.pathname === "/" ? { display: "none" } : {}}
                 >
                   <LogoIcon fontSize="large" />
                   <Typography className={classes.title} variant="h6" noWrap>
