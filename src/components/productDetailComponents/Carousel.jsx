@@ -126,8 +126,10 @@ const Carousel = ({ currentProd }) => {
       );
     } else {
       console.log(currentProd);
-      const { id, title, price, imageUrl, category } = currentProd;
-      dispatch(addWishListItem({ id, title, price, imageUrl, category }));
+      const { id, title, price, imgs, category } = currentProd;
+      dispatch(
+        addWishListItem({ id, title, price, imageUrl: imgs[0], category })
+      );
       if (currentUser)
         dispatch(
           triggerSnackbar({
