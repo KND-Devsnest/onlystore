@@ -26,6 +26,15 @@ const Home = () => {
   let mobiles = productItems
     .filter((el) => el.category === "Mobiles")
     .splice(0, 4);
+  const { wishlistItems } = useSelector((state) => state.wishlist);
+  //let data = productItems.slice().sort(() => Math.random() - 0.5);
+  let data = productItems;
+
+  const isInWishList = (id) => {
+    //console.log(wishlistItems[id] !== undefined);
+    return wishlistItems[id] !== undefined;
+  };
+
   return (
     <Container className={classes.root} maxWidth="xl">
       <CardsContainer title={"Customer Favorites"} items={popular} />
@@ -51,6 +60,7 @@ const Home = () => {
               category={elem.category}
               eta={elem.eta}
               elem={elem}
+              isInWishlist={isInWishList(elem.id)}
             />
           </Grid>
         ))}
