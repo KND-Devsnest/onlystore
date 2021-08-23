@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import startFakeBackend from "./utils/fakeFetch";
 import { createTheme, ThemeProvider } from "@material-ui/core";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -29,7 +30,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <App />
+        <Router>
+          <App />
+        </Router>
       </ThemeProvider>
     </Provider>
   </React.StrictMode>,

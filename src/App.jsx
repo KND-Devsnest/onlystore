@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
+  useLocation,
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -28,6 +29,8 @@ import Footer from "./components/Footer";
 function App() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.email);
+  const location = useLocation();
+  const appRef = useRef(null);
   useEffect(() => {
     if (currentUser) {
       dispatch(loadCartItem(currentUser));
@@ -36,35 +39,36 @@ function App() {
     }
     // eslint-disable-next-line
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
-    <div className="App">
-      <Router>
-        <Cart isFromDrawer />
-        <Wishlist isFromDrawer />
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <ProtectedRoute exact path="/orders">
-            <Orders />
-          </ProtectedRoute>
-          <ProtectedRoute exact path="/product/:id">
-            <ProductDetails />
-          </ProtectedRoute>
-          <ProtectedRoute exact path="/cart">
-            <FullCart />
-          </ProtectedRoute>
-          <Route exact path="/search/:query?" component={SearchResults} />
-          <Route exact path="/placeorder" component={PlaceOrder} />
-          <Route exact path="/account" component={MyAccount} />
-          {/* <Route exact path="/wishlist" component={Wishlist} /> */}
-          <Redirect to="/" />
-        </Switch>
-        <GlobalSnackbar />
-        <Footer />
-      </Router>
+    <div className="App" ref={appRef}>
+      <Cart isFromDrawer />
+      <Wishlist isFromDrawer />
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <ProtectedRoute exact path="/orders">
+          <Orders />
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/product/:id">
+          <ProductDetails />
+        </ProtectedRoute>
+        <ProtectedRoute exact path="/cart">
+          <FullCart />
+        </ProtectedRoute>
+        <Route exact path="/search/:query?" component={SearchResults} />
+        <Route exact path="/placeorder" component={PlaceOrder} />
+        <Route exact path="/account" component={MyAccount} />
+        {/* <Route exact path="/wishlist" component={Wishlist} /> */}
+        <Redirect to="/" />
+      </Switch>
+      <GlobalSnackbar />
+      <Footer />
     </div>
   );
 }
