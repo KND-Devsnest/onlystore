@@ -10,7 +10,7 @@
     "format:verify": "prettier --check \"src/**/*.{js,jsx,html,css}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx}\" --quiet",
-    "predeploy": "npm run build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
@@ -31,7 +31,6 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "gh-pages": "^3.2.3",
     "husky": "4",
     "prettier": "^2.3.2",
     "vite": "^2.4.4"
