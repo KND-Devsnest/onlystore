@@ -17,6 +17,10 @@ a {
   text-decoration: inherit;
 }
 
+#homeLogo {
+  transform: scale(3);
+}
+
 ::-webkit-scrollbar {
   background-color: #454a4d;
   color: #181a1b;
