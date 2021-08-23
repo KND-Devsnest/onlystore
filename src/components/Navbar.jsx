@@ -253,7 +253,9 @@ export default function PrimarySearchAppBar() {
             <Grid container alignItems={"center"}>
               <Hidden smUp>
                 <Grid item xs={2}>
-                  <LogoIcon />
+                  <Link to="/">
+                    <LogoIcon />
+                  </Link>
                 </Grid>
               </Hidden>
               <Grid item xs={8} md={4}>
