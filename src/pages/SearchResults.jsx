@@ -10,10 +10,9 @@ import Filter from "../components/searchPage/Filter";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "100%",
     width: "100%",
     marginTop: "1rem",
-    height: "100vh",
+    height: "72.2vh",
   },
   container: {
     padding: "1rem",
@@ -48,7 +47,7 @@ const SearchResults = () => {
   const { query = "all" } = useParams();
   const [searchData, setSearchData] = useState();
   return (
-    <Container>
+    <Container maxWidth="xl" className={classes.root}>
       <Grid container spacing={1}>
         <Grid item xs={12} sm={4} md={2} lg={2}>
           <Paper className={classes.filterContainer}>
