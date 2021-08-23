@@ -1,6 +1,7 @@
 {
   "name": "onlystore",
   "version": "0.0.1",
+  "homepage": "https://knd-devsnest.github.io/onlystore/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -8,7 +9,9 @@
     "format": "prettier --write \"src/**/*.{js,jsx,html,css}\"",
     "format:verify": "prettier --check \"src/**/*.{js,jsx,html,css}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
-    "lint:fix": "eslint --fix \"src/**/*.{js,jsx}\" --quiet"
+    "lint:fix": "eslint --fix \"src/**/*.{js,jsx}\" --quiet",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
