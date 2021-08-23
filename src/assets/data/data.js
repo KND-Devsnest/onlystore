@@ -784,7 +784,7 @@ export const products = [
     popular: true,
     Language: "Hindi",
     Genre: "Historical",
-    title: "Sunderkand (Hindi)",
+    title: "Sunderkand (Hindi) - Goswami Tulsidas",
     category: "Books",
     price: 99,
     imgs: [
@@ -816,7 +816,7 @@ export const products = [
   {
     Language: "Hindi",
     Genre: "Poetry",
-    title: "Phir Meri Yaad - Hindi",
+    title: "Phir Meri Yaad - Hindi - Kumar Vishwas",
     category: "Books",
     price: 159,
     imgs: [
@@ -847,7 +847,7 @@ export const products = [
   {
     Language: "English",
     Genre: "Historical",
-    title: "Kabir, Kabir: The life and work of the early modern poet",
+    title: "Kabir: The life and work of the early modern poet",
     category: "Books",
     price: 431,
     imgs: [
