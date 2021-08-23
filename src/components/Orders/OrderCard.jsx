@@ -34,6 +34,18 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
+  bold: {
+    fontWeight: "800",
+    borderTop: "solid 1px black",
+  },
+  writeReview: {
+    color: "blue",
+    transition: "0.2s ease-in",
+    "&:hover": {
+      transform: "scale(1.1)",
+      cursor: "pointer",
+    },
+  },
 }));
 const OrderCard = ({
   order,
@@ -81,7 +93,7 @@ const OrderCard = ({
                 {Object.keys(order.products).map((el, index) => (
                   <div key={index}>{order.products[el].quantity}</div>
                 ))}
-                <div>{order.totalQuantity}</div>
+                <div className={classes.bold}>{order.totalQuantity}</div>
               </div>
             </div>{" "}
             <div>
@@ -92,7 +104,7 @@ const OrderCard = ({
                     {order.products[el].quantity * order.products[el].price}
                   </div>
                 ))}
-                <div>{order.totalPrice}</div>
+                <div className={classes.bold}>{order.totalPrice}</div>
               </div>
             </div>
             {delivered ? (
@@ -107,7 +119,9 @@ const OrderCard = ({
                         }}
                       >
                         {" "}
-                        Write a Review
+                        <span className={classes.writeReview}>
+                          Write a Review
+                        </span>
                       </div>
                     </div>
                   ))}
