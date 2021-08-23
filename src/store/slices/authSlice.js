@@ -59,6 +59,7 @@ export const registerUser = createAsyncThunk(
       })
     );
     thunkAPI.dispatch(loadCartItem(email));
+    return { email, name, status };
   }
 );
 
