@@ -13,6 +13,7 @@ import { deleteOrder, remainingTimeCalc, saveOrders } from "../../utils/orders";
 import { triggerModal } from "../../store/slices/uiSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import OrderStatusCard from "../OrderStatusCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -133,6 +134,7 @@ const OrderCard = ({
           ) : (
             ""
           )}
+          <OrderStatusCard order={order} delivered={delivered} />
         </AccordionDetails>
       </Accordion>
     </div>
