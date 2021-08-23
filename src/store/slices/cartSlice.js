@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { triggerSnackbar } from "./uiSlice";
 const logoutSave = (state, currentUser) => {
   const temp = JSON.parse(localStorage.getItem("cart"));
   localStorage.setItem(
@@ -19,6 +20,30 @@ const calculatetotalPrice = (state) => {
   }
   state.totalPrice = temp;
 };
+
+export const addCartItem = createAsyncThunk(
+  "cart/addCartItem",
+  (payload, thunkAPI) => {
+    if (thunkAPI.getState().cart.currentUser)
+      thunkAPI.dispatch(
+        triggerSnackbar({
+          severity: "success",
+          message: "Product added to your cart 🥳",
+        })
+      );
+    else {
+      thunkAPI.dispatch(
+        triggerSnackbar({
+          severity: "error",
+          message: "Error! Login to add to your cart ❌",
+        })
+      );
+      thunkAPI.dispatch(showDrawer());
+    }
+    return payload;
+  }
+);
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -37,12 +62,6 @@ const cartSlice = createSlice({
       state.cartItems = temp[state.currentUser]["items"];
       state.totalPrice = temp[state.currentUser]["totalPrice"];
       calculatetotalPrice(state);
-    },
-    addCartItem: (state, action) => {
-      if (!state.currentUser) return state;
-      state.cartItems[action.payload.id] = action.payload;
-      calculatetotalPrice(state);
-      logoutSave(state, state.currentUser);
     },
     removeCartItem: (state, action) => {
       if (!state.currentUser) return state;
@@ -72,10 +91,17 @@ const cartSlice = createSlice({
       else state.currentUser = "";
     },
   },
+  extraReducers: {
+    [addCartItem.fulfilled]: (state, action) => {
+      if (!state.currentUser) return state;
+      state.cartItems[action.payload.id] = action.payload;
+      calculatetotalPrice(state);
+      logoutSave(state, state.currentUser);
+    },
+  },
 });
 
 export const {
-  addCartItem,
   removeCartItem,
   toggleVisible,
   showDrawer,
