@@ -3,22 +3,21 @@ import { useParams } from "react-router";
 import { searchUtil } from "../utils/searchUtil";
 import { useState, useEffect } from "react";
 import BasicCard from "../components/BasicCard";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { Container, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import Filter from "../components/searchPage/Filter";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "100%",
     width: "100%",
     marginTop: "1rem",
-    height: "100vh",
+    minHeight: "71.8vh",
+    padding: theme.spacing(2, 6),
   },
   container: {
-    padding: "1rem",
+    padding: theme.spacing(1),
   },
-
   images: {
     maxWidth: "352px",
     maxHeight: "352px",
@@ -30,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    padding: theme.spacing(2, 1),
   },
   filterSave: {
     overflowY: "scroll",
@@ -48,22 +48,22 @@ const SearchResults = () => {
   const { query = "all" } = useParams();
   const [searchData, setSearchData] = useState();
   return (
-    <Container>
+    <Container maxWidth="xl" className={classes.root}>
       <Grid container spacing={1}>
-        <Grid item xs={12} sm={4} md={2} lg={2}>
+        <Grid item xs={12} sm={2}>
           <Paper className={classes.filterContainer}>
             <div className={classes.filter}>
-              <h3>Filter</h3>
+              <Typography variant="h6">Filters</Typography>
             </div>
             <Filter setSearchData={setSearchData} query={query}></Filter>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6} md={7} lg={7}>
+        <Grid item xs={12} sm={10}>
           <Container>
             <Grid container spacing={1}>
               {searchData && searchData.length ? (
                 searchData.map((elem, index) => (
-                  <Grid item xs={12} sm={5} md={5} lg={6} key={index}>
+                  <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
                     <BasicCard
                       id={elem.id}
                       title={elem.title}
