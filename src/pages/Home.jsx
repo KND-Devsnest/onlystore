@@ -1,8 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Container, Grid, Paper } from "@material-ui/core/";
+import { Box, Container, Grid, Paper } from "@material-ui/core/";
 import BasicCard from "../components/BasicCard";
 import { useSelector } from "react-redux";
+import CardsContainer from "../components/CardsContainer";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,16 +12,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   paper: {
-    padding: theme.spacing(0, 2),
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  popularRow: {
-    width: "100vw",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "nowrap",
-    overflowX: "scroll",
+    padding: theme.spacing(1, 2),
   },
 }));
 
@@ -27,28 +20,20 @@ const Home = () => {
   const classes = useStyles();
   const { productItems } = useSelector((state) => state.products);
   const { cartItems } = useSelector((state) => state.cart);
+  const history = useHistory();
   // let data = productItems.slice().sort(() => Math.random() - 0.5);
   let popular = productItems.filter((el) => el.popular);
-  console.log(popular);
+  let mobiles = productItems
+    .filter((el) => el.category === "Mobiles")
+    .splice(0, 4);
   return (
     <Container className={classes.root} maxWidth="xl">
-      <Paper className={classes.paper}>
-        <Grid container spacing={2} className={classes.popularRow}>
-          {popular.map((elem) => (
-            <Grid item xs={3} key={popular.indexOf(elem)}>
-              <BasicCard
-                id={elem.id}
-                title={elem.title}
-                price={elem.price}
-                imageUrl={elem.imgs[0]}
-                category={elem.category}
-                eta={elem.eta}
-                elem={elem}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </Paper>
+      <CardsContainer title={"Customer Favorites"} items={popular} />
+      <CardsContainer
+        title={"Mobiles"}
+        items={mobiles}
+        viewAll={() => history.push("/search/mobiles")}
+      />
       {/* <Grid
         container
         spacing={2}
