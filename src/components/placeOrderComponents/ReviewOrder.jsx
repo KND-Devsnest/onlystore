@@ -15,6 +15,7 @@ import { Add, Delete, Remove } from "@material-ui/icons";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeQuantity, removeCartItem } from "../../store/slices/cartSlice";
+import { QuantityBox } from "../CartWishCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,8 +64,9 @@ const useStyles = makeStyles((theme) => ({
   },
   changeQuantity: {
     display: "flex",
+    width: "100%",
     flexDirection: "row",
-    alignItems: "center",
+    alignItems: "flex-end",
   },
 }));
 
@@ -80,7 +82,7 @@ const ReviewOrder = ({ orderData }) => {
       <Grid container className={classes.detailsContainer}>
         <Grid item xs={8} className={classes.orderList}>
           {Object.keys(cartItems).map((key) => {
-            let { title, imageUrl, price, quantity, category, deliveryTime } =
+            let { title, imageUrl, price, quantity, category, eta } =
               cartItems[key];
             return (
               <Card key={key} className={classes.card} elevation={4}>
@@ -88,7 +90,7 @@ const ReviewOrder = ({ orderData }) => {
                   <Grid item xs={4}>
                     <CardMedia className={classes.cardMedia} image={imageUrl} />
                   </Grid>
-                  <Grid item xs={7}>
+                  <Grid item xs={6}>
                     <CardContent className={classes.cardContent}>
                       <CardHeader
                         title={title}
@@ -98,53 +100,54 @@ const ReviewOrder = ({ orderData }) => {
                         subheaderTypographyProps={{ variant: "subtitle2" }}
                       />
                       <br />
-                      <Typography>
-                        Expect delivery in {deliveryTime} minutes
-                      </Typography>
+                      <Typography>Expect delivery in {eta} minutes</Typography>
                       <Typography>Rs. {price}</Typography>
-                      <Typography>Quantity : </Typography>
-                      <div className={classes.changeQuantity}>
-                        <IconButton
-                          className={classes.iconButton}
-                          aria-label="Increase Quantity"
-                          onClick={() => {
-                            dispatch(
-                              changeQuantity({
-                                id: key,
-                                quantity: quantity + 1,
-                              })
-                            );
-                          }}
-                        >
-                          <Add />
-                        </IconButton>
-                        {quantity}
-                        {/* <input value={cartItems[el].quantity}></input> */}
-                        <IconButton
-                          disabled={quantity == 1}
-                          className={classes.iconButton}
-                          onClick={() => {
-                            dispatch(
-                              changeQuantity({
-                                id: key,
-                                quantity: quantity - 1,
-                              })
-                            );
-                          }}
-                        >
-                          <Remove />
-                        </IconButton>
-                      </div>
                     </CardContent>
                   </Grid>
-                  <Grid item xs={1}>
-                    <CardActions>
+                  <Grid item xs={2}>
+                    <CardActions
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-end",
+                        justifyContent: "space-between",
+                        height: "100%",
+                      }}
+                    >
                       <IconButton
                         aria-label="Delete Item"
                         onClick={() => dispatch(removeCartItem({ id: key }))}
                       >
                         <Delete />
                       </IconButton>
+                      <div className={classes.changeQuantity}>
+                        <QuantityBox
+                          id={key}
+                          quantity={quantity}
+                          changeQuantity={(id, quantity, action) => {
+                            switch (action) {
+                              case "add":
+                                dispatch(
+                                  changeQuantity({
+                                    id: key,
+                                    quantity: quantity + 1,
+                                  })
+                                );
+                                break;
+                              case "subtract":
+                                dispatch(
+                                  changeQuantity({
+                                    id: key,
+                                    quantity: quantity - 1,
+                                  })
+                                );
+                                break;
+                              default:
+                                break;
+                            }
+                          }}
+                        />
+                      </div>
                     </CardActions>
                   </Grid>
                 </Grid>

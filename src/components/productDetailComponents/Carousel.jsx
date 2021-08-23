@@ -12,12 +12,10 @@ import { triggerSnackbar } from "../../store/slices/uiSlice";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    marginTop: "1rem",
   },
   container: {
-    minHeight: theme.spacing(40),
+    //minHeight: theme.spacing(40),
     minWidth: "100%",
-    marginTop: "1rem",
     padding: "1rem",
   },
   currentImage: {
@@ -34,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignContent: "center",
     justifyContent: "center",
-    paddingLeft: theme.spacing(2),
+    marginLeft: theme.spacing(2),
   },
   carouselImagesContainer: {
     width: "120px",
@@ -60,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
   test: {
     display: "flex",
-    minHeight: theme.spacing(47),
+    minHeight: theme.spacing(40),
     justifyContent: "space-between",
     margin: "1rem",
     overflow: "hidden",
