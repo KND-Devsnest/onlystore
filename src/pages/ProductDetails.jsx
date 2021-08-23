@@ -16,6 +16,8 @@ import { makeStyles } from "@material-ui/styles";
 import { calculateRatings } from "../utils/reviewUtils";
 import CartBox from "../components/productDetailComponents/CartBox";
 import Carousel from "../components/productDetailComponents/Carousel";
+import { CircularProgress } from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100%",
@@ -110,6 +112,9 @@ const ProductDetails = () => {
         <Reviews paramId={paramId} reviews={currentProduct.reviews}></Reviews>
       </Container>
     );
+  } else {
+    return <CircularProgress />;
   }
 };
+
 export default ProductDetails;
