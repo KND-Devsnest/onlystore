@@ -6,7 +6,7 @@ import {
   registerUserAPI,
   updateUserDetailsAPI,
 } from "../../utils/fakeUsers";
-import { loadCartItem } from "./cartSlice";
+import { clearCart, loadCartItem } from "./cartSlice";
 import { loadOrders } from "./orderSlice";
 import { triggerSnackbar } from "./uiSlice";
 
@@ -31,6 +31,7 @@ export const loginUser = createAsyncThunk(
 export const logOutUser = createAsyncThunk("auth/logout", (_, thunkAPI) => {
   const { status, statusMSG } = logoutUserAPI();
   console.log(statusMSG);
+  thunkAPI.dispatch(clearCart({ clear: false }));
   thunkAPI.dispatch(
     triggerSnackbar({
       severity: status ? "error" : "success",
@@ -60,6 +61,20 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+export const updateUserDetails = createAsyncThunk(
+  "auth/updateUserDetails",
+  (payload, thunkAPI) => {
+    const { status, statusMSG } = updateUserDetailsAPI(payload);
+    thunkAPI.dispatch(
+      triggerSnackbar({
+        severity: status ? "error" : "success",
+        message: statusMSG,
+      })
+    );
+    return { status, details: { payload } };
+  }
+);
+
 const AuthSlice = createSlice({
   name: "auth",
   initialState: {
@@ -70,11 +85,6 @@ const AuthSlice = createSlice({
     toggleAuth: (state) => {
       state.auth = !state.auth;
       localStorage.setItem("isAuth", state.auth);
-    },
-    updateUserDetails: (state, action) => {
-      //state = { ...state, ...action.payload };
-      for (let key in action.payload) state[key] = action.payload[key];
-      updateUserDetailsAPI(action.payload);
     },
   },
   extraReducers: {
@@ -105,8 +115,12 @@ const AuthSlice = createSlice({
         //state = { ...state, ...action.payload };
       }
     },
+    [updateUserDetails.fulfilled]: (state, { payload }) => {
+      const { status, details } = payload;
+      if (!status) for (let key in details) state[key] = details[key];
+    },
   },
 });
 
-export const { toggleAuth, updateUserDetails } = AuthSlice.actions;
+export const { toggleAuth } = AuthSlice.actions;
 export default AuthSlice.reducer;

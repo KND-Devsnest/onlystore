@@ -146,7 +146,7 @@ const PlaceOrder = () => {
         triggerSnackbar({ severity: "success", message: "Order Placed!" })
       );
       dispatch(addOrderItem({ user: email, order }));
-      dispatch(clearCart());
+      dispatch(clearCart({ clear: true }));
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -161,6 +161,7 @@ const PlaceOrder = () => {
   useEffect(() => {
     console.log(cartItems);
     if (cartItems) setFormData({ ...formData, isLoaded: true });
+    // eslint-disable-next-line
   }, []);
   if (formData.isLoaded && Object.keys(cartItems).length === 0) {
     //alert("Cart Empty(Replace with Snack)");

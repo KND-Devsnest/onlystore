@@ -17,40 +17,40 @@ export const updateUserDetailsAPI = (newData) => {
   let users = fetchUsers();
   let currentUser = localStorage.getItem("currentUser");
   if (!currentUser) {
-    console.log("User not Logged In");
-    return;
+    return { statusMSG: "User not Logged In", status: 1 };
   }
   users[currentUser] = { ...users[currentUser], ...newData };
   localStorage.setItem("users", JSON.stringify(users));
+  return { statusMSG: "User Details Updated!", status: 0 };
 };
 
 export const registerUserAPI = (email, userData) => {
   let users = fetchUsers();
   //console.log(users[email]);
   if (users[email] !== undefined)
-    return { statusMSG: "Error: User Already Registered!!!", status: 1 };
+    return { statusMSG: "Error: User Already Registered!", status: 1 };
   //console.log(email, userData);
   users[email] = { ...userData };
   localStorage.setItem("currentUser", email);
   localStorage.setItem("users", JSON.stringify(users));
-  return { statusMSG: "User Registered!!!", status: 0 };
+  return { statusMSG: "User Registered!", status: 0 };
 };
 
 export const loginUserAPI = (email, userPass) => {
   let users = fetchUsers();
   if (users[email] === undefined) {
-    return { status: 1, statusMSG: "Error : User Not Registered!!" };
+    return { status: 1, statusMSG: "Error : User Not Registered!" };
   }
   let { name, addr, pass } = users[email];
   if (pass === userPass) {
     localStorage.setItem("currentUser", email);
-    return { status: 0, statusMSG: "Logged In!!!", user: { name, addr } };
+    return { status: 0, statusMSG: "Logged In!", user: { name, addr } };
   }
-  return { status: 1, statusMSG: "Error: Password Not Matched!!" };
+  return { status: 1, statusMSG: "Error: Password Not Matched!" };
 };
 
 export const logoutUserAPI = () => {
   localStorage.setItem("currentUser", "");
   // triggerSnackbarFromUtil("success", "Success! Logged Out!!");
-  return { status: 0, statusMSG: "Logged Out!!" };
+  return { status: 0, statusMSG: "Logged Out!" };
 };

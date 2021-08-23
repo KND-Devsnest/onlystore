@@ -13,6 +13,8 @@ import {
   Box,
   Grid,
   Container,
+  Hidden,
+  Tooltip,
 } from "@material-ui/core";
 import {
   Search as SearchIcon,
@@ -21,6 +23,7 @@ import {
   ShoppingCartOutlined as ShoppingCartOutlinedIcon,
   LocalShippingOutlined as LocalShippingOutlinedIcon,
   FavoriteBorderOutlined,
+  HomeOutlined,
 } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleVisible } from "../store/slices/cartSlice";
@@ -79,26 +82,33 @@ const useStyles = makeStyles((theme) => ({
       width: "50%",
     },
   },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
+  enter: {
+    backgroundColor: alpha(theme.palette.common.white, 0.05),
+    padding: theme.spacing(0, 1),
+    zIndex: 1,
     position: "absolute",
-    pointerEvents: "none",
+    top: 0,
+    bottom: 0,
+    right: 0,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    cursor: "pointer",
   },
   inputRoot: {
     color: "inherit",
   },
   inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
+    padding: theme.spacing(1, 1, 1, 1),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(5)}px)`,
+    paddingRight: `calc(1em + ${theme.spacing(5)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: "50ch",
+      width: "100ch",
+    },
+    [theme.breakpoints.up("sm")]: {
+      width: "100%",
     },
   },
   sectionDesktop: {
@@ -124,14 +134,16 @@ export default function PrimarySearchAppBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const { isAuth } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const searchRef = React.useRef(null);
   const location = useLocation();
 
-  const handleSearchIconClick = () => {
-    if (location.pathname === "/") {
-      history.push("#search");
-    } else history.push("/#search");
-  };
+  React.useEffect(() => {
+    if (!location.pathname.startsWith("/search")) {
+      searchRef.current.value = "";
+    }
+  }, [location.pathname]);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -147,8 +159,11 @@ export default function PrimarySearchAppBar() {
   };
 
   const handleLogOut = () => {
-    handleMobileMenuClose();
+    handleMenuClose();
     dispatch(logOutUser());
+    setTimeout(() => {
+      history.push("/login");
+    }, 200);
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -168,13 +183,10 @@ export default function PrimarySearchAppBar() {
     >
       {isAuth ? (
         <div>
-          <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-          <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-          <MenuItem>
-            <Link to="/login" onClick={handleLogOut}>
-              Log Out
-            </Link>
-          </MenuItem>
+          <Link onClick={handleMenuClose} to="/account">
+            <MenuItem>My Account</MenuItem>
+          </Link>
+          <MenuItem onClick={handleLogOut}>Log Out</MenuItem>
         </div>
       ) : (
         <MenuItem>
@@ -197,14 +209,20 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem onClick={() => history.push("/")}>
+        <IconButton aria-label="Landing Page" color="inherit">
+          <HomeOutlined />
+        </IconButton>
+        <p>Home</p>
+      </MenuItem>
       <MenuItem onClick={() => history.push("/cart")}>
-        <IconButton aria-label="Wishlist of the user" color="inherit">
+        <IconButton aria-label="Cart of the User" color="inherit">
           <ShoppingCartOutlinedIcon />
         </IconButton>
         <p>Cart</p>
       </MenuItem>
       <MenuItem onClick={() => history.push("/orders")}>
-        <IconButton aria-label="Wishlist of the user" color="inherit">
+        <IconButton aria-label="Orders of the User" color="inherit">
           <LocalShippingOutlinedIcon />
         </IconButton>
         <p>Orders</p>
@@ -235,12 +253,14 @@ export default function PrimarySearchAppBar() {
         <Toolbar className={classes.toolbar}>
           <Container maxWidth="xl">
             <Grid container alignItems={"center"}>
-              <Grid item xs={10} md={4}>
+              <Hidden smUp>
+                <Grid item xs={2}>
+                  <LogoIcon />
+                </Grid>
+              </Hidden>
+              <Grid item xs={8} md={4}>
                 <div className={classes.searchBox}>
                   <div className={classes.search}>
-                    <div className={classes.searchIcon}>
-                      <SearchIcon />
-                    </div>
                     <InputBase
                       placeholder="Type to search"
                       classes={{
@@ -253,12 +273,21 @@ export default function PrimarySearchAppBar() {
                           history.push("/search/" + e.target.value);
                         }
                       }}
-                      inputProps={{ "aria-label": "search" }}
+                      inputProps={{ "aria-label": "search", ref: searchRef }}
                     />
+                    <Box
+                      className={classes.enter}
+                      zIndex="tooltip"
+                      onClick={() =>
+                        history.push("/search/" + searchRef.current.value)
+                      }
+                    >
+                      <SearchIcon />
+                    </Box>
                   </div>
                 </div>
               </Grid>
-              <Grid item xs={0} md={4}>
+              <Grid item md={4}>
                 <Box
                   className={classes.brand}
                   onClick={() => history.push("/")}
@@ -270,45 +299,50 @@ export default function PrimarySearchAppBar() {
                 </Box>
               </Grid>
               {/* <div className={classes.grow} /> */}
-              <Grid item xs={0} md={4} className={classes.rightSide}>
+              <Grid item md={4} className={classes.rightSide}>
                 <div className={classes.sectionDesktop}>
-                  <IconButton color="inherit" onClick={handleSearchIconClick}>
-                    <SearchIcon fontSize="medium" />
-                  </IconButton>
-                  <IconButton
-                    color="inherit"
-                    onClick={() => history.push("/orders")}
-                  >
-                    <LocalShippingOutlinedIcon fontSize="medium" />
-                  </IconButton>
-                  <IconButton
-                    color="inherit"
-                    onClick={() => history.push("/wishlist")}
-                  >
-                    <FavoriteBorderOutlined fontSize="medium" />
-                  </IconButton>
-                  <IconButton
-                    aria-label="account of current user"
-                    aria-controls={menuId}
-                    aria-haspopup="true"
-                    onClick={handleProfileMenuOpen}
-                    color="inherit"
-                  >
-                    <AccountCircle fontSize="medium" />
-                  </IconButton>
-                  <IconButton
-                    edge="end"
-                    color="inherit"
-                    onClick={() => dispatch(toggleVisible())}
-                  >
-                    <Badge
-                      badgeContent={3}
-                      color="secondary"
-                      className={classes.badge}
+                  <Tooltip title="Orders" color="primary" placement="bottom">
+                    <IconButton
+                      color="inherit"
+                      onClick={() => history.push("/orders")}
                     >
-                      <ShoppingCartOutlinedIcon fontSize="medium" />
-                    </Badge>
-                  </IconButton>
+                      <LocalShippingOutlinedIcon fontSize="medium" />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Wishlist">
+                    <IconButton
+                      color="inherit"
+                      onClick={() => history.push("/wishlist")}
+                    >
+                      <FavoriteBorderOutlined fontSize="medium" />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Account">
+                    <IconButton
+                      aria-label="account of current user"
+                      aria-controls={menuId}
+                      aria-haspopup="true"
+                      onClick={handleProfileMenuOpen}
+                      color="inherit"
+                    >
+                      <AccountCircle fontSize="medium" />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="Cart">
+                    <IconButton
+                      edge="end"
+                      color="inherit"
+                      onClick={() => dispatch(toggleVisible())}
+                    >
+                      <Badge
+                        badgeContent={Object.keys(cartItems).length}
+                        color="secondary"
+                        className={classes.badge}
+                      >
+                        <ShoppingCartOutlinedIcon fontSize="medium" />
+                      </Badge>
+                    </IconButton>
+                  </Tooltip>
                 </div>
               </Grid>
               <Grid item xs={2}>
