@@ -20,8 +20,8 @@ const uiSlice = createSlice({
     hideSnackbar: (state) => {
       state.snackbar.showSnackbar = false;
     },
-    triggerModal: (state) => {
-      state.reviewModal = true;
+    triggerModal: (state, action) => {
+      state.reviewModal = action.payload;
     },
     closeModal: (state) => {
       state.reviewModal = false;

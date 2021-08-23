@@ -63,8 +63,8 @@ const Filter = ({ setSearchData, query }) => {
         </AccordionSummary>
         <AccordionDetails>
           <RadioGroup
-            aria-label="gender"
-            name="gender1"
+            aria-label="Categories"
+            name="Category"
             value={category}
             onChange={(e) => {
               handleRadioCheck(e);

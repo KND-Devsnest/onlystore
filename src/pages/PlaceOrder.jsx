@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
+import { OrderGenerator, saveOrders } from "../utils/orders";
+
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
@@ -134,10 +136,11 @@ const PlaceOrder = () => {
         shippingAddress: formData.shippingAddress,
       };
       order["id"] = `ORDER-${order["orderTime"]}`;
-      Object.keys(cartItems).forEach((key) => {
-        let { quantity, deliveryTime } = cartItems[key];
-        order["products"].push({ id: key, quantity, deliveryTime });
-      });
+      saveOrders(
+        OrderGenerator(cartItems, totalPrice, order.shippingAddress),
+        email
+      );
+
       //console.log(order);
       setFormData({ ...formData, isLoaded: false });
       if (formData.persistAddress)
@@ -145,7 +148,6 @@ const PlaceOrder = () => {
       dispatch(
         triggerSnackbar({ severity: "success", message: "Order Placed!" })
       );
-      dispatch(addOrderItem({ user: email, order }));
       dispatch(clearCart({ clear: true }));
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
