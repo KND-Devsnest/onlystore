@@ -1,11 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Route,
-  Switch,
-  useLocation,
-} from "react-router-dom";
+import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Orders from "./pages/Orders";
@@ -30,7 +24,6 @@ function App() {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.email);
   const location = useLocation();
-  const appRef = useRef(null);
   useEffect(() => {
     if (currentUser) {
       dispatch(loadCartItem(currentUser));
@@ -44,7 +37,7 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <div className="App" ref={appRef}>
+    <div className="App" style={{ minHeight: "100vh" }}>
       <Cart isFromDrawer />
       <Wishlist isFromDrawer />
       <Navbar />
