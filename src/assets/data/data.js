@@ -1077,6 +1077,182 @@ export const products = [
     ],
   },
   {
+    For: "Men",
+    title: "Puma Men's Regular T-Shirt @899",
+    category: "Clothings",
+    price: 899,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/pumatshirt1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/pumatshirt2.jpg",
+    ],
+    specs: [
+      "Size: 34",
+      "Care Instructions: Machine Wash",
+      "Fit Type: Regular",
+      "Style Name: Polo",
+      "Model Name: Team Polo",
+      "Brand Color: Puma White",
+    ],
+    inStock: 7,
+    eta: 1,
+    id: "c6",
+    rating: 4,
+    reviews: [
+      {
+        name: "Virdi S.",
+        title: "100% original..very good fabric",
+        content: "100% original",
+        rating: 5,
+      },
+      { name: "Sarvesh", title: "Very thin Cloth", content: "Good", rating: 4 },
+      {
+        name: "Lalit Banga",
+        title: "Poor quality",
+        content:
+          "The product is not upto the mark and quality is very bad don’t get misled",
+        rating: 1,
+      },
+    ],
+  },
+  {
+    For: "Kids",
+    title:
+      "Unisex Baby Infant Kids Costume Flannel Jumpsuit Panda Style Cosplay Clothes Bunting Outfits Snowsuit Hooded Romper Outwear",
+    category: "Clothings",
+    price: 1299,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/babycostume.jpg",
+    ],
+    specs: [
+      "SIZE: 70cm, Fits for AGE: 0-6 Months",
+      "Premium Flannel Material: The Baby Costumes with Panda Hat are Crafted in soft flannel material that has a napped finish on both sides, high absorbent and breathable, cozy feel of this baby Pajamas to keep little baby warm and comfy all winter.",
+      "Easy to Put On/Off: The Baby Costumes with Panda Hat are zipper closure, easy to put on/off, double zipper from top and bottom, it goes all the way to the back for easy diaper changing.",
+    ],
+    inStock: 37,
+    eta: 2,
+    id: "c7",
+    rating: 4.3,
+    reviews: [
+      {
+        name: "Pallavi ShuklaJaitly",
+        title: "Awesome",
+        content:
+          "Superrrrb. Very soft fabric which is very warm. I think this will fit my baby upto 2yrs even. Go for it",
+        rating: 5,
+      },
+      {
+        name: "Anish ad",
+        title: "Not a good one!",
+        content:
+          "Fake product. Face of the panda is different than delivered. Length is longer than mentioned. I had to travel alongwith this so couldn't even return it on time. Better to keep away from this one",
+        rating: 1,
+      },
+      {
+        name: "Bobo",
+        title: "Good Material. On time delivery. Bad stitching.",
+        content:
+          "The product looks like it is and zip is good and got delivered on time. But the stitching is very poor.",
+        rating: 3,
+      },
+    ],
+  },
+  {
+    For: "Kids",
+    title: "Festive & Party Kurta Pyjama Set for Baby Boys (WKP)",
+    category: "Clothings",
+    price: 449,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/kidkurtha.jpg",
+    ],
+    specs: [
+      "Color: White",
+      "Occassion: Wedding, Party, Ceremony, Festival",
+      "Kurta Pyjama For Boys",
+    ],
+    inStock: 14,
+    eta: 4,
+    id: "c8",
+    rating: 3.7,
+    reviews: [
+      {
+        name: "Pallavi ShuklaJaitly",
+        title: "Don't buy",
+        content: "Bad Quality",
+        rating: 1,
+      },
+    ],
+  },
+  {
+    For: "Women",
+    title: "Women's Cotton Straight Kurta Pant With Dupatta Set",
+    category: "Clothings",
+    price: 1049,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/womenkurtha.jpg",
+    ],
+    specs: [
+      "Fit Type: Regular",
+      "Fabric: Cambric Cotton 60x60",
+      "Salwar Suits: Straight Kurta Pant And Solid Dupatta Set",
+    ],
+    inStock: 34,
+    eta: 10,
+    id: "c9",
+    rating: 4,
+    reviews: [
+      {
+        name: "Sakthivale S",
+        title: "Comfortable to wear",
+        content: "Nice product",
+        rating: 5,
+      },
+      {
+        name: "Mamta",
+        title: "Good for the price",
+        content:
+          "Looking good and fit as expected. Fabric is very thin and not of good quality. I don't expect it will last longer than few washes. But price paid is 871Rs.",
+        rating: 3,
+      },
+    ],
+  },
+  {
+    For: "Women",
+    title: "Studio Shringaar Women's Green Pink Patola Printed Saree Blouse",
+    category: "Clothings",
+    price: 749,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/womenblouse.jpg",
+    ],
+    specs: [
+      "Fit Type: Regular",
+      "A fully stitched blouse with short sleeves",
+      "Traditional Patola printed silky polyester blouse with cotton lining",
+      "Sizes available are 34(XXS) TO 42 ( XL). Size 38 is S size which has a bust size of 38' all round",
+      "The front has a boat neck and the blouse opens from the back",
+      "The back has a drop shaped cut out",
+    ],
+    inStock: 4,
+    eta: 20,
+    id: "c10",
+    rating: 4.1,
+    reviews: [
+      {
+        name: "Megha Pandya",
+        title: "Studio shingaar never fails :)",
+        content:
+          "This is my 3 rd blouse from this brand. Great quality and pattern",
+        rating: 4,
+      },
+      {
+        name: "Radhika",
+        title: "Color is little dark",
+        content:
+          "Go for next size, fabric is different than the pic shown in image. Color also it's dark green not the same shown in pic",
+        rating: 3,
+      },
+    ],
+  },
+  {
     Type: "Bath and Body",
     title: "Dove Deeply Nourishing Body Wash",
     category: "Beauty",
