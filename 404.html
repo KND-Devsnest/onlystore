@@ -34,8 +34,7 @@
             .split("/")
             .slice(0, 1 + pathSegmentsToKeep)
             .join("/") +
-          "/?/" +
-          l.pathname
+          +l.pathname
             .slice(1)
             .split("/")
             .slice(pathSegmentsToKeep)
