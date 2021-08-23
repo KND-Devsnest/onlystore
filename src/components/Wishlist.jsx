@@ -1,13 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
-import {
-  Drawer,
-  Paper,
-  Card,
-  Container,
-  Box,
-  IconButton,
-} from "@material-ui/core";
+import { Drawer, Paper, Container, Box, IconButton } from "@material-ui/core";
 import {
   closeWishlistDrawer,
   removeWishlistItem,
@@ -35,9 +28,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     gap: theme.spacing(2),
-  },
-  card: {
-    padding: theme.spacing(2),
   },
   close: {
     backgroundColor: theme.palette.background.default,
@@ -84,7 +74,7 @@ const Wishlist = ({ isFromDrawer }) => {
                 ))}
               </Paper>
             ) : (
-              <>Empty List</>
+              <></>
             )}
           </Container>
         ) : (
