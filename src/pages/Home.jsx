@@ -26,12 +26,18 @@ const Home = () => {
     .filter((el) => el.category === "Mobiles")
     .splice(0, 4);
   let books = productItems.filter((el) => el.category === "Books").splice(0, 4);
+  let clothings = productItems
+    .filter((el) => el.category === "Clothings")
+    .splice(0, 4);
+  let furniture = productItems
+    .filter((el) => el.category === "Furniture")
+    .splice(0, 4);
 
   return (
     <Container className={classes.root} maxWidth="xl">
-      <CardsContainer title={"Customer Favorites"} items={popular} />
+      <CardsContainer title={"Most Popular"} items={popular} />
       <CardsContainer
-        title={"Mobiles"}
+        title={"Trending Mobiles"}
         items={mobiles}
         viewAll={() => history.push("/search/mobiles")}
       />
@@ -39,6 +45,16 @@ const Home = () => {
         title={"Popular Books"}
         items={books}
         viewAll={() => history.push("/search/books")}
+      />
+      <CardsContainer
+        title={"Top Clothings"}
+        items={clothings}
+        viewAll={() => history.push("/search/clothings")}
+      />
+      <CardsContainer
+        title={"Discounted Furniture"}
+        items={furniture}
+        viewAll={() => history.push("/search/clothings")}
       />
     </Container>
   );

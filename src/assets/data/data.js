@@ -658,7 +658,7 @@ export const products = [
   },
   {
     For: "Kids",
-    title: "Unisex-Baby Regular Vest",
+    title: "Unisex-Baby Regular Vest (100% Cotton)",
     category: "Clothings",
     price: 499,
     imgs: [
