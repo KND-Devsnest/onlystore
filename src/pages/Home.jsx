@@ -14,9 +14,15 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
   const { productItems } = useSelector((state) => state.products);
-  const { cartItems } = useSelector((state) => state.cart);
-  let data = productItems.slice().sort(() => Math.random() - 0.5);
-  console.log(cartItems);
+  const { wishlistItems } = useSelector((state) => state.wishlist);
+  //let data = productItems.slice().sort(() => Math.random() - 0.5);
+  let data = productItems;
+
+  const isInWishList = (id) => {
+    //console.log(wishlistItems[id] !== undefined);
+    return wishlistItems[id] !== undefined;
+  };
+
   return (
     <Container className={classes.root} maxWidth="xl">
       <Grid
@@ -36,6 +42,7 @@ const Home = () => {
               category={elem.category}
               eta={elem.eta}
               elem={elem}
+              isInWishlist={isInWishList(elem.id)}
             />
           </Grid>
         ))}

@@ -85,6 +85,7 @@ const useStyles = makeStyles((theme) => ({
     right: "5%",
     top: "5%",
     transition: "0.2s ease-in",
+    color: theme.palette.error.dark,
     "&:hover": {
       transform: "scale(1.1)",
       cursor: "pointer",
@@ -107,18 +108,46 @@ const Carousel = ({ currentProd }) => {
   const classes = useStyles();
   const images = currentProd.imgs;
   const [imageState, setImage] = useState(images[0]);
-  const wishlist = useSelector((state) => state.wishlist.wishlistItems);
+  const { wishlistItems, currentUser } = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
-  return (
-    <Container className={classes.container}>
-      <div>
-        <Paper className={classes.test}>
-          <FavoriteIcon
-            className={
-              wishlist[currentProd.id] ? classes.heartClicked : classes.heart
-            }
-            onClick={() => {
-              if (!wishlist[currentProd.id]) {
+
+  const isInWishlist = !!wishlistItems[currentProd.id];
+
+  const handleWishlistClick = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (isInWishlist) {
+      dispatch(removeWishlistItem({ id: currentProd.id }));
+      dispatch(
+        triggerSnackbar({
+          severity: "info",
+          message: "Product Removed from Wishlist!",
+        })
+      );
+    } else {
+      console.log(currentProd);
+      const { id, title, price, imageUrl, category } = currentProd;
+      dispatch(addWishListItem({ id, title, price, imageUrl, category }));
+      if (currentUser)
+        dispatch(
+          triggerSnackbar({
+            severity: "success",
+            message: "Product added to your wishlist 🥳",
+          })
+        );
+      else
+        dispatch(
+          triggerSnackbar({
+            severity: "error",
+            message: "Error! Login to add to your wishlist ❌",
+          })
+        );
+    }
+  };
+
+  /**
+   * () => {
+              {if (!wishlist[currentProd.id]) {
                 dispatch(addWishListItem(currentProd));
                 dispatch(
                   triggerSnackbar({
@@ -135,7 +164,16 @@ const Carousel = ({ currentProd }) => {
                   })
                 );
               }
-            }}
+            }}       
+   */
+
+  return (
+    <Container className={classes.container}>
+      <div>
+        <Paper className={classes.test}>
+          <FavoriteIcon
+            className={!isInWishlist ? classes.heartClicked : classes.heart}
+            onClick={handleWishlistClick}
           />
           {images.length > 1 ? (
             <div className={classes.carouselBar}>
