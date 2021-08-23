@@ -82,7 +82,7 @@ export const categories = {
       },
       Genre: {
         filterName: "Genre",
-        filterList: ["Fiction", "Historical", "Mystery", "Romance"],
+        filterList: ["Fiction", "Historical", "Mystery", "Romance", "Poetry"],
       },
     },
   },
@@ -712,6 +712,167 @@ export const products = [
         content:
           "Issues potrayed in the book, can really be disturbing right ? It can be really hard on you sometimes, as it can be really real sometimes",
         rating: 4,
+      },
+    ],
+  },
+  {
+    Language: "English",
+    Genre: "Humour",
+    title:
+      "The Ultimate Hitchhiker's Guide to the Galaxy: The Complete Trilogy in Five Parts",
+    category: "Books",
+    price: 507,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/guidetogalaxy.jpg",
+    ],
+    specs:
+      "A phenomenon across all formats, this 42nd anniversary paperback omnibus contains the complete Hitchhiker's Guide trilogy in five parts, charting the whole of Arthur Dent's odyssey through space and time. Share and enjoy. Collected together in this omnibus are the five titles that comprise Douglas Adams wildly popular and wholly remarkable comedy science fiction trilogy, introductions to each book, expanded material from the Douglas Adams archives plus a bonus short story, Young Zaphod Plays It Safe, and a special undeleted scene . . .The Hitchhiker's Guide to the Galaxy",
+    inStock: 27,
+    eta: 1,
+    id: "b6",
+    rating: 4.8,
+    reviews: [
+      {
+        name: "Ruchika Amin",
+        title: "Must Buy",
+        content:
+          "Great Book. Excellent Condition. If you want to buy this book, buy this edition m",
+        rating: 5,
+      },
+      {
+        name: "Aditi s.",
+        title: "3 three blank pages at the end",
+        content:
+          "I just ordered this book, and i have 3 blank pages at the end of the book ...is it supposed to be like this?",
+        rating: 4,
+      },
+    ],
+  },
+  {
+    Language: "English",
+    Genre: "Humour",
+    title: "Green Humour for a Greying Planet",
+    category: "Books",
+    price: 258,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/greyhumour.jpg",
+    ],
+    specs:
+      "Green Humour For A Greying Planet is a curation of gag cartoons and comic strips based exclusively on wildlife and nature, perhaps the first of its kind. At a time when global warming, wildlife crimes and man-animal conflicts are at their worst, 'Green Humour' is sure to provide its readers some much needed comic relief. A comprehensive and satirical take on various aspects of the natural world and the threats to its conservation, this book will appeal to both the scientifically inclined readers as well as the general readers.",
+    inStock: 17,
+    eta: 1,
+    id: "b7",
+    rating: 4.9,
+    reviews: [
+      {
+        name: "Sherebanu Frosh",
+        title: "Sherebanu Frosh",
+        content:
+          "Absolutely fun and fabulous. Particularly good for gifting to someone who doesn't actively care about the environment. The humour, the digs can really wake us up to the perspective of animals without being trite or dull. My kids couldn't stop reading, kept coming to me to show me a comic. Enjoyed it thoroughly myself when I could finally get it from them!",
+        rating: 5,
+      },
+      {
+        name: "Ankit Anurag",
+        title: "Humour & Alarming",
+        content:
+          "Book is full of interesting facts and observations which will make you see things in a new light.",
+        rating: 4.8,
+      },
+    ],
+  },
+  {
+    popular: true,
+    Language: "Hindi",
+    Genre: "Historical",
+    title: "Sunderkand (Hindi)",
+    category: "Books",
+    price: 99,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/sunderkand.jpg",
+    ],
+    specs:
+      "Sunderkand, believed to be the most beautiful (Sunder) part of the Ramayana, describes Lord Hanuman journey to Lanka. This book elucidates his pristine lifestyle, following which brings karmic and spiritual knowledge and bhakti (devotion) in one’s life. It is even believed that when one reads the sunderkand, Lord Hanuman himself graces the reader with his presence. Carrying the entire text and explanation of the sunderkand, Shri Hanuman Chalisa and sankatmochan hanumanashtak, this edition also contains a art is of Lord Ganesha, Lord Ram and Lord Hanuman.",
+    inStock: 17,
+    eta: 1,
+    id: "b8",
+    rating: 4.7,
+    reviews: [
+      {
+        name: "Vikram",
+        title: "Sherebanu Frosh",
+        content:
+          "Very nice, everything with meaning in hindi. Even all Chalisa has it's meaning explained. Superb",
+        rating: 5,
+      },
+      {
+        name: "Vikas Verma",
+        title: "4 star for bad packing",
+        content:
+          "Book is good and quality of is also good but packing is bad. They put direct book in plastic cover.when I opened book it was fold.",
+        rating: 4,
+      },
+    ],
+  },
+  {
+    Language: "Hindi",
+    Genre: "Poetry",
+    title: "Phir Meri Yaad - Hindi",
+    category: "Books",
+    price: 159,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/phirmeriyaad.jpg",
+    ],
+    specs:
+      "Reading books is a kind of enjoyment. Reading books is a good habit. We bring you a different kinds of books. You can carry this book where ever you want. It is easy to carry. It can be an ideal gift to yourself and to your loved ones. Care instruction keep away from fire.",
+    inStock: 7,
+    eta: 1,
+    id: "b9",
+    rating: 4.5,
+    reviews: [
+      {
+        name: "Shagun Srivastava",
+        title: "Hindi ki adbhut kavita...",
+        content: "A beautiful book by one of my favourite person....",
+        rating: 5,
+      },
+      {
+        name: "Satyajit Dasgupta",
+        title: "MUCH LIKE THE AUTHOR HIMSELF",
+        content:
+          "Introspective in parts which are therefore worth a read. Mostly playing to a faithful gallery, which for me is worth a miss.",
+        rating: 3,
+      },
+    ],
+  },
+  {
+    Language: "English",
+    Genre: "Historical",
+    title: "Kabir, Kabir: The life and work of the early modern poet",
+    category: "Books",
+    price: 431,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/kabirkabir.jpg",
+    ],
+    specs:
+      "As the right wing tries to claim Kabir for itself, while other conservatives disown him and yet others portray him as a secular idol beyond religion, the poet has never been so misunderstood. Coming from the Nirgun bhakti tradition, the words of this fifteenth-century poet have the power to reach beyond time and speak to us today. Was he a Hindu or Muslim or was he beyond religion? Did he try to cultivate a new faith or did he eschew organised religion altogether? Was his modernity an exception or a reflection of the times he lived in? What does Kabir’s life and poetry tell us about this nation’s past and present? In this rare appraisal of Kabir’s writings and his life, Purushottam Agarwal approaches this timeless poet-revolutionary with little preconceptions, presenting him the way the poet wanted to be seen, rather than what his followers and fans want to see in him.",
+    inStock: 9,
+    eta: 1,
+    id: "b10",
+    rating: 4.5,
+    reviews: [
+      {
+        name: "Subhhan s.",
+        title: "Superb",
+        content:
+          "Very good book. Chronicles the life and times of kabir very convincingly. Author's knowledge about his subject is very good. A very good introduction to kabir and mediveal india.",
+        rating: 5,
+      },
+      {
+        name: "Shivam",
+        title: "Atleast give a bookmark with the book.",
+        content:
+          "You should have the courtesy to atleast provide a bookmark with the book.",
+        rating: 2,
       },
     ],
   },
