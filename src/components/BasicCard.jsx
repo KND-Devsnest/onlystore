@@ -37,18 +37,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BasicCard = ({
-  id,
-  title,
-  price,
-  imageUrl,
-  category,
-  elem,
-  eta,
-  isInWishlist,
-}) => {
+const BasicCard = ({ id, title, price, imageUrl, category, elem, eta }) => {
   const classes = useStyles();
   const currentUser = useSelector((state) => state.auth.email);
+  const { wishlistItems } = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
   let m = 50;
   const d = new Date();
@@ -76,10 +68,15 @@ const BasicCard = ({
       ? "Tomorrow"
       : daysList[updated.getDay()];
 
+  const isInWishlist = (id) => {
+    //console.log(wishlistItems[id] !== undefined);
+    return wishlistItems[id] !== undefined;
+  };
+
   const handleWishlistClick = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    if (isInWishlist) {
+    if (isInWishlist(id)) {
       dispatch(removeWishlistItem({ id }));
       dispatch(
         triggerSnackbar({
@@ -133,7 +130,7 @@ const BasicCard = ({
             aria-label="add to favorites"
             onClick={handleWishlistClick}
           >
-            {isInWishlist ? (
+            {isInWishlist(id) ? (
               <FavoriteSharp color="error" />
             ) : (
               <FavoriteBorderIcon />

@@ -74,7 +74,14 @@ const Wishlist = ({ isFromDrawer }) => {
                 ))}
               </Paper>
             ) : (
-              <></>
+              <Box
+                style={{ minHeight: "100%" }}
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+              >
+                Your Wishlist is empty!
+              </Box>
             )}
           </Container>
         ) : (

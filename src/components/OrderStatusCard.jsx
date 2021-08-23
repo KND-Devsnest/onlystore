@@ -118,30 +118,43 @@ const StepperConnectorStyles = ({ progress }) => ({
 
 const StepperConnector = withStylesProps(StepperConnectorStyles)(StepConnector);
 
-const OrderStatusCard = () => {
+const OrderStatusCard = ({ order, delivered }) => {
   const classes = useStyles();
+
   const [nowStep, setNowStep] = useState(1);
+  const [expected, setExpected] = useState(order.deliveryTime * 60);
   const [progress, setProgress] = useState(1);
+
   useEffect(() => {
-    setInterval(() => {
-      setProgress((prev) => {
-        if (prev < 100) prev += 1;
-        return prev;
-      });
-    }, 100);
-  }, []);
+    const timer = setInterval(() => {
+      setProgress(
+        ((Date.now() - order.orderTime) / (order.deliveryTime * 60 * 1000)) *
+          100
+      );
+    }, 1000);
+    if (progress >= 100) {
+      clearInterval(timer);
+      setProgress(100);
+    }
+    return () => clearInterval(timer);
+  });
   return (
     <div>
       <Stepper
         orientation="vertical"
-        activeStep={progress === 100 ? 3 : 1}
+        activeStep={progress >= 100 ? 3 : 1}
         connector={<StepperConnector progress={progress} />}
       >
         <Step>
-          <StepLabel StepIconComponent={QontoStepIcon}>Order Placed</StepLabel>
+          <StepLabel StepIconComponent={QontoStepIcon}>
+            Order Placed at {"" + new Date(order.orderTime)}
+          </StepLabel>
         </Step>
         <Step>
-          <StepLabel StepIconComponent={QontoStepIcon}>Delivered</StepLabel>
+          <StepLabel StepIconComponent={QontoStepIcon}>
+            {delivered ? "Delivered at " : "Delivering on "}
+            {"" + new Date(order.orderTime + expected * 1000)}
+          </StepLabel>
         </Step>
       </Stepper>
     </div>

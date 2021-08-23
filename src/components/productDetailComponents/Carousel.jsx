@@ -11,12 +11,11 @@ import {
 import { triggerSnackbar } from "../../store/slices/uiSlice";
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "100%",
     width: "100%",
     marginTop: "1rem",
   },
   container: {
-    minHeight: "100%",
+    minHeight: theme.spacing(40),
     minWidth: "100%",
     marginTop: "1rem",
     padding: "1rem",
@@ -33,8 +32,9 @@ const useStyles = makeStyles((theme) => ({
   carouselBar: {
     display: "flex",
     flexDirection: "column",
-    marginTop: "1rem",
-    marginLeft: "1rem",
+    alignContent: "center",
+    justifyContent: "center",
+    paddingLeft: theme.spacing(2),
   },
   carouselImagesContainer: {
     width: "120px",
@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
   test: {
     display: "flex",
+    minHeight: theme.spacing(47),
     justifyContent: "space-between",
     margin: "1rem",
     overflow: "hidden",
@@ -126,8 +127,10 @@ const Carousel = ({ currentProd }) => {
       );
     } else {
       console.log(currentProd);
-      const { id, title, price, imageUrl, category } = currentProd;
-      dispatch(addWishListItem({ id, title, price, imageUrl, category }));
+      const { id, title, price, imgs, category } = currentProd;
+      dispatch(
+        addWishListItem({ id, title, price, imageUrl: imgs[0], category })
+      );
       if (currentUser)
         dispatch(
           triggerSnackbar({
@@ -144,28 +147,6 @@ const Carousel = ({ currentProd }) => {
         );
     }
   };
-
-  /**
-   * () => {
-              {if (!wishlist[currentProd.id]) {
-                dispatch(addWishListItem(currentProd));
-                dispatch(
-                  triggerSnackbar({
-                    severity: "success",
-                    message: "Product added to your wishlist 🥳",
-                  })
-                );
-              } else {
-                dispatch(removeWishlistItem(currentProd));
-                dispatch(
-                  triggerSnackbar({
-                    severity: "error",
-                    message: "Removed Item from your wishlist!",
-                  })
-                );
-              }
-            }}       
-   */
 
   return (
     <Container className={classes.container}>

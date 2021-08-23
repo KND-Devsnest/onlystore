@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import { setCurrentProduct } from "../store/slices/productsSlice";
 import Reviews from "../components/productDetailComponents/Reviews";
-import { Grid, Card, Paper, Container, Tooltip } from "@material-ui/core";
+import { Grid, Card, Paper, Container, Tooltip, Box } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/styles";
 import { calculateRatings } from "../utils/reviewUtils";
@@ -14,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100%",
     width: "100%",
-    marginTop: "1rem",
+    padding: theme.spacing(2, 0),
   },
   container: {
-    padding: "1rem",
+    padding: theme.spacing(2, 4),
   },
   images: {
     maxWidth: "352px",
@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
   },
   imgContainer: {
     textAlign: "center",
+  },
+  specs: {
+    padding: theme.spacing(0, 6, 0, 2),
+    margin: theme.spacing(2, 0),
   },
 }));
 const ProductDetails = () => {
@@ -48,43 +52,43 @@ const ProductDetails = () => {
   if (currentProduct) {
     const { count, rating } = calculateRatings(currentProduct);
     return (
-      <div>
-        <Container className={classes.root}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={5} className={classes.imgContainer}>
-              <Carousel currentProd={currentProduct} />
-            </Grid>
-            <Grid item xs={12} sm={5}>
-              <Paper className={classes.container}>
-                <h1>{currentProduct.title}</h1>
-                <Tooltip
-                  title={`Rating: ${rating} using 1000 ratings and ${count} reviews`}
-                >
-                  <div style={{ display: "inline-block" }}>
-                    <Rating
-                      name="half-rating"
-                      defaultValue={rating}
-                      precision={0.5}
-                      readOnly
-                    />{" "}
-                  </div>
-                </Tooltip>
-                {Array.isArray(currentProduct.specs) ? (
+      <Container className={classes.root}>
+        <Grid container alignItems="center" justifyContent="center" spacing={2}>
+          <Grid item xs={12} sm={5} className={classes.imgContainer}>
+            <Carousel currentProd={currentProduct} />
+          </Grid>
+          <Grid item xs={12} sm={5}>
+            <Paper className={classes.container}>
+              <h1>{currentProduct.title}</h1>
+              <Tooltip
+                title={`Rating: ${rating} using 1000 ratings and ${count} reviews`}
+              >
+                <div style={{ display: "inline-block" }}>
+                  <Rating
+                    name="half-rating"
+                    defaultValue={rating}
+                    precision={0.5}
+                    readOnly
+                  />{" "}
+                </div>
+              </Tooltip>
+              {Array.isArray(currentProduct.specs) ? (
+                <Box className={classes.specs}>
                   <ul>
                     {currentProduct.specs.map((el, index) => (
                       <li key={index}>{el}</li>
                     ))}
                   </ul>
-                ) : (
-                  <p>{currentProduct.specs}</p>
-                )}
-                <CartBox />
-              </Paper>{" "}
-            </Grid>
+                </Box>
+              ) : (
+                <p>{currentProduct.specs}</p>
+              )}
+              <CartBox />
+            </Paper>{" "}
           </Grid>
-        </Container>
+        </Grid>
         <Reviews paramId={paramId} reviews={currentProduct.reviews}></Reviews>
-      </div>
+      </Container>
     );
   }
 };

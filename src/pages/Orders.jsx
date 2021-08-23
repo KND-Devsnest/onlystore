@@ -43,14 +43,13 @@ const Orders = () => {
         } else {
           tempNotDelivered.push(el);
         }
-        setDelivered(tempDelivered);
-        setNotDelivered(tempNotDelivered);
       });
-  }, []);
+    setDelivered(tempDelivered);
+    setNotDelivered(tempNotDelivered);
+  }, [ordersState]);
   return (
     <Paper>
       <div>
-       
         {ordersState ? (
           <div>
             <Container className={classes.Headingcontainer}>
@@ -64,7 +63,12 @@ const Orders = () => {
             {notDelivered.length > 0 ? (
               notDelivered.map((el, index) => (
                 <Container key={index} className={classes.container}>
-                  <OrderCard order={el} />
+                  <OrderCard
+                    order={el}
+                    ordersState={ordersState}
+                    setOrdersState={setOrdersState}
+                    currentUser={currentUser}
+                  />
                 </Container>
               ))
             ) : (

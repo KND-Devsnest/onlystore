@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const QuantityBox = ({ id, quantity, changeQuantity }) => {
+export const QuantityBox = ({ id, quantity, changeQuantity }) => {
   return (
     <Box
       display="flex"

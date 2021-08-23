@@ -45,7 +45,7 @@ const MyAccount = () => {
   const handleEdit = (id) => {
     console.log("work");
     setActiveEditContent(id);
-    dispatch(triggerModal());
+    dispatch(triggerModal(true));
   };
 
   const getEditContent = (id) => {
