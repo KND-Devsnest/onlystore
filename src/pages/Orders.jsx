@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { loadOrder } from "../utils/orders";
 //import { useSelector } from "react-redux";
-import { OrderGenerator, saveOrders } from "../utils/orders";
 import OrderCard from "../components/Orders/OrderCard";
 import { Paper, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
@@ -51,13 +50,7 @@ const Orders = () => {
   return (
     <Paper>
       <div>
-        <button
-          onClick={() => {
-            saveOrders(OrderGenerator(cartItems, totalPrice), currentUser);
-          }}
-        >
-          HEllo
-        </button>
+       
         {ordersState ? (
           <div>
             <Container className={classes.Headingcontainer}>

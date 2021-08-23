@@ -38,7 +38,7 @@ export const saveOrders = (orders = null, userEmail = null) => {
 //     orderTime:timestamp,
 //   }
 // ]
-export const OrderGenerator = (cartItems, totalPrice) => {
+export const OrderGenerator = (cartItems, totalPrice, address) => {
   const temp = {};
   temp["products"] = cartItems;
   temp["totalPrice"] = totalPrice;
@@ -48,6 +48,7 @@ export const OrderGenerator = (cartItems, totalPrice) => {
   }
   temp["totalQuantity"] = countQuantity;
   temp["deliveryTime"] = timeHelper(cartItems);
+  temp["address"] = address;
   temp["orderTime"] = Date.now();
   return temp;
 };
