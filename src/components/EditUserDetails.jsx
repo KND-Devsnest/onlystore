@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Button, makeStyles, TextField, Typography } from "@material-ui/core";
 import UiModal from "./UiModal";
 import { updateUserDetails } from "../store/slices/authSlice";

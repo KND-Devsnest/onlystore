@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal, triggerSnackbar } from "../store/slices/uiSlice";
 import { useEffect } from "react";
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     minHeight: "100%",
     width: "100%",
@@ -59,6 +59,7 @@ const ReviewComponent = ({ setReviews }) => {
         setRating(1);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paramId]);
   const classes = useStyles();
   const dispatch = useDispatch();

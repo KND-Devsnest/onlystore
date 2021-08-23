@@ -1,7 +1,6 @@
 import { loadReview } from "../../utils/reviewUtils";
 import { Paper, Typography } from "@material-ui/core";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { Container } from "@material-ui/core";
@@ -44,9 +43,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Reviews = ({ paramId, reviews }) => {
   const classes = useStyles();
+  // eslint-disable-next-line no-unused-vars
   const [userReviews, setReviews] = useState(loadReview(paramId));
-
-  const currentUser = useSelector((state) => state.auth);
 
   return (
     <Container className={classes.root}>

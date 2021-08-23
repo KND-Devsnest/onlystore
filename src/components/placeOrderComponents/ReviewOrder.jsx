@@ -11,7 +11,7 @@ import {
   IconButton,
   Paper,
 } from "@material-ui/core";
-import { Add, Delete, Remove } from "@material-ui/icons";
+import { Delete } from "@material-ui/icons";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeQuantity, removeCartItem } from "../../store/slices/cartSlice";

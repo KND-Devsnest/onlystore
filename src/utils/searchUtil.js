@@ -1,11 +1,11 @@
-import ThemeProvider from "@material-ui/styles/ThemeProvider";
 import store from "../store/store";
+
 export const searchUtil = (param, category = "all", filters = "all") => {
   const { productItems } = store.getState().products;
   const tempArray = [];
   filters = helper2(filters);
 
-  productItems.forEach((el, index) => {
+  productItems.forEach((el) => {
     if (category.toLowerCase() === "all" || category === el.category) {
       if (filters !== "all") {
         let tempFlag = true;

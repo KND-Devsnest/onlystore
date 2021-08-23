@@ -4,11 +4,9 @@ import clsx from "clsx";
 import Check from "@material-ui/icons/Check";
 import {
   makeStyles,
-  withStyles,
   Stepper,
   Step,
   StepLabel,
-  Button,
   StepConnector,
 } from "@material-ui/core";
 import { useState, useEffect } from "react";
@@ -119,9 +117,7 @@ const StepperConnector = withStylesProps(StepperConnectorStyles)(StepConnector);
 
 const OrderStatusCard = ({ order, delivered }) => {
   const classes = useStyles();
-
-  const [nowStep, setNowStep] = useState(1);
-  const [expected, setExpected] = useState(order.deliveryTime * 60);
+  const [expected] = useState(order.deliveryTime * 60);
   const [progress, setProgress] = useState(1);
 
   useEffect(() => {
@@ -136,9 +132,10 @@ const OrderStatusCard = ({ order, delivered }) => {
       setProgress(100);
     }
     return () => clearInterval(timer);
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setProgress]);
   return (
-    <div>
+    <div className={classes.kuchBhi}>
       <Stepper
         orientation="vertical"
         activeStep={progress >= 100 ? 3 : 1}

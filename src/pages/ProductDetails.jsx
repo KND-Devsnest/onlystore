@@ -1,10 +1,16 @@
 import React from "react";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router-dom";
 import { setCurrentProduct } from "../store/slices/productsSlice";
 import Reviews from "../components/productDetailComponents/Reviews";
-import { Grid, Card, Paper, Container, Tooltip, Box } from "@material-ui/core";
+import {
+  Grid,
+  Paper,
+  Container,
+  Tooltip,
+  Box,
+  Typography,
+} from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/styles";
 import { calculateRatings } from "../utils/reviewUtils";
@@ -83,7 +89,21 @@ const ProductDetails = () => {
               ) : (
                 <p>{currentProduct.specs}</p>
               )}
-              <CartBox />
+              <div
+                className=""
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  paddingTop: ".75rem",
+                }}
+              >
+                <Typography variant="h6" style={{ width: "40%" }}>
+                  ₹{currentProduct.price}
+                </Typography>
+                <CartBox />
+              </div>
             </Paper>{" "}
           </Grid>
         </Grid>

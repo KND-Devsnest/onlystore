@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router";
-import { searchUtil } from "../utils/searchUtil";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import BasicCard from "../components/BasicCard";
 import { Grid, Typography } from "@material-ui/core";
 import { Container, Paper } from "@material-ui/core";

@@ -40,7 +40,7 @@ export const OrderGenerator = (cartItems, totalPrice, address) => {
 };
 function timeHelper(cartItems) {
   let temp = 0;
-  Object.keys(cartItems).map((el, index) => {
+  Object.keys(cartItems).map((el) => {
     temp += cartItems[el].eta;
   });
   return temp;

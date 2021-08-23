@@ -4,7 +4,6 @@ import "./assets/index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import startFakeBackend from "./utils/fakeFetch";
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -25,7 +24,7 @@ const theme = createTheme({
   },
 });
 
-startFakeBackend();
+//startFakeBackend();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
