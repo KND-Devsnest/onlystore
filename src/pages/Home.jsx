@@ -15,12 +15,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1, 2),
   },
   heroContainer: {
-    minHeight: "42vh",
+    height: theme.spacing(40),
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
   },
   hero: {
-    height: "42vh",
+    height: "100%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -36,7 +36,6 @@ const Home = () => {
   const classes = useStyles();
   const { productItems } = useSelector((state) => state.products);
   const history = useHistory();
-  // let data = productItems.slice().sort(() => Math.random() - 0.5);
   let popular = productItems.filter((el) => el.popular);
   let mobiles = productItems
     .filter((el) => el.category === "Mobiles")
