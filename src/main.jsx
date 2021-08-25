@@ -29,7 +29,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Router basename="/onlystore">
+        <Router>
           <App />
         </Router>
       </ThemeProvider>
