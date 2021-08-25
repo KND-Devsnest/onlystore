@@ -13,14 +13,13 @@ import { showDrawer } from "../store/slices/cartSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "74vh",
     width: "100%",
     padding: theme.spacing(4, 2),
   },
   container: {
     width: "90%",
   },
-  Headingcontainer: {
+  headingContainer: {
     width: "90%",
     marginBottom: "1rem",
   },
@@ -60,12 +59,12 @@ const Orders = () => {
       <div>
         {ordersState ? (
           <div>
-            <Container className={classes.Headingcontainer}>
+            <Container className={classes.headingContainer}>
               {" "}
               <h1>Your Orders</h1>
             </Container>
 
-            <Container className={classes.Headingcontainer}>
+            <Container className={classes.headingContainer}>
               <h2>Current Orders</h2>
             </Container>
             {notDelivered.length > 0 ? (
@@ -84,7 +83,7 @@ const Orders = () => {
                 No Current Orders
               </Container>
             )}
-            <Container className={classes.Headingcontainer}>
+            <Container className={classes.headingContainer}>
               {" "}
               <h2>Delivered</h2>
             </Container>

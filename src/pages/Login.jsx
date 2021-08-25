@@ -9,7 +9,6 @@ import { loadWishListItem } from "../store/slices/wishlistSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "70vh",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

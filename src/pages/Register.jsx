@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     margin: theme.spacing(2),
-    minHeight: "70vh",
   },
   form: {
     width: "90%",

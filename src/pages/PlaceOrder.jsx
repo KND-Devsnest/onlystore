@@ -12,7 +12,6 @@ import { Container, Paper } from "@material-ui/core";
 import PaymentMethod from "../components/placeOrderComponents/PaymentMethod";
 import ShippingAddress from "../components/placeOrderComponents/ShippingAddress";
 import ReviewOrder from "../components/placeOrderComponents/ReviewOrder";
-import { addOrderItem } from "../store/slices/orderSlice";
 import { clearCart } from "../store/slices/cartSlice";
 import { Redirect } from "react-router-dom";
 import { updateUserDetails } from "../store/slices/authSlice";
@@ -20,7 +19,6 @@ import { triggerSnackbar } from "../store/slices/uiSlice";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "100%",
     width: "100%",
     padding: theme.spacing(2),
   },

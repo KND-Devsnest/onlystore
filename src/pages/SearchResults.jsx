@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     marginTop: "1rem",
-    minHeight: "71.8vh",
     padding: theme.spacing(2, 6),
   },
   container: {

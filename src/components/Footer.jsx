@@ -37,10 +37,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Footer = () => {
+const Footer = ({ rootClass }) => {
   const classes = useStyles();
   return (
-    <div>
+    <div className={rootClass}>
       <Container maxWidth="xl" className={classes.root}>
         <Box>
           <Typography
