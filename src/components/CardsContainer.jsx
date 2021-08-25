@@ -15,12 +15,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: theme.breakpoints.values.sm - theme.spacing(34),
     [theme.breakpoints.up("sm")]: {
-      width: theme.breakpoints.values.lg,
+      width: theme.breakpoints.values.lg - theme.spacing(10),
     },
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-around",
-    padding: theme.spacing(1, 2),
+    justifyContent: "space-between",
+    alignItems: "center",
+    // padding: theme.spacing(1, 2),
   },
   heading: {
     width: "100%",
@@ -32,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     width: theme.breakpoints.values.sm - theme.spacing(38),
     [theme.breakpoints.up("sm")]: {
-      width: theme.breakpoints.values.lg - theme.spacing(5),
+      width: theme.breakpoints.values.lg - theme.spacing(10),
     },
     display: "flex",
     flexDirection: "row",

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { loadOrder } from "../utils/orders";
 import OrderCard from "../components/Orders/OrderCard";
-import { Paper, Container } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import { remainingTimeCalc } from "../utils/orders";
 import ReviewComponent from "../components/ReviewComponent";
@@ -55,7 +55,7 @@ const Orders = () => {
     return <Redirect to="/" />;
   }
   return (
-    <Paper className={classes.root}>
+    <Container maxWidth="xl" className={classes.root}>
       <div>
         {ordersState ? (
           <div>
@@ -104,7 +104,7 @@ const Orders = () => {
         )}
       </div>
       <ReviewComponent></ReviewComponent>{" "}
-    </Paper>
+    </Container>
   );
 };
 

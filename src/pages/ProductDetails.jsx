@@ -60,7 +60,7 @@ const ProductDetails = () => {
   if (currentProduct) {
     const { count, rating } = calculateRatings(currentProduct);
     return (
-      <Container className={classes.root}>
+      <Container maxWidth="xl" className={classes.root}>
         <Grid container alignItems="center" justifyContent="center" spacing={2}>
           <Grid item xs={12} sm={5} className={classes.imgContainer}>
             <Carousel currentProd={currentProduct} />

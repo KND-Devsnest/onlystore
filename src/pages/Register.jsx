@@ -1,4 +1,10 @@
-import { Button, makeStyles, TextField, Typography } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  makeStyles,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
@@ -12,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: theme.spacing(2),
+    padding: theme.spacing(2),
   },
   form: {
     width: "90%",
@@ -72,7 +78,7 @@ const Register = () => {
   console.log(isAuth);
   if (isAuth) return <Redirect to="/" />;
   return (
-    <div className={classes.root}>
+    <Container maxWidth="md" className={classes.root}>
       <Typography variant="h4">Register</Typography>
       <form noValidate className={classes.form} onSubmit={handleSubmit}>
         <TextField
@@ -122,7 +128,7 @@ const Register = () => {
           </Link>
         </div>
       </form>
-    </div>
+    </Container>
   );
 };
 

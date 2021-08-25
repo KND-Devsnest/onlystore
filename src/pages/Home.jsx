@@ -11,10 +11,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(2),
   },
-  paper: {
-    padding: theme.spacing(1, 2),
-  },
   heroContainer: {
+    marginTop: -theme.spacing(2),
     height: theme.spacing(40),
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
@@ -29,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
   tagLine: {
     marginTop: theme.spacing(2),
     textAlign: "center",
+  },
+  collections: {
+    display: "flex",
+    flexDirection: "column",
+    gap: theme.spacing(2),
   },
 }));
 
@@ -51,7 +54,7 @@ const Home = () => {
   return (
     <>
       <Box className={classes.heroContainer}>
-        <Container maxWidth="lg" className={classes.hero}>
+        <Container maxWidth="xl" className={classes.hero}>
           <LogoIcon fontSize="large" id="homeLogo" />
           <Typography
             variant="h2"
@@ -65,27 +68,29 @@ const Home = () => {
         </Container>
       </Box>
       <Container className={classes.root} maxWidth="xl">
-        <CardsContainer title={"Most Popular"} items={popular} />
-        <CardsContainer
-          title={"Trending Mobiles"}
-          items={mobiles}
-          viewAll={() => history.push("/search/mobiles")}
-        />
-        <CardsContainer
-          title={"Popular Books"}
-          items={books}
-          viewAll={() => history.push("/search/books")}
-        />
-        <CardsContainer
-          title={"Top Clothings"}
-          items={clothings}
-          viewAll={() => history.push("/search/clothings")}
-        />
-        <CardsContainer
-          title={"Discounted Furniture"}
-          items={furniture}
-          viewAll={() => history.push("/search/clothings")}
-        />
+        <Box className={classes.collections}>
+          <CardsContainer title={"Most Popular"} items={popular} />
+          <CardsContainer
+            title={"Trending Mobiles"}
+            items={mobiles}
+            viewAll={() => history.push("/search/mobiles")}
+          />
+          <CardsContainer
+            title={"Popular Books"}
+            items={books}
+            viewAll={() => history.push("/search/books")}
+          />
+          <CardsContainer
+            title={"Top Clothings"}
+            items={clothings}
+            viewAll={() => history.push("/search/clothings")}
+          />
+          <CardsContainer
+            title={"Discounted Furniture"}
+            items={furniture}
+            viewAll={() => history.push("/search/clothings")}
+          />
+        </Box>
       </Container>
     </>
   );

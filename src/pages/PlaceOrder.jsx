@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   content: {
-    minHeight: "80vh",
+    minHeight: "50vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -168,7 +168,7 @@ const PlaceOrder = () => {
   }
 
   return (
-    <Container className={classes.root}>
+    <Container maxWidth="md" className={classes.root}>
       <Paper variant="outlined">
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label) => (

@@ -12,13 +12,13 @@ import React from "react";
 const useStyles = makeStyles((theme) => ({
   ShipContainer: {},
   shippingLeft: {
-    margin: theme.spacing(8, 4, 8, 4),
+    padding: theme.spacing(2),
     textAlign: "center",
   },
   shippingRight: {
     minHeight: "100%",
     width: "100%",
-    margin: theme.spacing(4, 2, 4, 2),
+    padding: theme.spacing(4, 2, 4, 2),
     display: "grid",
     placeItems: "center",
   },

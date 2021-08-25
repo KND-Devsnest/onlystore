@@ -61,7 +61,7 @@ const MyAccount = () => {
   };
 
   return (
-    <Container className={classes.root}>
+    <Container maxWidth="md" className={classes.root}>
       <Typography variant="h4">Your Account</Typography>
       <Paper className={classes.paper}>
         <Grid container>
