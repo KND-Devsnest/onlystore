@@ -139,7 +139,7 @@ const Carousel = ({ currentProd }) => {
         dispatch(
           triggerSnackbar({
             severity: "error",
-            message: "Error! Login to add to your wishlist ❌",
+            message: "Error! Login to add to your wishlist",
           })
         );
     }

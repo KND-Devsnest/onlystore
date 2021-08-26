@@ -20,19 +20,12 @@ import { CircularProgress } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: "100%",
-    width: "100%",
-    padding: theme.spacing(2, 0),
+    flexGrow: 1,
+    padding: theme.spacing(2),
+    backgroundColor: theme.palette.background.paper,
   },
   container: {
     padding: theme.spacing(2, 4),
-  },
-  images: {
-    maxWidth: "352px",
-    maxHeight: "352px",
-  },
-  imgContainer: {
-    textAlign: "center",
   },
   specs: {
     padding: theme.spacing(0, 6, 0, 2),
@@ -61,55 +54,68 @@ const ProductDetails = () => {
     const { count, rating } = calculateRatings(currentProduct);
     return (
       <Container maxWidth="xl" className={classes.root}>
-        <Grid container alignItems="center" justifyContent="center" spacing={2}>
-          <Grid item xs={12} sm={5} className={classes.imgContainer}>
+        <Grid container justifyContent="center" spacing={1}>
+          <Grid container item xs={12} sm={5} className={classes.leftContainer}>
             <Carousel currentProd={currentProduct} />
           </Grid>
-          <Grid item xs={12} sm={5}>
-            <Paper className={classes.container}>
-              <h1>{currentProduct.title}</h1>
-              <Tooltip
-                title={`Rating: ${rating} using 1000 ratings and ${count} reviews`}
-              >
-                <div style={{ display: "inline-block" }}>
-                  <Rating
-                    name="half-rating"
-                    defaultValue={rating}
-                    precision={0.5}
-                    readOnly
-                  />{" "}
+          <Grid
+            container
+            item
+            xs={12}
+            sm={6}
+            className={classes.rightContainer}
+          >
+            <Grid item xs={12}>
+              <Paper className={classes.container}>
+                <h1>{currentProduct.title}</h1>
+                <Tooltip
+                  title={`Rating: ${rating} using 1000 ratings and ${count} reviews`}
+                >
+                  <div style={{ display: "inline-block" }}>
+                    <Rating
+                      name="half-rating"
+                      defaultValue={rating}
+                      precision={0.5}
+                      readOnly
+                    />{" "}
+                  </div>
+                </Tooltip>
+                {Array.isArray(currentProduct.specs) ? (
+                  <Box className={classes.specs}>
+                    <ul>
+                      {currentProduct.specs.map((el, index) => (
+                        <li key={index}>{el}</li>
+                      ))}
+                    </ul>
+                  </Box>
+                ) : (
+                  <p>{currentProduct.specs}</p>
+                )}
+                <div
+                  className=""
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    paddingTop: ".75rem",
+                  }}
+                >
+                  <Typography variant="h6" style={{ width: "40%" }}>
+                    ₹{currentProduct.price}
+                  </Typography>
+                  <CartBox />
                 </div>
-              </Tooltip>
-              {Array.isArray(currentProduct.specs) ? (
-                <Box className={classes.specs}>
-                  <ul>
-                    {currentProduct.specs.map((el, index) => (
-                      <li key={index}>{el}</li>
-                    ))}
-                  </ul>
-                </Box>
-              ) : (
-                <p>{currentProduct.specs}</p>
-              )}
-              <div
-                className=""
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  paddingTop: ".75rem",
-                }}
-              >
-                <Typography variant="h6" style={{ width: "40%" }}>
-                  ₹{currentProduct.price}
-                </Typography>
-                <CartBox />
-              </div>
-            </Paper>{" "}
+              </Paper>
+            </Grid>
+            <Grid item xs={12}>
+              <Reviews
+                paramId={paramId}
+                reviews={currentProduct.reviews}
+              ></Reviews>
+            </Grid>
           </Grid>
         </Grid>
-        <Reviews paramId={paramId} reviews={currentProduct.reviews}></Reviews>
       </Container>
     );
   } else {
