@@ -1583,8 +1583,8 @@ export const products = [
     category: "Beauty",
     price: 268,
     imgs: [
-      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/Kajal1.jpg",
-      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/Kajal2.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/kajal1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/kajal2.jpg",
     ],
     specs: [
       "Smudge proof and convenient twist- up format for deep stroke",
