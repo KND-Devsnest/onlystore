@@ -102,7 +102,13 @@ export const categories = {
     filters: {
       Type: {
         filterName: "Type",
-        filterList: ["Bath and Body", "Fragrance", "Skin Care", "Hair Care"],
+        filterList: [
+          "Bath and Body",
+          "Fragrance",
+          "Skin Care",
+          "Hair Care",
+          "Makeup",
+        ],
       },
     },
   },
@@ -1464,6 +1470,190 @@ export const products = [
         title: "Do not buy",
         content: `some product with same manufacturing date found cheaper in local market with low printed price.so before u buy have a look with near by retail shop.`,
         rating: 1,
+      },
+    ],
+  },
+  {
+    popular: true,
+    Type: "Skin Care",
+    title: "The Body Shop British Rose Shower Gel, 250ml",
+    category: "Beauty",
+    price: 345,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/roseShowerGel.jpg",
+    ],
+    specs: [
+      "Quantity: 250ml",
+      "Skin Type: Dry",
+      "Scent: Rose",
+      "Ingredients: Rose Extract. Is there anything classier than a bunch of roses? We use extract from English roses for their impossibly sweet smell.",
+      "Package Type: Bottle",
+    ],
+    inStock: 22,
+    eta: 3,
+    id: "be6",
+    rating: 4.5,
+    reviews: [
+      {
+        name: "Yam",
+        title: "Thick shower gel",
+        content: "Thick shower goal with a heavenly aroma. Feels luxurious",
+        rating: 5,
+      },
+      {
+        name: "Debra E.",
+        title: "Lovely aroma",
+        content: "Love the smell. Fills the bathroom with a lovely aroma.",
+        rating: 5,
+      },
+    ],
+  },
+  {
+    Type: "Skin Care",
+    title: "Vaseline Intensive Care Deep Moisture Body Lotion, 400ml",
+    category: "Beauty",
+    price: 276,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/vaslinebodylotion.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/vaslinebodylotion2.jpg",
+    ],
+    specs: [
+      "Quantity: 400ml",
+      "Skin Type: All",
+      "Item Form: Lotion",
+      "Ingredients: Glycerin",
+      "Package Type: Bottle",
+      "Daily body lotion best for: dry skin, rough skin",
+    ],
+    inStock: 2,
+    eta: 2,
+    id: "be7",
+    rating: 4.4,
+    reviews: [
+      {
+        name: "Sam",
+        title: "Effective product for dry skin",
+        content:
+          "Effective moisturizer, heals dry skin within days. Pleasant fragrance. Impressive deal, nearly half price.",
+        rating: 5,
+      },
+      {
+        name: "Anvar Adam",
+        title: "Very bad products",
+        content:
+          "Very bad products. After I use on my body. Too much start etching and elergy. I think products was expired.",
+        rating: 1,
+      },
+    ],
+  },
+  {
+    Type: "Hair Care",
+    title:
+      "L'Oréal Professionnel Steampod 3.0 Steam Hair Straightener & Styling Tool",
+    category: "Beauty",
+    price: 24800,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/Straightener1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/Straightener2.jpg",
+    ],
+    specs: [
+      "Hair Type: All",
+      "SteamPod 3.0 by L'Oréal Professionnel is the 3rd generation of the original patented professional steam hair straightener & styling tool.",
+      "2x faster & 2x smoother styling vs a regular straightener.",
+      "91% less damage vs a regular straightener after 15 uses.",
+      "Instant Shine vs natural hair.",
+    ],
+    inStock: 20,
+    eta: 20,
+    id: "be8",
+    rating: 5,
+    reviews: [
+      {
+        name: "AW",
+        title: "Great Buy! Salon favourite",
+        content:
+          "Absolutely the best styler in the market. Had seen this during my trip to Europe and regretted not buying it then. Amazing that it’s now available here.",
+        rating: 5,
+      },
+    ],
+  },
+  {
+    Type: "Makeup",
+    title: "Lakmé Eyeconic Kajal Twin Pack, Smudge Proof, Water Proof",
+    category: "Beauty",
+    price: 268,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/Kajal1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/Kajal2.jpg",
+    ],
+    specs: [
+      "Smudge proof and convenient twist- up format for deep stroke",
+      "Water proof, lasts up to 22 hrs",
+      "It is dermatologically tested and is safe for the eyes",
+      "Easy twist up format",
+      "Can be used water line and eye lids",
+      "Deep black finish",
+    ],
+    inStock: 22,
+    eta: 100,
+    id: "be9",
+    rating: 4.4,
+    reviews: [
+      {
+        name: "Psuhpendra Patel",
+        title: "Good Quality",
+        content:
+          "Beauty lies in the eyes of the beholder. It's seen in the eyes & defines attitude. Kajal in women's eyes simply magnifies it all. Some prefer it and some do not.",
+        rating: 5,
+      },
+      {
+        name: "Shivangi",
+        title: "Not satisfied",
+        content:
+          "When i opened the product the kajal stick was broken in one piece and in 2nd piece is also defected.its not useful.",
+        rating: 1,
+      },
+    ],
+  },
+  {
+    Type: "Makeup",
+    title: "O.P.I Nail Lacquer, You're Such a Budapest, 15ml",
+    category: "Beauty",
+    price: 850,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/nailpolsih1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/nailpolsih2.jpg",
+    ],
+    specs: [
+      "Brand: O.P.I",
+      "Colour: You're Such a Budapest",
+      "Finish Type: Glossy",
+      "A vivacious chianti Nail Polish that shade will draw gazes with pearly, opalescent coverage.",
+    ],
+    inStock: 5,
+    eta: 1,
+    id: "be10",
+    rating: 4.7,
+    reviews: [
+      {
+        name: "GM",
+        title: "Shade is streaky",
+        content:
+          "Love the shade but it takes about 2-3 coats to get full opacity. I think its the problem with this light shade as I have no problems with others. Shade is nice & summery",
+        rating: 5,
+      },
+      {
+        name: "Mazielady",
+        title: "Pretty summer colour",
+        content:
+          "Very pretty summer colour and ss eith all OPI polishes, of good quality.",
+        rating: 5,
+      },
+      {
+        name: "Nicletyei",
+        title: "You're such a Budapest",
+        content: "Favourite OPI colour. Great with or without a tan.",
+        rating: 5,
       },
     ],
   },
