@@ -122,6 +122,42 @@ export const categories = {
       },
     },
   },
+  Laptops: {
+    title: "Laptops",
+    keywords: "",
+    filters: {
+      For: {
+        filterName: "For",
+        filterList: [
+          "Students",
+          "Travel",
+          "Coding",
+          "Gaming",
+          "Content Creation",
+        ],
+      },
+      Brand: {
+        filterName: "Brand",
+        filterList: ["Acer", "Dell", "HP", "Lenovo", "Asus", "Apple"],
+      },
+      RAM: {
+        filterName: "RAM",
+        filterList: ["4 GB", "8 GB", "16 GB", "32 GB", "64 GB"],
+      },
+      Processor: {
+        filterName: "Processor",
+        filterList: ["Intel", "AMD"],
+      },
+      DisplaySize: {
+        filterName: "Display Size",
+        filterList: ["14", "15.6", "16"],
+      },
+      HasSSD: {
+        filterName: "Has SSD?",
+        filterList: ["Yes", "No"],
+      },
+    },
+  },
 };
 
 // Products
@@ -1866,6 +1902,260 @@ export const products = [
         name: "Yash K",
         title: "Good Value",
         content: "It is quality stuff. Good value for spend.",
+        rating: 4,
+      },
+    ],
+  },
+  {
+    For: "Students",
+    Brand: "HP",
+    RAM: "8 GB",
+    Processor: "AMD",
+    DisplaySize: "15.6",
+    HasSSD: "No",
+    title:
+      "HP 15 (2021) Thin & Light Ryzen 3-3250 Laptop, 8 GB RAM, 1TB HDD, 39.62 cms (15.6`) FHD Screen, Windows 10, MS Office (15s-gr0011AU)",
+    category: "Laptops",
+    price: 37590,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/studentLaptophp1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/studentLaptophp2.jpg",
+    ],
+    specs: [
+      "Display: 15.6-inch FHD (1920 x 1080), IPS, micro-edge, anti-glare, 250 nits, 45% NTSC",
+      "Processor: AMD ‎Ryzen 3",
+      "Processor Speed: ‎2.6 GHz",
+      "RAM Size: ‎8 GB",
+      "Hard Drive Size: 1 TB",
+      "Graphics Chipset: AMD Radeon Vega 6 Graphics",
+      "Operating System: ‎Windows 10 Home",
+    ],
+    inStock: 11,
+    eta: 120,
+    id: "l1",
+    rating: 3.8,
+    reviews: [
+      {
+        name: "Swag",
+        title: "I really liked this product 👍",
+        content:
+          "After seeing the reviews I was confused. But I decided to go for this and it got delivered within 1 day. I really liked this product. Looks premium, built quality is also good and also fast. It's a good laptop under 36k. As of now, this is my review and if there will be any issue, will let you know.",
+        rating: 5,
+      },
+      {
+        name: "Himanshu Karkhanis",
+        title: "Reasonable performance so far (it is only 3 days)",
+        content:
+          "Firstly for the correct information of all potential buyers - I have had a good experience of HP laptops. Secondly i had budget constraints (below 35k)... so I had to go for one with only HDD, not SSD. I would have loved hybrid types as those work excellent. Thus I opted for this laptop with no SSD, only 1TB HDD, however i preferred 8GB RAM... it has been 3 days and we have been using it for Zoom long meetings..and general surfing (no multimedia use yet). So far there are no visible issues. The fan sometimes gives out a slight burning smell and I assume it is because the circuitry is new... I shall monitor for more days and give another review on this. The laptop's nice feature is the CORTANA support by which windows got configured smoothly, with little intervention. it did take lot of time to boot initially, but now boots up fine.... Havent faced any sound or heat issues yet. Screen output quality could have been better..... to get the optimum brightness you have to raise the brightness to almost the limit. Sound output is not that great..... so far so good. will post again after a month of use.",
+        rating: 4,
+      },
+      {
+        name: "Shantanu Verma",
+        title: "Decent laptop, good customer support during setup",
+        content:
+          "I purchased GR0011AU (1TB HDD no SSD, Ryzen 3 3250). Economical Laptop with decent performance. Battery backup around 5.5 to 6 hrs on streaming video via wifi and general browsing. I avoided purchasing extended warranty online. Instead buy from the HP helpline (number attached in photo). Registration and setup of MS Office Home and Student 2019 is tricky as the laptop has Office 365 installed as default. This (365) has to be uninstalled and the Office H&S 2019 image (3.5GB) has to be downloaded and set up. I am doing it all through the HP helpline and they are helpful.. Overall decent/good laptop for my basic requirements and very good customer support, atleast during setup.",
+        rating: 4,
+      },
+    ],
+  },
+  {
+    For: "Travel",
+    Brand: "Dell",
+    RAM: "4 GB",
+    Processor: "Intel",
+    DisplaySize: "15.6",
+    HasSSD: "Yes",
+    title:
+      "Dell Inspiron 3501 15.6` FHD Display Laptop (i3-1115G4 / 4GB / 256GB SSD / Integrated Graphics / Win10 + MSO / Accent Black)",
+    category: "Laptops",
+    price: 38890,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/travelLaptop1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/travelLaptop2.jpg",
+    ],
+    specs: [
+      "Processor:11th Generation Intel Core i3-1115G4 Processor (6MB Cache, up to 4.1 GHz)",
+      "Memory & Storage: 4GB, 4Gx1, DDR4, 2666MHz | 256GB M.2 PCIe NVMe Solid State Drive",
+      "Display: 15.6-inch FHD (1920 x 1080) Anti-glare LED Backlight Narrow Border WVA Display",
+      "Graphics: Intel UHD Graphics with shared graphics memory",
+      "Operating System & Software: Windows 10 Home Single Language | Microsoft Office Home and Student 2019",
+      "I/O ports: USB 3.2 Gen 1 (x2), USB2.0 (x1), HDMI 1.4(x1),One SD-card slot ,RJ45 - 10/100Mbps",
+    ],
+    inStock: 19,
+    eta: 180,
+    id: "l2",
+    rating: 4.3,
+    reviews: [
+      {
+        name: "Adesh Gaurav",
+        title: "Very good DELL laptop",
+        content:
+          "I got a nice and genuine DELL laptop. It is working and is in good condition. Very much happy with my purchase. For the reference I bought it from LOWEST PRICE SHOP seller.",
+        rating: 5,
+      },
+      {
+        name: "Deepak",
+        title:
+          "This laptop very good sceen and display quality is very nice and keyboard quality is very good",
+        content:
+          "Screen quality very nice, battery is good and camera quality is some good, I am perchase this laptop office work",
+        rating: 4,
+      },
+    ],
+  },
+  {
+    For: "Coding",
+    Brand: "Lenovo",
+    RAM: "8 GB",
+    Processor: "Intel",
+    DisplaySize: "15.6",
+    HasSSD: "Yes",
+    title:
+      "Lenovo IdeaPad Slim 3 10th Gen Intel Core i5 15.6` (39.62cms) Full HD IPS Thin and Light Laptop (8GB/512GB SSD/Windows 10/MS Office 2019/Fingerprint Reader/Platinum Grey/1.85Kg)",
+    category: "Laptops",
+    price: 57200,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/codingLaptop1.jpg",
+    ],
+    specs: [
+      "Processor: 10th Gen Intel Core i5-1035G1 | Speed: 1.0 GHz (Base) - 3.6 GHz (Max) | 4 Cores | 6MB Cache",
+      "OS: Pre-Loaded Windows 10 Home with Lifetime Validity",
+      "Pre-Installed: MS Office Home and Student 2019",
+      "Memory and Storage: 8GB RAM DDR4-2666, Upgradable up to 12GB | 512 GB SSD",
+      "Display: 15.` Full HD (1920x1080) | Brightness: 250 nits | Anti-Glare | IPS Technology",
+      "Design: 1.99 cm Thin and 1.85 kg Light | Narrow Bezel | Fingerprint Reader",
+      "Battery Life: 6 Hours | Rapid Charge (Up to 80% in 1 Hour)",
+    ],
+    inStock: 29,
+    eta: 60,
+    id: "l3",
+    rating: 4.3,
+    reviews: [
+      {
+        name: "Sushabhan Biswas",
+        title: "Good Product in a Handsome Budget, but Battery not so strong.",
+        content: `I have been using this Product for 2 weeks. The Pros & Cons are following:
+          Pros: 1. System speed is very fast, as 7.75 gb is usable RAM.
+          2. Slim fit & good outlook as well.
+          Cons:
+          1. Battery drains too fast, battery power not really good.
+          2. Adapter size is too short, this creates problem while charging from a socket which is little bit away.
+          Apart from the upper points, also check the warranty window after buying it, as for my case, I have to mail to Lenovo for updating my Warranty details (It was not updated properly).`,
+        rating: 4,
+      },
+      {
+        name: "Sésh",
+        title:
+          "Good purchase, overall; and a few points I do hope they use to make improvements",
+        content: `Found this laptop to be v sleek, overall.
+          Like the keyboard (find the keys to be softer than most other laptop keyboards; more 'pleasant'? for typing, relatively speaking, though not quite as pleasant as it is w a MacBookPro).
+          Like the way the touchpad has been positioned slightly to the left.
+          Also like the fingerprint sensor doubling up as the power on/off button.
+          Front-facing cam quality also relatively good, along with wide coverage of (user) background.
+          
+          Would have preferred more RAM along with the whole pkg.
+          Would have preferred more SSD storage space for this budget.
+          
+          Budget-wise, feel this is priced up by about 20%, and I think that it will sell more units if Lenovo brings it down accordingly.
+          
+          Overall, defn a good buy, and I'd recommend it for anyone who wants this config of laptop for their business/home purposes.`,
+        rating: 4,
+      },
+    ],
+  },
+  {
+    For: "Gaming",
+    Brand: "Asus",
+    RAM: "16 GB",
+    Processor: "AMD",
+    DisplaySize: "14",
+    HasSSD: "Yes",
+    title:
+      "ASUS ROG Zephyrus G14, 14` (35.56 cms) QHD, Ryzen 9 4900HS, GTX 1660Ti Max-Q 6GB GDDR6 Graphics, Gaming Laptop (16GB/1TB SSD/MS Office 2019/Windows 10/ White/Anime Matrix/1.7 Kg)",
+    category: "Laptops",
+    price: 111990,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/gamingLaptop1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/gamingLaptop2.jpg",
+    ],
+    specs: [
+      "Processor: AMD Ryzen 9 4900HS Processor, 3.0 GHz (8MB Cache, up to 4.3 GHz, 8 Cores, 16 Threads)",
+      "Memory: 16GB (2x 8GB) DDR4 3200MHz Dual-Channel RAM, Upgradeable up to 24GB using 1x SO-DIMM Slot",
+      "Storage: 1TB M.2 NVMe PCIe 3.0 SSD",
+      "Graphics: Dedicated NVIDIA GeForce GTX 1660Ti Max-Q GDDR6 6GB VRAM",
+      "Display: 14-inch (16:9) QHD (2560x1440), 300 nits Brightness, Anti-Glare IPS-level panel, 100% sRGB, Pantone Validated, Adaptive sync, 85% screen-to-body ratio",
+      "Software Included: Pre-installed MS Office Home and Student 2019 | Operating System: Pre-loaded Windows 10 Home (64bit) with lifetime validity",
+      "Design & battery: NanoEdge bezels | Metallic Body | with AniMe Matrix display| 6,536 CNC Milled Dot Matrix Design| Honeycomb Reinforcement Chassis | Thin and Light Laptop| 19.9mm Thin | Laptop Weight: 1.70 Kg | 76WHrs, 4-cell Lithium-Polymer Battery",
+    ],
+    inStock: 9,
+    eta: 270,
+    id: "l4",
+    rating: 4.4,
+    reviews: [
+      {
+        name: "Abhinav Mehta",
+        title: "Great Laptop, you can go for it, but …",
+        content: `I am facing no issues as of now, a great laptop.
+        Pros :- High performance, thanks to Ryzen 9, Graphics card can handle any game (I played GTA V, and also screen recorded it, screen recording didn’t lag, and I like that), I liked the AniMe Matrix, a great part of the laptop, and the armoury crate. No issue in my Backlit keyboard.
+        
+        Cons :- No webcam (ASUS should have added a webcam at such a high price point)
+        Gets heated quickly, but is manageable, and no other issue.
+        No Ethernet port (ASUS, what the heck is wrong with you? I mean, seriously, majority of Laptops have Ethernet port 😂😂)
+        
+        Overall, a great purchase. Will update the review after a month’s usage, with some pics.
+        `,
+        rating: 4,
+      },
+      {
+        name: "Jothi",
+        title: "Not good quality",
+        content: `Very disappointed to let you all know that keyboard button came out within a month of purchase`,
+        rating: 2,
+      },
+    ],
+  },
+  {
+    For: "Content Creation",
+    Brand: "Apple",
+    RAM: "16 GB",
+    Processor: "Intel",
+    DisplaySize: "16",
+    HasSSD: "No",
+    title:
+      "Apple MacBook Pro 2019 (16-inch/40.65 cm, 16GB RAM, 1TB Storage, 2.3GHz 9th Gen Intel Core i9) - Space Grey",
+    category: "Laptops",
+    price: 215490,
+    imgs: [
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/appleLaptop1.jpg",
+      "https://raw.githubusercontent.com/seebham/ecommerce-dummy-data/main/images/appleLaptop2.jpg",
+    ],
+    specs: [
+      "Processor: Ninth-generation 8-core Intel Core i9 processor",
+      "Memory: Stunning 40.65cm (16-inch) Retina display with True Tone technology",
+      "Storage: 1TB M.2 NVMe PCIe 3.0 SSD",
+      "Graphics: AMD Radeon Pro 5500M graphics with GDDR6 memory",
+      "Display: Stunning 40.65cm (16-inch) Retina display with True Tone technology",
+      "Battery: Up to 11 hours of battery life",
+    ],
+    inStock: 2,
+    eta: 30,
+    id: "l5",
+    rating: 4.3,
+    reviews: [
+      {
+        name: "Venkateesh",
+        title: "Excellent Product from Apple",
+        content: `After 3yrs of problems with Butterfly keyboard & Thermal Problem with Corei9 Apple Finally fixed those loop holes in this Model. It's almost perfect. Good for Professional use. I'm Little disappointed with Apple though., because there s no customization available for India. I hope In future they will introduce it. About the Product 5 Star Solid.
+        I already own a MacBook Pro Mid 2012 still kicking. I always love quality products that apple delivery. Thanks`,
+        rating: 5,
+      },
+      {
+        name: "Vamsi Krishna",
+        title: "Not a great laptop from Apple",
+        content: `Writing this review after using for more than 8 months . Everything is very nice in performance except the below things
+        1. It's heating excessively with in 5 to 10 minutes of opening (just for playing a song in youtube with full volume the temperature is as high as 85 to 98 degrees)
+        2. charging is disintegrating very fast (in cases like when you are doing some work on something like AutoDesk & simultaneously if a browser is running --- only for 2 apps running charge disintegration shouldn’t happen right)
+        3. some times it's beach-balling even it's having octa core & 16 GB RAM`,
         rating: 4,
       },
     ],
