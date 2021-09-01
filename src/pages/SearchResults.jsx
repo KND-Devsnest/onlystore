@@ -68,6 +68,7 @@ const SearchResults = () => {
                       price={elem.price}
                       imageUrl={elem.imgs[0]}
                       category={elem.category}
+                      eta={elem.eta}
                       elem={elem}
                     />
                   </Grid>
