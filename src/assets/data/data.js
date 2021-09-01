@@ -2064,6 +2064,7 @@ export const products = [
     ],
   },
   {
+    popular: true,
     For: "Gaming",
     Brand: "Asus",
     RAM: "16 GB",
@@ -2115,6 +2116,7 @@ export const products = [
     ],
   },
   {
+    popular: true,
     For: "Content Creation",
     Brand: "Apple",
     RAM: "16 GB",
