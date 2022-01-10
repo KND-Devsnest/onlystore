@@ -22,10 +22,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100%",
     width: "100%",
-    padding: theme.spacing(2, 0),
+    padding: theme.spacing(2),
   },
   container: {
-    padding: theme.spacing(2, 4),
+    padding: theme.spacing(2),
+  },
+  prodContainer: {
+    padding: theme.spacing(0, 4),
   },
   images: {
     maxWidth: "352px",
@@ -60,12 +63,18 @@ const ProductDetails = () => {
   if (currentProduct) {
     const { count, rating } = calculateRatings(currentProduct);
     return (
-      <Container maxWidth="xl" className={classes.root}>
-        <Grid container alignItems="center" justifyContent="center" spacing={2}>
-          <Grid item xs={12} sm={5} className={classes.imgContainer}>
+      <Container maxWidth="lg" className={classes.root}>
+        <Grid
+          container
+          className={classes.prodContainer}
+          alignItems="flex-start"
+          justifyContent="space-between"
+          spacing={1}
+        >
+          <Grid item xs={12} sm={6} className={classes.imgContainer}>
             <Carousel currentProd={currentProduct} />
           </Grid>
-          <Grid item xs={12} sm={5}>
+          <Grid item xs={12} sm={6}>
             <Paper className={classes.container}>
               <h1>{currentProduct.title}</h1>
               <Tooltip

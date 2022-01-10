@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     minWidth: "100%",
-    padding: "1rem",
   },
   currentImage: {
     maxWidth: "351px",
@@ -23,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "1rem",
     objectFit: "contain",
     transition: "transform 0.2s",
-    marginRight: "2rem",
   },
 
   carouselBar: {
@@ -59,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     minHeight: theme.spacing(40),
     justifyContent: "space-between",
-    margin: "1rem",
     overflow: "hidden",
     textAlign: "center",
     flexWrap: "nowrap",
